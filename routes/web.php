@@ -37,3 +37,13 @@ Route::get('/depotAnnonce', function(){
 Route::get('/voirAnnonce', function(){
     return view('voirAnnonce');
 });
+Route::get('/dashboard', function(){
+    return view('admin/dashboard');
+})->name("Dashboard");
+Route::get('/listeArtisan', function(){
+    return view('admin/listeArtisan');
+})->name("Artisan");
+Route::get('/listeAnnonces', function(){
+    return view('admin/listeAnnonces');
+})->name("Annonce");
+
