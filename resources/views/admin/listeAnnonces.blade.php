@@ -65,7 +65,7 @@
         <tr>
           <th class="px-4 py-3">#</th>
           <th class="px-4 py-3">Tiltle</th>
-          <th class="px-4 py-3">Auteur</th>
+          <th class="px-4 py-3">Auteurs</th>
           <th class="px-4 py-3">Description</th>
           <th class="px-4 py-3">Categories</th>
           <th class="px-4 py-3">Actions</th>

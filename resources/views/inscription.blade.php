@@ -30,11 +30,11 @@
           <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
             <div class="container">
               <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center" style=" height:150px">
     
                   <div class="d-flex justify-content-center py-4">
                     <a href="/" class="logo d-flex align-items-center w-auto">
-                      <img src="assets/img/alozo.PNG" alt="" style="border-radius: 200px" width="100" height="100">                      
+                      <img src="assets/img/alozo.PNG" alt="" style="border-radius: 200px" width="80" height="80" top="0">                      
                     </a>
                   </div><!-- End Logo -->
     
@@ -63,7 +63,7 @@
                         <div class="col-12">
                             <label for="Email" class="form-label">Email:</label>
                             <div class="input-group has-validation">
-                              <span class="input-group-text" id="inputGroupPrepend">@</span>
+                              
                               <input type="mail" name="email" class="form-control" id="email" required>
                               <div class="invalid-feedback">votre mail.</div>
                             </div>
@@ -83,7 +83,7 @@
                           </div>
                         </div>
                         <div class="col-12">
-                          <button class="btn  w-80" type="submit" style="margin-left: 20%">Creer un compte</button>
+                          <button class="btn  w-80" type="submit"  style="margin-left: 20%">Creer un compte</button>
                         </div>
                         <div class="col-12">
                           <p class="small mb-0">Avez-vous deja un compte? <a href="/connexion">connectez-vous</a></p>
