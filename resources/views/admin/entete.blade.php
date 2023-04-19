@@ -16,7 +16,7 @@
 	<div class="col-md-12">
 		<div class="topbar">
 			<div class="logo">
-				<img src="assets/img/LOGOA.png" style="border-radius:200px;">
+				<img src="assets/img/Log.PNG">
 			</div>
 			<div class="search">
 				<input type="text" name="search" placeholder="search here">

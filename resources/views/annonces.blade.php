@@ -76,7 +76,7 @@
               <p>Delai:Au plus dimanche prochain 09/04/2023</p>
               <hr>
               <div class="text-center">
-                <a type="submit"class="btn" href="/voirAnnonce">Voir annonce</a>
+                <a type="submit" class="btn" href="/voirAnnonce">Voir annonce</a>
               </div>
             </div>
           </div>
