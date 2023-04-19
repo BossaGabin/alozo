@@ -18,9 +18,8 @@ class CreateArtisansTable extends Migration
             $table->string('name');
             $table->string('adresse');
             $table->string('certificate');           
-            $table->foreignId("categories_id")->constrained("categories");
-            $table->foreignId("users_id")->constrained("users");
-            $table->foreignId("roles_id")->constrained("roles");
+            $table->foreignId("categorie_id")->constrained("categories");
+            $table->foreignId("user_id")->constrained("users");
             $table->timestamps();
         });
     }

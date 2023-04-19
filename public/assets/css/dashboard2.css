@@ -10,7 +10,7 @@
 	--gray: #f5f5f5;
 	--black1: #222;
 	--black2: #999;
-	--rose:#E86A33;
+	--rose:#ffee66;
 }
 .topbar{
 	position: fixed;
@@ -26,13 +26,11 @@
 	top : 0
 }
 .logo img {
-	position: relative;
-	top: 0;
-	right: 0;
-	height: 80px;
-	width: 100px;
-/*	border-radius: 200px;*/
-	object-fit: cover;
+	padding: 0;
+  margin: 0;
+  max-height: 90px;
+  border-radius: 200px;
+  margin-left: 15%;
 }
 .search{
 	position: relative;
@@ -89,7 +87,7 @@
 	
 }
 .sidebar ul li:hover,.sidebar ul li.hovered li{
-	background: var(--white);
+	background: black;
 }
 .sidebar ul li a:hover,.sidebar ul li a.hovered a{
 	color: var(--rose);
@@ -97,7 +95,7 @@
 .sidebar ul li a{
 	width: 100%;
 	text-decoration: none;
-	color: white;
+	color: black;
 	height: 60px;
 	display: flex;
 	align-items: center;
@@ -138,21 +136,24 @@
 	align-items: center;
 	margin-top: 0px;
 	justify-content: space-between;
-	background: #fff;
+	background: black;
 	border-radius: 10px;
 	box-shadow: 0 7px 25px 0 rgba(0,0,0,0.08);
 }
 .cards .card:hover{
-	background: var(--rose);
+	background: var(--rose);	
 }
 .cards .card:hover .number{
 	color: var(--white);
+	color: black;
 }
 .cards .card:hover .card-name{
 	color: var(--white);
+	color: black;
 }
 .cards .card:hover .icon-box i{
 	color: var(--white);
+	color: black;
 }
 .number{
 	font-size: 35px;

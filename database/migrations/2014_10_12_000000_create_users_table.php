@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('phone');
             $table->integer('ID_number');
-            $table->foreignId("roles_id")->constrained("roles");
+            $table->foreignId("role_id")->constrained("roles");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
