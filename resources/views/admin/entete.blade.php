@@ -16,7 +16,7 @@
 	<div class="col-md-12">
 		<div class="topbar">
 			<div class="logo">
-				<img src="assets/img/alozo.png" style="border-radius: 100px;">
+				<img src="assets/img/LOGOA.png" style="border-radius:200px;">
 			</div>
 			<div class="search">
 				<input type="text" name="search" placeholder="search here">
