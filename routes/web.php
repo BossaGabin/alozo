@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Artisan;
+use App\Models\Categorie;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/', [Categorie::class ,'index'] )->name("welcome");
+Route::get('/artisan', [Artisan::class , 'index'] )->name("artisan");
+
 Route::get('/annonces', function(){
     return view('annonces');
 });

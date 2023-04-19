@@ -12,10 +12,45 @@
       <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
     </svg> Deposer une annonce</a><br><br><br>
     <div class="search-container">
-      <form action="/action_page.php" style="display: flex;">
-        <input type="text" class="form-control" placeholder="Rechercher une annonce..." name="search">
-        <button type="submit" class="btn-search"><i class="bi bi-search"></i></button>
-      </form>
+      <div class="row">
+        <div class="col-md-4">
+          <select name="ville" id="" class="form-control">
+            <option value="Choisissez une ville">Choisissez une ville</option>
+            <option value="Cotonou">Cotonou</option>
+            <option value="Calavi">Calavi</option>
+            <option value="Godomey">Godomey</option>
+            <option value="Hevié">Hevié</option>
+            <option value="Pahou">Pahou</option>
+            <option value="Ouidah">Ouidah</option>
+            <option value="Porto-Novo">Porto-Novo</option>
+            <option value="Comê">Comê</option>
+            <option value="Grand-Popo">Grand-Popo</option>
+            <option value="Sèmè">Sèmè</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <select name="Categorie" id="" class="form-control">
+            <option value="Choisissez une categorie">Choisissez une categorie</option>
+            <option value="Maçonnerie">Maçonnerie</option>
+            <option value="Menuserie">Menuserie</option>
+            <option value="Coiffure Homme">Coiffure Homme</option>
+            <option value="Coiffure Femme">Coiffure Femme</option>
+            <option value="Plomberie">Plomberie</option>
+            <option value="Peinture">Peinture</option>
+            <option value="Electricité">Electricité</option>
+            <option value="Mecanique">Mecanique</option>
+            <option value="Carrelage">Carrelage</option>
+            <option value="Ménage">Ménage</option>
+          </select>
+        </div>
+  
+        <div class="col-md-4">
+          <form action="/action_page.php" style="display: flex;">
+            <input type="text" class="form-control" placeholder="Rechercher un artisan..." name="search" style="border-radius:5px 0px 0px 5px">
+            <button type="submit" class="btn-search"><i class="bi bi-search"></i></button>
+          </form>
+        </div>
+      </div>
     </div>
     </div>
   </section><!-- End Hero Section -->
@@ -40,6 +75,8 @@
         <div class="swiper-slide"><a href="assets/img/categories/haircut-6798139_1920.jpg" class="gallery-lightbox"><img src="assets/img/categories/haircut-6798139_1920.jpg" class="img-fluid" alt=""><h3>Coiffure</h3></a></div>
         <div class="swiper-slide"><a href="assets/img/categories/builder-1561639_1920.jpg" class="gallery-lightbox"><img src="assets/img/categories/builder-1561639_1920.jpg" class="img-fluid" alt=""></a><h3>Maçonnerie</h3></div>
         <div class="swiper-slide"><a href="assets/img/categories/painter-2751665_1920.jpg" class="gallery-lightbox"><img src="assets/img/categories/painter-2751665_1920.jpg" class="img-fluid" alt=""><h3>Peinture</h3></a></div>
+        <div class="swiper-slide"><a href="assets/img/categories/together-cleaning-the-house-2980867_1920 (1).jpg" class="gallery-lightbox"><img src="assets/img/categories/together-cleaning-the-house-2980867_1920 (1).jpg" class="img-fluid" alt=""><h3>Ménage</h3></a></div>
+        <div class="swiper-slide"><a href="assets/img/categories/car-wash-3332196_1280.png" class="gallery-lightbox"><img src="assets/img/categories/car-wash-3332196_1280.png" class="img-fluid" alt=""><h3>Lavage</h3></a></div>
       </div>
       {{-- <div class="swiper-pagination"></div> --}}
     </div>

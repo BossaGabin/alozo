@@ -1316,12 +1316,14 @@ h6 {
   padding: 10px 40px;
   transition: all 0.2s;
   background-color:#E86A33;
-  border: 0;
+  border: 2px solid  #E86A33;
   color: #fff;
 }
 
 #buy-tickets .card .btn:hover {
-  background-color: #e0072f;
+  background: none;
+  color: #E86A33;;
+  border-color:  #E86A33;
 }
 
 #buy-tickets #buy-ticket-modal input,
@@ -1670,16 +1672,19 @@ h6 {
 .navbar .getstarted:focus:hover {
   background: none;
   color: #fff;
-  border-color:#f82249 ;
+  border-color:#E86A33;
 }
 .btn-search{
   background: #E86A33;
-  border-radius: 5px;
+  border-radius: 0px 5px 5px 0;
   border-color: #E86A33;
+  color: #fff;
 }
 .btn-search:hover{
-  background: black;
+  background: none;
   color: #fff;
+  border-color: #fff;
+
   
 }
 .btn{
