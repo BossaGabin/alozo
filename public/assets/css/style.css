@@ -16,7 +16,7 @@ body {
 }
 
 a {
-  color: #f82249;
+  color:#E86A33;
   text-decoration: none;
   transition: 0.5s;
 }
@@ -73,7 +73,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #f82249;
+  background:#E86A33;
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -110,7 +110,7 @@ h6 {
   display: block;
   width: 60px;
   height: 5px;
-  background: #f82249;
+  background: #E86A33;
   bottom: 0;
   left: calc(50% - 25px);
 }
@@ -165,7 +165,7 @@ h6 {
 }
 
 #header #logo h1 span {
-  color: #f82249;
+  color: #E86A33;
 }
 
 #header #logo h1 a,
@@ -192,11 +192,11 @@ h6 {
 --------------------------------------------------------------*/
 .buy-tickets {
   color: #fff;
-  background: #f82249;
+  background:  #E86A33;
   padding: 10px 25px;
   margin: 0 0 0 15px;
   border-radius: 50px;
-  border: 2px solid #f82249;
+  border: 2px solid  #E86A33;
   transition: all ease-in-out 0.3s;
   font-weight: 500;
   line-height: 1;
@@ -239,11 +239,13 @@ h6 {
 
 .navbar li {
   position: relative;
+ 
 }
 
 .navbar>ul>li {
   white-space: nowrap;
   padding: 10px 0 10px 12px;
+  
 }
 
 .navbar a,
@@ -254,7 +256,7 @@ h6 {
   color: rgba(202, 206, 221, 0.8);
   font-family: "Raleway", sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
   white-space: nowrap;
   transition: 0.3s;
   position: relative;
@@ -275,7 +277,7 @@ h6 {
   height: 2px;
   bottom: -6px;
   left: 0;
-  background-color: #f82249;
+  background-color: #E86A33;
   visibility: hidden;
   transition: all 0.3s ease-in-out 0s;
 }
@@ -327,7 +329,7 @@ h6 {
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover>a {
-  color: #f82249;
+  color:#E86A33;
 }
 
 .navbar .dropdown:hover>ul {
@@ -432,7 +434,7 @@ h6 {
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover>a {
-  color: #f82249;
+  color: #E86A33;
 }
 
 .navbar-mobile .getstarted,
@@ -467,7 +469,7 @@ h6 {
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover>a {
-  color: #f82249;
+  color: #E86A33;
 }
 
 .navbar-mobile .dropdown>.dropdown-active {
@@ -531,7 +533,7 @@ h6 {
 }
 
 #hero h1 span {
-  color: #f82249;
+  color:  #E86A33;
 }
 
 @media (max-width: 991px) {
@@ -555,7 +557,7 @@ h6 {
 #hero .play-btn {
   width: 94px;
   height: 94px;
-  background: radial-gradient(#f82249 50%, rgba(101, 111, 150, 0.15) 52%);
+  background: radial-gradient(#E86A33 50%, rgba(101, 111, 150, 0.15) 52%);
   border-radius: 50%;
   display: block;
   position: relative;
@@ -596,7 +598,7 @@ h6 {
 }
 
 #hero .play-btn:hover::after {
-  border-left: 15px solid #f82249;
+  border-left: 15px solid  #E86A33;
   transform: scale(20);
 }
 
@@ -628,10 +630,10 @@ h6 {
   transition: 0.5s;
   line-height: 1;
   margin: 10px;
-  color: #fff;
+  color:#fff;
   animation-delay: 0.8s;
-  border: 2px solid #f82249;
-  background: #f82249;
+  border: 2px solid  #E86A33;
+  background:  #E86A33;
 
 }
 
@@ -753,7 +755,7 @@ h6 {
 }
 
 #speakers .speaker .details a:hover {
-  color: #f82249;
+  color:  #E86A33;
 }
 
 #speakers .speaker:hover .details {
@@ -790,7 +792,7 @@ h6 {
 }
 
 #speakers-details .details .social a:hover {
-  background: #f82249;
+  background:  #E86A33;
   color: #fff;
 }
 
@@ -853,7 +855,7 @@ h6 {
 }
 
 #schedule .nav-tabs a.active {
-  background-color: #f82249;
+  background-color: #E86A33;
   color: #fff;
 }
 
@@ -1033,7 +1035,7 @@ h6 {
 }
 
 #hotels a:hover {
-  color: #f82249;
+  color: #E86A33;
 }
 
 #hotels .stars {
@@ -1071,11 +1073,11 @@ h6 {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #f82249;
+  border: 1px solid  #E86A33;
 }
 
 #gallery .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #f82249;
+  background-color:  #E86A33;
 }
 
 #gallery .swiper-slide-active {
@@ -1088,7 +1090,7 @@ h6 {
   }
 
   #gallery .swiper-slide-active {
-    border: 5px solid #f82249;
+    border: 5px solid  #E86A33;
     padding: 4px;
     background: #fff;
     z-index: 1;
@@ -1151,13 +1153,13 @@ h6 {
 #faq .faq-list .question {
   display: block;
   position: relative;
-  font-family: #f82249;
+  font-family: #E86A33;
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
   padding-left: 25px;
   cursor: pointer;
-  color: #e0072f;
+  color: #E86A33;
   transition: 0.3s;
 }
 
@@ -1182,7 +1184,7 @@ h6 {
 }
 
 #faq .faq-list .collapsed:hover {
-  color: #f82249;
+  color:#E86A33;
 }
 
 #faq .faq-list .collapsed .icon-show {
@@ -1248,7 +1250,7 @@ h6 {
   border: 0;
   padding: 9px 25px;
   cursor: pointer;
-  background: #f82249;
+  background:#E86A33;
   color: #fff;
   transition: all 0.3s ease;
   outline: none;
@@ -1313,7 +1315,7 @@ h6 {
   border-radius: 50px;
   padding: 10px 40px;
   transition: all 0.2s;
-  background-color: #f82249;
+  background-color:#E86A33;
   border: 0;
   color: #fff;
 }
@@ -1332,13 +1334,15 @@ h6 {
   border-radius: 50px;
   padding: 10px 40px;
   transition: all 0.2s;
-  background-color: #f82249;
+  background-color:#E86A33;
   border: 0;
   color: #fff;
 }
 
 #buy-tickets #buy-ticket-modal .btn:hover {
-  background-color: #e0072f;
+  background: none;
+  color: #E86A33;;
+  border-color:  #E86A33;
 }
 
 /*--------------------------------------------------------------
@@ -1357,7 +1361,7 @@ h6 {
   font-size: 48px;
   display: inline-block;
   margin-bottom: 10px;
-  color: #f82249;
+  color:#E86A33;
 }
 
 #contact .contact-info address,
@@ -1379,7 +1383,7 @@ h6 {
 }
 
 #contact .contact-info a:hover {
-  color: #f82249;
+  color:#E86A33;
 }
 
 #contact .contact-address,
@@ -1454,7 +1458,7 @@ h6 {
 
 #contact .php-email-form input:focus,
 #contact .php-email-form textarea:focus {
-  border-color: #f82249;
+  border-color:#E86A33;
 }
 
 #contact .php-email-form input {
@@ -1466,7 +1470,7 @@ h6 {
 }
 
 #contact .php-email-form button[type=submit] {
-  background: #f82249;
+  background:#E86A33;
   border: 0;
   padding: 10px 40px;
   color: #fff;
@@ -1476,7 +1480,9 @@ h6 {
 }
 
 #contact .php-email-form button[type=submit]:hover {
-  background: #e0072f;
+  background: none;
+  color: #E86A33;;
+  border-color:  #E86A33;
 }
 
 @keyframes animate-loading {
@@ -1554,7 +1560,7 @@ h6 {
 }
 
 #footer .footer-top .social-links a:hover {
-  background: #f82249;
+  background:#E86A33;
   color: #fff;
 }
 
@@ -1565,7 +1571,7 @@ h6 {
   text-transform: uppercase;
   position: relative;
   padding-bottom: 12px;
-  border-bottom: 2px solid #f82249;
+  border-bottom: 2px solid#E86A33;
 }
 
 #footer .footer-top .footer-links {
@@ -1580,7 +1586,7 @@ h6 {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 5px;
-  color: #f82249;
+  color:#E86A33;
   font-size: 18px;
 }
 
@@ -1598,7 +1604,7 @@ h6 {
 }
 
 #footer .footer-top .footer-links ul a:hover {
-  color: #f82249;
+  color:#E86A33;
 }
 
 #footer .footer-top .footer-contact {
@@ -1620,7 +1626,7 @@ h6 {
 }
 
 #footer .footer-top .footer-newsletter input[type=submit] {
-  background: #f82249;
+  background:#E86A33;
   border: 0;
   width: 35%;
   padding: 6px 0;
@@ -1648,13 +1654,13 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #f82249;
+  color:#E86A33;
 }
 
 .navbar .getstarted,
 .navbar .getstarted:focus {
-  background: #f82249;
-  border-color: #f82249;
+  background:#E86A33;
+  border-color:#E86A33;
   color: #fff;
   padding: 10px 25px;
   margin-left: 30px;
@@ -1667,21 +1673,22 @@ h6 {
   border-color:#f82249 ;
 }
 .btn-search{
-  background:#f82249;
+  background: #E86A33;
   border-radius: 5px;
-  border-color:#f82249 ;
+  border-color: #E86A33;
 }
 .btn-search:hover{
-  background: none;
+  background: black;
   color: #fff;
+  
 }
 .btn{
   color: #fff;
-  background: #f82249;
+  background:  #E86A33;
   padding: 10px 25px;
   margin: 0 0 0 15px;
   border-radius: 50px;
-  border: 2px solid #f82249;
+  border: 2px solid  #E86A33;
   transition: all ease-in-out 0.3s;
   font-weight: 500;
   line-height: 1;
@@ -1690,8 +1697,8 @@ h6 {
 }
 .btn:hover{
   background: none;
-  color: black;
-  border-color: #f82249;
+  color: #E86A33;;
+  border-color:  #E86A33;
 }
 
 

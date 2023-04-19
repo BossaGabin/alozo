@@ -13,32 +13,29 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form method="POST" action="#">                 
+                <form method="POST" action="#"> 
+                  @csrf                
                   <div class="form-group mt-3">
-                    <label for="Titre">Titre:</label>
+                    <label for="title">Titre:</label>
                     <input type="text" class="form-control" name="title" placeholder="Exemple:">
                   </div>
                   <div class="form-group mt-3">
-                    <label for="Titre">Catégories:</label>
-                    <select name="categories"  class="form-control" id="">
+                    <label for="categories_id">Catégories:</label>
+                    <select name="categories_id"  class="form-control" id="">
                       <option value="categorie">Choisissez une catégorie</option>
-                      <option value="categorie1">catégorie1</option>
-                      <option value="categorie2">catégorie2</option>
-                      <option value="categorie3">catégorie3</option>
-                      <option value="categorie4">catégorie4</option>
-                      <option value="categorie5">catégorie5</option>
+                    
                     </select>
                   </div>
                   <div class="form-group mt-3">
-                    <label for="Budget">Budget:</label>
+                    <label for="budget">Budget:</label>
                     <input type="text" class="form-control" name="budet" placeholder="Exemple:">
                   </div>
                   <div class="form-group mt-3">
-                    <label for="Delai">Délai:</label>
+                    <label for="deadline">Délai:</label>
                     <input type="date" class="form-control" name="deadline" placeholder="Exemple:">
                   </div>
                   <div class="form-group mt-3">
-                    <label for="Description">Description:</label>
+                    <label for="content">Description:</label>
                    <textarea name="content" id="" class="form-control" cols="50" rows="3"></textarea>
                   </div>                  
                   <div class="text-center mt-3">
@@ -79,7 +76,7 @@
               <p>Delai:Au plus dimanche prochain 09/04/2023</p>
               <hr>
               <div class="text-center">
-                <a type="submit" class="btn" href="/voirAnnonce">Voir annonce</a>
+                <a type="submit"class="btn" href="/voirAnnonce">Voir annonce</a>
               </div>
             </div>
           </div>

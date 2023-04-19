@@ -24,7 +24,7 @@
  </head>
 
 <body>    
-  <main>
+  <main style="margin-top:-5%">
     <div class="container">
 
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
@@ -34,7 +34,7 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="/" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/alozo.PNG" alt="" style="border-radius: 200px" width="100" height="100">
+                  <img src="assets/img/alozo.PNG" alt="" style="border-radius: 200px;margin-top:5%" width="80" height="80">
                   
                 </a>
               </div><!-- End Logo -->
@@ -53,7 +53,6 @@
                     <div class="col-12">
                       <label for="Email" class="form-label">Email:</label>
                       <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
                         <input type="mail" name="email" class="form-control" id="email" required>
                         <div class="invalid-feedback">votre mail.</div>
                       </div>
