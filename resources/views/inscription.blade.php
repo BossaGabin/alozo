@@ -33,7 +33,7 @@
     
                   <div class="d-flex justify-content-center py-4">
                     <a href="/" class="logo d-flex align-items-center w-auto">
-                      <img src="assets/img/alozo.PNG" alt="" style="border-radius: 200px" width="100" height="100">                      
+                      <img src="assets/img/LogoA.PNG" alt="" style="border-radius: 200px" width="100" height="100">                      
                     </a>
                   </div><!-- End Logo -->
     
@@ -41,10 +41,10 @@
     
                     <div class="card-body">
     
-                      <div class="pt-4 pb-2">
+                      
                         <h5 class="card-title text-center pb-0 fs-4">Création de compte</h5>
                         <p class="text-center small">Entrez vos informations</p>
-                      </div>
+                      
     
                       <form class="row g-3 needs-validation" novalidate>
                         <div class="col-12">

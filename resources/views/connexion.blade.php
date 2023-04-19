@@ -34,7 +34,7 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="/" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/alozo.PNG" alt="" style="border-radius: 200px;margin-top:5%" width="80" height="80">
+                  <img src="assets/img/LogoA.PNG" alt="" style="border-radius: 200px;margin-top:5%" width="80" height="80">
                   
                 </a>
               </div><!-- End Logo -->
