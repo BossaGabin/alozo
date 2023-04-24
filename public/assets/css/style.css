@@ -16,7 +16,7 @@ body {
 }
 
 a {
-  color:#ffee66;
+  color:#dcc72e;
   text-decoration: none;
   transition: 0.5s;
 }
@@ -24,7 +24,7 @@ a {
 a:hover,
 a:active,
 a:focus {
-  color: #ffee66;
+  color: #dcc72e;
   outline: none;
   text-decoration: none;
 }
@@ -73,7 +73,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background:#ffee66;
+  background:#dcc72e;
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -87,7 +87,7 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #ffee66;
+  background: #dcc72e;
   color: #fff;
 }
 
@@ -110,7 +110,7 @@ h6 {
   display: block;
   width: 60px;
   height: 5px;
-  background: #ffee66;
+  background: #dcc72e;
   bottom: 0;
   left: calc(50% - 25px);
 }
@@ -165,7 +165,7 @@ h6 {
 }
 
 #header #logo h1 span {
-  color: #ffee66;
+  color: #dcc72e;
 }
 
 #header #logo h1 a,
@@ -192,11 +192,11 @@ h6 {
 --------------------------------------------------------------*/
 .buy-tickets {
   color: black;
-  background:  #ffee66;
+  background:  #dcc72e;
   padding: 10px 25px;
   margin: 0 0 0 15px;
   border-radius: 50px;
-  border: 2px solid  #ffee66;
+  border: 2px solid  #dcc72e;
   transition: all ease-in-out 0.3s;
   font-weight: 500;
   line-height: 1;
@@ -277,7 +277,7 @@ h6 {
   height: 2px;
   bottom: -6px;
   left: 0;
-  background-color: #ffee66;
+  background-color: #dcc72e;
   visibility: hidden;
   transition: all 0.3s ease-in-out 0s;
 }
@@ -329,7 +329,7 @@ h6 {
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover>a {
-  color:#ffee66;
+  color:#dcc72e;
 }
 
 .navbar .dropdown:hover>ul {
@@ -434,7 +434,7 @@ h6 {
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover>a {
-  color: #ffee66;
+  color: #dcc72e;
 }
 
 .navbar-mobile .getstarted,
@@ -469,7 +469,7 @@ h6 {
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover>a {
-  color: #ffee66;
+  color: #dcc72e;
 }
 
 .navbar-mobile .dropdown>.dropdown-active {
@@ -533,7 +533,7 @@ h6 {
 }
 
 #hero h1 span {
-  color:  #ffee66;
+  color:  #dcc72e;
 }
 
 @media (max-width: 991px) {
@@ -598,7 +598,7 @@ h6 {
 }
 
 #hero .play-btn:hover::after {
-  border-left: 15px solid  #ffee66;
+  border-left: 15px solid  #dcc72e;
   transform: scale(20);
 }
 
@@ -632,8 +632,8 @@ h6 {
   margin: 10px;
   color:black;
   animation-delay: 0.8s;
-  border: 2px solid  #ffee66;
-  background:  #ffee66;
+  border: 2px solid  #dcc72e;
+  background:  #dcc72e;
 
 }
 
@@ -755,7 +755,7 @@ h6 {
 }
 
 #speakers .speaker .details a:hover {
-  color:  #ffee66;
+  color:  #dcc72e;
 }
 
 #speakers .speaker:hover .details {
@@ -792,7 +792,7 @@ h6 {
 }
 
 #speakers-details .details .social a:hover {
-  background:  #ffee66;
+  background:  #dcc72e;
   color: #fff;
 }
 
@@ -855,7 +855,7 @@ h6 {
 }
 
 #schedule .nav-tabs a.active {
-  background-color: #ffee66;
+  background-color: #dcc72e;
   color: #fff;
 }
 
@@ -1035,7 +1035,7 @@ h6 {
 }
 
 #hotels a:hover {
-  color: #ffee66;
+  color: #dcc72e;
 }
 
 #hotels .stars {
@@ -1073,11 +1073,11 @@ h6 {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid  #ffee66;
+  border: 1px solid  #dcc72e;
 }
 
 #gallery .swiper-pagination .swiper-pagination-bullet-active {
-  background-color:  #ffee66;
+  background-color:  #dcc72e;
 }
 
 #gallery .swiper-slide-active {
@@ -1090,7 +1090,7 @@ h6 {
   }
 
   #gallery .swiper-slide-active {
-    border: 5px solid  #ffee66;
+    border: 5px solid  #dcc72e;
     padding: 4px;
     background: #fff;
     z-index: 1;
@@ -1153,13 +1153,13 @@ h6 {
 #faq .faq-list .question {
   display: block;
   position: relative;
-  font-family: #ffee66;
+  font-family: #dcc72e;
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
   padding-left: 25px;
   cursor: pointer;
-  color: #ffee66;
+  color: #dcc72e;
   transition: 0.3s;
 }
 
@@ -1184,7 +1184,7 @@ h6 {
 }
 
 #faq .faq-list .collapsed:hover {
-  color:#ffee66;
+  color:#dcc72e;
 }
 
 #faq .faq-list .collapsed .icon-show {
@@ -1250,7 +1250,7 @@ h6 {
   border: 0;
   padding: 9px 25px;
   cursor: pointer;
-  background:#ffee66;
+  background:#dcc72e;
   color: #fff;
   transition: all 0.3s ease;
   outline: none;
@@ -1315,15 +1315,15 @@ h6 {
   border-radius: 50px;
   padding: 10px 40px;
   transition: all 0.2s;
-  background-color:#ffee66;
-  border: 2px solid  #ffee66;
+  background-color:#dcc72e;
+  border: 2px solid  #dcc72e;
   color: black  ;
 }
 
 #buy-tickets .card .btn:hover {
   background: black;
-  color: #ffee66;;
-  border-color:  #ffee66;
+  color: #dcc72e;;
+  border-color:  #dcc72e;
 }
 
 #buy-tickets #buy-ticket-modal input,
@@ -1336,15 +1336,15 @@ h6 {
   border-radius: 50px;
   padding: 10px 40px;
   transition: all 0.2s;
-  background-color:#ffee66;
+  background-color:#dcc72e;
   border: 0;
   color: #fff;
 }
 
 #buy-tickets #buy-ticket-modal .btn:hover {
   background: none;
-  color: #ffee66;;
-  border-color:  #ffee66;
+  color: #dcc72e;;
+  border-color:  #dcc72e;
 }
 
 /*--------------------------------------------------------------
@@ -1363,7 +1363,7 @@ h6 {
   font-size: 48px;
   display: inline-block;
   margin-bottom: 10px;
-  color:#ffee66;
+  color:#dcc72e;
 }
 
 #contact .contact-info address,
@@ -1385,7 +1385,7 @@ h6 {
 }
 
 #contact .contact-info a:hover {
-  color:#ffee66;
+  color:#dcc72e;
 }
 
 #contact .contact-address,
@@ -1460,7 +1460,7 @@ h6 {
 
 #contact .php-email-form input:focus,
 #contact .php-email-form textarea:focus {
-  border-color:#ffee66;
+  border-color:#dcc72e;
 }
 
 #contact .php-email-form input {
@@ -1472,19 +1472,19 @@ h6 {
 }
 
 #contact .php-email-form button[type=submit] {
-  background:#ffee66;
+  background:#dcc72e;
   border: 0;
   padding: 10px 40px;
-  color: #fff;
+  color: black;
   transition: 0.4s;
   border-radius: 50px;
   cursor: pointer;
 }
 
 #contact .php-email-form button[type=submit]:hover {
-  background: none;
-  color: #ffee66;;
-  border-color:  #ffee66;
+  background: black;
+  color: #dcc72e;;
+  border-color:#dcc72e;
 }
 
 @keyframes animate-loading {
@@ -1562,7 +1562,7 @@ h6 {
 }
 
 #footer .footer-top .social-links a:hover {
-  background:#ffee66;
+  background:#dcc72e;
   color: #fff;
 }
 
@@ -1573,7 +1573,7 @@ h6 {
   text-transform: uppercase;
   position: relative;
   padding-bottom: 12px;
-  border-bottom: 2px solid#ffee66;
+  border-bottom: 2px solid#dcc72e;
 }
 
 #footer .footer-top .footer-links {
@@ -1588,7 +1588,7 @@ h6 {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 5px;
-  color:#ffee66;
+  color:#dcc72e;
   font-size: 18px;
 }
 
@@ -1606,7 +1606,7 @@ h6 {
 }
 
 #footer .footer-top .footer-links ul a:hover {
-  color:#ffee66;
+  color:#dcc72e;
 }
 
 #footer .footer-top .footer-contact {
@@ -1628,7 +1628,7 @@ h6 {
 }
 
 #footer .footer-top .footer-newsletter input[type=submit] {
-  background:#ffee66;
+  background:#dcc72e;
   border: 0;
   width: 35%;
   padding: 6px 0;
@@ -1639,7 +1639,7 @@ h6 {
 }
 
 #footer .footer-top .footer-newsletter input[type=submit]:hover {
-  background: #ffee66;
+  background: #dcc72e;
 }
 
 #footer .copyright {
@@ -1656,13 +1656,13 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color:#ffee66;
+  color:#dcc72e;
 }
 
 .navbar .getstarted,
 .navbar .getstarted:focus {
-  background:#ffee66;
-  border-color:#ffee66;
+  background:#dcc72e;
+  border-color:#dcc72e;
   color: #fff;
   padding: 10px 25px;
   margin-left: 30px;
@@ -1672,26 +1672,25 @@ h6 {
 .navbar .getstarted:focus:hover {
   background: none;
   color: #fff;
-  border-color:#ffee66;
+  border-color:#dcc72e;
 }
 .btn-search{
-  background: #ffee66;
-  border-radius: 0px 5px 5px 0;
-  border-color: #ffee66;
+  background: #dcc72e; 
+  border-color: #dcc72e;
   color: black;
 }
-.btn-search:hover{
+/* .btn-search:hover{
   background: black;
-  color: #ffee66;
-  border-color: #ffee66;;  
-}
+  color: #dcc72e;
+  border-color: #dcc72e;;  
+} */
 .btn{
   color:black;
-  background:  #ffee66;
+  background:  #dcc72e;
   padding: 10px 25px;
   margin: 0 0 0 15px;
   border-radius: 50px;
-  border: 2px solid  #ffee66;
+  border: 2px solid  #dcc72e;
   transition: all ease-in-out 0.3s;
   font-weight: 500;
   line-height: 1;
@@ -1700,8 +1699,8 @@ h6 {
 }
 .btn:hover{
   background: black;
-  color: #ffee66;;
-  border-color:  #ffee66;
+  color: #dcc72e;;
+  border-color:  #dcc72e;
 }
 
 

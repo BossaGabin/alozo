@@ -26,7 +26,7 @@
     <div class="container-fluid container-xxl d-flex align-items-center">
 
       <div id="logo" class="me-auto">
-        <a href="/" class="scrollto"><img src="assets/img/Log.PNG" alt="" title=""></a>
+        <a href="/" class="scrollto"><img src="assets/img/" alt="" title=""></a>
       </div>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
@@ -52,7 +52,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <img src="assets/img/Log.PNG" alt="Alozo">
+            <img src="assets/img/" alt="Alozo">
             <p></p>
           </div>
 
