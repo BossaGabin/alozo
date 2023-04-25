@@ -7,8 +7,8 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
   <!-- Favicons -->
-  <link href="assets/img/Log.PNG" rel="icon">
-  <link href="assets/img/Log.PNG" rel="apple-touch-icon">
+  <link href="assets/img/LOGO_Officiel2.jpg" rel="icon">
+  <link href="assets/img/LOGO_Officiel2.jpg" rel="apple-touch-icon">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -26,7 +26,7 @@
     <div class="container-fluid container-xxl d-flex align-items-center">
 
       <div id="logo" class="me-auto">
-        <a href="/" class="scrollto"><img src="assets/img/" alt="" title=""></a>
+        <a href="/" class="scrollto"><img src="assets/img/LOGO_Officiel2.jpg" alt="" title=""></a>
       </div>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
@@ -52,7 +52,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <img src="assets/img/" alt="Alozo">
+            <img src="assets/img/LOGO_Officiel2.jpg" alt="Alozo">
             <p></p>
           </div>
 
