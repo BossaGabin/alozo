@@ -19,26 +19,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Route::get('/', [Categorie::class ,'index'] )->name("welcome");
-Route::get('/artisan', [Artisan::class , 'index'] )->name("artisan");
+// Route::get('/artisan', [Artisan::class , 'index'] )->name("artisan");
 
 Route::get('/annonces', function(){
-    return view('annonces');
+    return view('annonce/annonces');
 });
 Route::get('/contact', function(){
     return view('contact');
 });
+
 Route::get('/artisans', function(){
-    return view('artisans');
+    return view('artisan/artisans');
 });
+
 Route::get('/connexion', function(){
     return view('connexion');
 });
 Route::get('/inscription', function(){
     return view('inscription');
 });
-Route::get('/depotAnnonce', function(){
-    return view('depotAnnonce');
-});
+
 Route::get('/voirAnnonce', function(){
-    return view('voirAnnonce');
+    return view('annonce/voirAnnonce');
 });
