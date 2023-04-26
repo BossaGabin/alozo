@@ -38,7 +38,7 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a class="buy-tickets scrollto" href="/connexion">Se connecter</a>
+      <a class="buy-tickets scrollto" href="{{ route('login') }}">Se connecter</a>
 
     </div>
   </header><!-- End Header -->
