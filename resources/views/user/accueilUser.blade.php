@@ -23,7 +23,7 @@
 <body>
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center bg-dark">
-        <div class="container-fluid container-xxl d-flex align-items-center">
+      <div class="container-fluid container-xxl d-flex align-items-center">
 
         <div id="logo" class="me-auto">
             <a href="/" class="scrollto"><img src="assets/img/LOGO_Officiel2.jpg" alt="" title=""></a>
@@ -38,14 +38,64 @@
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-        
-        <div class="modal-header">
-            <a class="buy-tickets scrollto" href="">Devenir un artisan</a>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        </div>
+      
+        <div class="text-center">
+          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
+        </div>        
+        <!-- Modal Order Form -->
+      </div>
   </header><!-- End Header -->
     <main id="main">
+      <div id="devenirArtisan-modal" class="modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"> Devenir un artisan</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="#"> 
+                @csrf                
+                <div class="form-group mt-3">
+                  <label for="name">Nom et Prénoms:</label>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="">
+                </div>
+                <div class="form-group mt-3">
+                  <label for="phone">Téléphone:</label>
+                  <input type="text" class="form-control" name="phone" id="phone" placeholder="">
+                </div>
+                <div class="form-group mt-3">
+                  <label for="email">Adresse mail:</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="">
+                </div>
+                <div class="form-group mt-3">
+                  <label for="ID_number">Numéro pièce:</label>
+                  <input type="text" class="form-control" name="ID_number" id="ID_number" placeholder="">
+                </div>
+                <div class="form-group mt-3">
+                  <label for="adresse">Adresse:</label>
+                  <input type="text" class="form-control" name="adresse" placeholder="exemple@gmail.com">
+                </div>
+                <div class="form-group mt-3">
+                  <label for="categories_id">Catégories:</label>
+                  <select name="categories_id"  class="form-control" id="">
+                    <option value="categorie">Choisissez une catégorie</option>
+                  
+                  </select>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="certifacate">Diplôme:</label>
+                 <input type="file" name="certificate" id="certifacate" class="form-control" cols="50" rows="3">
+                </div>                  
+                <div class="text-center mt-3">
+                  <button type="submit" class="btn"> Soumettre </button>
+                </div>
+              </form>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+ 
 
  <!-- ======= Hero Section ======= -->
  <section id="hero">

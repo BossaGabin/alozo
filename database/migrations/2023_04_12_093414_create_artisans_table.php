@@ -17,6 +17,7 @@ class CreateArtisansTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('adresse');
+            $table->integer('ID_number');
             $table->string('certificate');           
             $table->foreignId("categorie_id")->constrained("categories");
             $table->foreignId("user_id")->constrained("users");
@@ -37,9 +38,7 @@ class CreateArtisansTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropConstrainedForeignId("users_id");
         });
-        Schema::table('roles', function (Blueprint $table) {
-            $table->dropConstrainedForeignId("roles_id");
-        });
+       
         Schema::dropIfExists('artisans');
     }
 }
