@@ -92,6 +92,9 @@
 .sidebar ul li a:hover,.sidebar ul li a.hovered a{
 	color: var(--rose);
 }
+.sidebar ul li a:active{
+color:#222
+}
 .sidebar ul li a{
 	width: 100%;
 	text-decoration: none;

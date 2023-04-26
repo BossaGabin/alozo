@@ -34,8 +34,14 @@ Route::get('/contact', function(){
 Route::get('/artisans', function(){
     return view('artisan/artisans');
 });
+Route::get('/profil', function(){
+    return view('artisan/profil');
+});
 Route::get('/user', function(){
     return view('user/accueilUser');
+});
+Route::get('/les artisans', function(){
+    return view('user/listesArtisan');
 });
 
 Route::get('/connexion', function(){
