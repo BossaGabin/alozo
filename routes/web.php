@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\AnnonceController;
-use App\Http\Controllers\ArtisanController;
 use App\Models\Artisan;
 use App\Models\Categorie;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AnnonceController;
+use App\Http\Controllers\ArtisanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,16 @@ Route::get('/listeAnnonces', function(){
     return view('admin/listeAnnonces');
 })->name("Annonce");
 
+Route::middleware('auth')->group(function(){
+
+
+});
 
 
 
 
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
