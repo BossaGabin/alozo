@@ -50,7 +50,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br><br>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Mot de passe') }}</label>
@@ -64,7 +64,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br><br>
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
@@ -90,7 +90,7 @@
                                     </a>
                                 @endif
                             </div>
-                        </div>
+                        </div><br><br>
                     </form>
                 </div>
             </div>

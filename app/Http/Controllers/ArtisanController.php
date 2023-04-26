@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artisan;
+use App\Models\Categorie;
+use App\Models\User;
+use App\Models\Ville;
 use Illuminate\Http\Request;
 
 class ArtisanController extends Controller
@@ -13,7 +17,12 @@ class ArtisanController extends Controller
      */
     public function index()
     {
-        //
+       
+        $users = User::all();
+        $villes = Ville::all();
+        $categories = Categorie::all();
+        $artisans = Artisan::orderBy("created_at", "desc")->get();
+        return view("artisan/artisans", compact("users","villes", "categories", "artisans"));
     }
 
     /**
@@ -35,6 +44,19 @@ class ArtisanController extends Controller
     public function store(Request $request)
     {
         //
+        $validateData = $request->validate([
+
+            'name' => 'required',
+            'adresse' => 'required',
+            'phone' => 'required',
+            'certificate' => 'required',
+            'categorie_id' => 'required',
+            'ville_id' => 'required',           
+            'ID_number' => 'required',
+
+        ]);
+        $artisan = Artisan::create($validateData);       
+        return back();
     }
 
     /**
