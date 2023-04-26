@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h4><center>{{ __('Connectez-vous') }}</center></h4></div>
+                <div class="card-header header_connect"><h4><center >{{ __('Connectez-vous') }}</center></h4></div>
 
                 <div class="card-body">
                     <div class="d-flex justify-content-center py-4">
