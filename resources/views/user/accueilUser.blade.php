@@ -39,48 +39,70 @@
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
       
-        <div class="text-center">
+        <div class="text-center" style="margin-bottom:-25px">
           <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
         </div>        
         <!-- Modal Order Form -->
       </div>
   </header><!-- End Header -->
     <main id="main">
+      <div>
+        @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+              @endif 
+      </div>
       <div id="devenirArtisan-modal" class="modal">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title"> Devenir un artisan</h4>
+              <h4 class="modal-title">Devenir un artisan</h4>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="#"> 
-                @csrf                
+              <form  action="{{ route('create_artisan') }}" method="POST"> 
+                @csrf                  
                 <div class="form-group mt-3">
                   <label for="name">Nom et Prénoms:</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="">
+                  <input type="text" class="form-control" name="name" id="name" placeholder="" value="{{Auth::user()->name }}">
                 </div>
                 <div class="form-group mt-3">
                   <label for="phone">Téléphone:</label>
-                  <input type="text" class="form-control" name="phone" id="phone" placeholder="">
+                  <input type="text" class="form-control" name="phone" id="phone" placeholder="" value="{{ Auth::user()->phone }}">
                 </div>
                 <div class="form-group mt-3">
                   <label for="email">Adresse mail:</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="" value="{{ Auth::user()->email }}">
                 </div>
                 <div class="form-group mt-3">
                   <label for="ID_number">Numéro pièce:</label>
-                  <input type="text" class="form-control" name="ID_number" id="ID_number" placeholder="">
+                  <input type="text" class="form-control" name="ID_number" id="ID_number" placeholder="Exemple:12345678">
+                </div>               
+                <div class="form-group mt-3">
+                  <label for="ville_id">Ville:</label>
+                  <select name="ville_id"  class="form-control" id="">
+                    <option value="ville">Choisissez une ville</option>
+                    @foreach ($villes as $ville)
+                    <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+                    @endforeach
+                  </select>
                 </div>
                 <div class="form-group mt-3">
                   <label for="adresse">Adresse:</label>
-                  <input type="text" class="form-control" name="adresse" placeholder="exemple@gmail.com">
+                  <input type="text" class="form-control" name="adresse" placeholder="Exemple:IITA,Vedoko,Menontin,Zogbo">
                 </div>
                 <div class="form-group mt-3">
-                  <label for="categories_id">Catégories:</label>
-                  <select name="categories_id"  class="form-control" id="">
+                  <label for="categorie_id">Catégories:</label>
+                  <select name="categorie_id"  class="form-control" id="">
                     <option value="categorie">Choisissez une catégorie</option>
-                  
+                    @foreach ($categories as $categorie)
+                    <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
+                    @endforeach
                   </select>
                 </div>
                 <div class="form-group mt-3">
@@ -95,6 +117,7 @@
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
+      
  
 
  <!-- ======= Hero Section ======= -->
@@ -108,33 +131,19 @@
     <div class="search-container">
       <div class="row">
         <div class="col-md-4">
-          <select name="ville" id="" class="form-control">
-            <option value="Choisissez une ville">Choisissez une ville</option>
-            <option value="Cotonou">Cotonou</option>
-            <option value="Calavi">Calavi</option>
-            <option value="Godomey">Godomey</option>
-            <option value="Hevié">Hevié</option>
-            <option value="Pahou">Pahou</option>
-            <option value="Ouidah">Ouidah</option>
-            <option value="Porto-Novo">Porto-Novo</option>
-            <option value="Comê">Comê</option>
-            <option value="Grand-Popo">Grand-Popo</option>
-            <option value="Sèmè">Sèmè</option>
+          <select name="viile_id"  class="form-control" id="">
+            <option value="ville">Choisissez une ville</option>
+            @foreach ($villes as $ville)
+            <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+            @endforeach
           </select>
         </div>
         <div class="col-md-4">
-          <select name="Categorie" id="" class="form-control">
-            <option value="Choisissez une categorie">Choisissez une categorie</option>
-            <option value="Maçonnerie">Maçonnerie</option>
-            <option value="Menuserie">Menuserie</option>
-            <option value="Coiffure Homme">Coiffure Homme</option>
-            <option value="Coiffure Femme">Coiffure Femme</option>
-            <option value="Plomberie">Plomberie</option>
-            <option value="Peinture">Peinture</option>
-            <option value="Electricité">Electricité</option>
-            <option value="Mecanique">Mecanique</option>
-            <option value="Carrelage">Carrelage</option>
-            <option value="Ménage">Ménage</option>
+          <select name="categories_id"  class="form-control" id="">
+            <option value="categorie">Choisissez une catégorie</option>
+            @foreach ($categories as $categorie)
+            <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
+            @endforeach
           </select>
         </div>
   

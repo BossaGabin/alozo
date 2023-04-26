@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnnonceController;
 use App\Http\Controllers\ArtisanController;
+use App\Models\User;
+use App\Models\Ville;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,36 +26,16 @@ Route::get('/', function () {
 // Route::get('/', [Categorie::class ,'index'] )->name("welcome");
 // Route::get('/artisan', [Artisan::class , 'index'] )->name("artisan");
 
-Route::get('/annonces', function(){
-    return view('annonce/annonces');
-});
+
 Route::get('/contact', function(){
     return view('contact');
 });
-
-Route::get('/artisans', function(){
-    return view('artisan/artisans');
-});
-Route::get('/profil', function(){
-    return view('artisan/profil');
-});
-Route::get('/user', function(){
-    return view('user/accueilUser');
-});
-Route::get('/les artisans', function(){
-    return view('user/listesArtisan');
-});
-
-Route::get('/connexion', function(){
-    return view('connexion');
-});
-Route::get('/inscription', function(){
-    return view('inscription');
-});
-
-Route::get('/voirAnnonce', function(){
-    return view('annonce/voirAnnonce');
-});
+// Route::get('/connexion', function(){
+//     return view('connexion');
+// });
+// Route::get('/inscription', function(){
+//     return view('inscription');
+// });
 Route::get('/dashboard', function(){
     return view('admin/dashboard');
 })->name("Dashboard");
@@ -65,6 +47,20 @@ Route::get('/listeAnnonces', function(){
 })->name("Annonce");
 
 Route::middleware('auth')->group(function(){
+    //Les routes GET
+    Route::get('/user', function()    {
+        $categories = Categorie::all();
+        $villes = Ville::all();
+        return view('user/accueilUser', compact('categories', 'villes')); 
+    });
+    Route::get('/artisans', function(){ return view('artisan/artisans');});
+    Route::get('/annonces', function(){return view('annonce/annonces');});
+    Route::get('/voirAnnonce', function(){return view('annonce/voirAnnonce');});
+    Route::get('/artisan', [ArtisanController::class , 'index'] )->name("view_artisan");
+
+    //Les routes POST
+    Route::post('/user',[ArtisanController::class, 'store'])->name("create_artisan");;
+
 
 
 });
