@@ -123,7 +123,6 @@
             </select>
           </div>
           
-          
         </div>
         <div class="col-md-9 border d-flex flex-wrap" style="padding: 50px">
           <div class="col-md-3 mb-3 text-center border">

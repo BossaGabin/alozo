@@ -45,6 +45,9 @@ Route::get('/listeArtisan', function(){
 Route::get('/listeAnnonces', function(){
     return view('admin/listeAnnonces');
 })->name("Annonce");
+Route::get('/profil', function(){
+    return view('artisan/profil');
+})->name("profil");
 
 Route::middleware('auth')->group(function(){
     //Les routes GET
