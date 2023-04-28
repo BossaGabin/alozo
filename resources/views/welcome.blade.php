@@ -5,12 +5,10 @@
  <!-- ======= Hero Section ======= -->
  <section id="hero">
   <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
-    <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme de recrutement des artisans facilitant <br> la mise en relation entre les employeurs potentiels <br> et les artisans qualifiés.</h1>
+    <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme facilitant la mise en relation entre <br> les clients potentiels et les artisans qualifiés.</h1>
     <div>
-    <a href="/inscription" class="about-btn scrollto">Inscription</a>
-    <a href="#about" class="about-btn scrollto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
-      <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
-    </svg> Deposer une annonce</a><br><br><br>
+    <a href="/register" class="about-btn scrollto">Inscription</a>
+    <br><br><br>
     <div class="search-container">
       <div class="row">
         <div class="col-md-4">
@@ -64,7 +62,6 @@
         <p>Faites votre choix de categories</p>
       </div>
     </div>
-
     <div class="gallery-slider swiper">
       <div class="swiper-wrapper align-items-center">
         <div class="swiper-slide" ><a href="assets/img/categories/auto-repair-3691962_1920.jpg" class="gallery-lightbox"><img src="assets/img/categories/auto-repair-3691962_1920.jpg" class="img-fluid" alt=""></a><h3>Mecanique</h3></div>
@@ -97,7 +94,7 @@
                 <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right:70%">Categorie</h5>
                 <p><span class="bi bi-geo-alt-fill"></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
+                <div style="display: flex; margin-top:-5%">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
@@ -112,7 +109,7 @@
               <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
               <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
+              <div style="display: flex; margin-top:-5%">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
@@ -127,7 +124,7 @@
               <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
                 <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
+                <div style="display: flex; margin-top:-5%">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
@@ -142,7 +139,7 @@
               <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
               <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
+              <div style="display: flex; margin-top:-5%">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
@@ -159,7 +156,7 @@
                 <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right:70%">Categorie</h5>
                 <p><span class="bi bi-geo-alt-fill"></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
+                <div style="display: flex; margin-top:-5%">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
@@ -174,7 +171,7 @@
               <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
               <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
+              <div style="display: flex; margin-top:-5%">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
@@ -189,7 +186,7 @@
               <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
                 <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
+                <div style="display: flex; margin-top:-5%">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
@@ -204,7 +201,7 @@
               <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
               <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
+              <div style="display: flex; margin-top:-5%">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
@@ -221,7 +218,7 @@
                 <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right:70%">Categorie</h5>
                 <p><span class="bi bi-geo-alt-fill"></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
+                <div style="display: flex; margin-top:-5%">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
@@ -236,7 +233,7 @@
               <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
               <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
+              <div style="display: flex; margin-top:-5%">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
@@ -251,7 +248,7 @@
               <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
                 <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
+                <div style="display: flex; margin-top:-5%">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
                   <img src="assets/img/Star 4.png" alt="">
@@ -266,7 +263,7 @@
               <div class="caption">
                 <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
               <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
+              <div style="display: flex; margin-top:-5%">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">
                 <img src="assets/img/Star 4.png" alt="">

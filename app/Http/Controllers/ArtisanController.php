@@ -7,6 +7,7 @@ use App\Models\Categorie;
 use App\Models\User;
 use App\Models\Ville;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArtisanController extends Controller
 {
@@ -22,7 +23,7 @@ class ArtisanController extends Controller
         $villes = Ville::all();
         $categories = Categorie::all();
         $artisans = Artisan::orderBy("created_at", "desc")->get();
-        return view("artisan/artisans", compact("users","villes", "categories", "artisans"));
+        return view("user/listesArtisan", compact("users","villes", "categories", "artisans"));
     }
 
     /**
@@ -55,6 +56,7 @@ class ArtisanController extends Controller
             'ID_number' => 'required',
 
         ]);
+        $validateData['user_id'] = Auth::user()->id;
         $artisan = Artisan::create($validateData);       
         return back();
     }

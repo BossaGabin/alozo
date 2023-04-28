@@ -51,13 +51,13 @@
         </nav><!-- .navbar -->
       
         <div class="text-center" style="margin-bottom:-25px">
-          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
+      ù2    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
         </div>        
         <!-- Modal Order Form -->
       </div>
   </header><!-- End Header -->
     <main id="main">
-      <div>
+      <div style="margin-top: 7%;">
         @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -78,48 +78,57 @@
             <div class="modal-body">
               <form  action="{{ route('create_artisan') }}" method="POST"> 
                 @csrf                  
-                <div class="form-group mt-3">
-                  <label for="name">Nom et Prénoms:</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="" value="{{Auth::user()->name }}">
+               <div class="row">
+                  <div class="form-group col mt-3">
+                    <label for="name">Nom et Prénoms:</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="" value="{{Auth::user()->name }}">
+                  </div>
+                  <div class="form-group col mt-3">
+                    <label for="phone">Téléphone:</label>
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="" value="{{ Auth::user()->phone }}">
+                  </div>
+               </div>
+ù2
+               <div class="row">
+                  <div class="form-group col mt-3">
+                    <label for="email">Adresse mail:</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="" value="{{ Auth::user()->email }}">
+                  </div>
+                  <div class="form-group col mt-3">
+                    <label for="ID_number">Numéro pièce:</label>
+                    <input type="text" class="form-control" name="ID_number" id="ID_number" placeholder="Exemple:12345678">
+                  </div>               
+              </div>         
+                <div class="row">
+                  <div class="form-group col mt-3">
+                    <label for="ville_id">Ville:</label>
+  ù                  <select name="ville_id"  class="form-control" id="">
+                      <option value="ville">Choisissez une ville</option>
+                      @foreach ($villes as $ville)
+                      <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group col mt-3">
+                    <label for="adresse">Adresse:</label>
+                    <input type="text" class="form-control" name="adresse" placeholder="Exemple:IITA,Vedoko,Menontin,Zogbo">
+                  </div>
                 </div>
-                <div class="form-group mt-3">
-                  <label for="phone">Téléphone:</label>
-                  <input type="text" class="form-control" name="phone" id="phone" placeholder="" value="{{ Auth::user()->phone }}">
-                </div>
-                <div class="form-group mt-3">
-                  <label for="email">Adresse mail:</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="" value="{{ Auth::user()->email }}">
-                </div>
-                <div class="form-group mt-3">
-                  <label for="ID_number">Numéro pièce:</label>
-                  <input type="text" class="form-control" name="ID_number" id="ID_number" placeholder="Exemple:12345678">
-                </div>               
-                <div class="form-group mt-3">
-                  <label for="ville_id">Ville:</label>
-                  <select name="ville_id"  class="form-control" id="">
-                    <option value="ville">Choisissez une ville</option>
-                    @foreach ($villes as $ville)
-                    <option value="{{$ville->id}}">{{$ville->name}}</option>                              
-                    @endforeach
-                  </select>
-                </div>
-                <div class="form-group mt-3">
-                  <label for="adresse">Adresse:</label>
-                  <input type="text" class="form-control" name="adresse" placeholder="Exemple:IITA,Vedoko,Menontin,Zogbo">
-                </div>
-                <div class="form-group mt-3">
-                  <label for="categorie_id">Catégories:</label>
-                  <select name="categorie_id"  class="form-control" id="">
-                    <option value="categorie">Choisissez une catégorie</option>
-                    @foreach ($categories as $categorie)
-                    <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
-                    @endforeach
-                  </select>
-                </div>
-                <div class="form-group mt-3">
-                  <label for="certifacate">Diplôme:</label>
-                 <input type="file" name="certificate" id="certifacate" class="form-control" cols="50" rows="3">
-                </div>                  
+               <div class="row">
+                  <div class="form-group col mt-3">
+                    <label for="categorie_id">Catégories:</label>
+                    <select name="categorie_id"  class="form-control" id="">
+                      <option value="categorie">Choisissez une catégorie</option>
+                      @foreach ($categories as $categorie)
+                      <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group col mt-3">
+                    <label for="certifacate">Diplôme:</label>
+                  <input type="file" name="certificate" id="certifacate" class="form-control" cols="50" rows="3">
+                  </div>   
+              </div>                 
                 <div class="text-center mt-3">
                   <button type="submit" class="btn"> Soumettre </button>
                 </div>
@@ -129,16 +138,60 @@
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
       
+      <div id="annonce-modal" class="modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"> Déposer une annonce</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>              
+            <div class="modal-body">
+              <form  action="{{ route('create_annonce') }}" method="POST"> 
+                @csrf                
+                <div class="form-group mt-3">
+                  <label for="title">Titre:</label>
+                  <input type="text" class="form-control" name="title" placeholder="Exemple:">
+                </div>
+                <div class="form-group mt-3">
+                  <select name="categorie_id"  class="form-control" id="">
+                    <option value="categorie">Choisissez une catégorie</option>
+                    @foreach ($categories as $categorie)
+                    <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="budget">Budget:</label>
+                  <input type="text" class="form-control" name="budget" placeholder="Exemple:">
+                </div>
+                <div class="form-group mt-3">
+                  <label for="deadline">Délai:</label>
+                  <input type="date" class="form-control" name="deadline" placeholder="Exemple:">
+                </div>
+                <div class="form-group mt-3">
+                  <label for="content">Description:</label>
+                 <textarea name="content" id="" class="form-control" cols="50" rows="3"></textarea>
+                </div>                  
+                <div class="text-center mt-3">
+                  <button type="submit" class="btn">Envoyer le dépôt</button>
+                </div>
+              </form>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
  
 
  <!-- ======= Hero Section ======= -->
  <section id="hero">
   <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
-    <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme de recrutement des artisans facilitant <br> la mise en relation entre les employeurs potentiels <br> et les artisans qualifiés.</h1>
+    <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme facilitant la mise en relation entre<br>  les clients potentiels et les artisans qualifiés.</h1>
     <div>
-    <a href="#about" class="about-btn scrollto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
-      <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
-    </svg> Deposer une annonce</a><br><br><br>
+      <div class="text-center">
+        <a href="#about" class="about-btn scrollto" data-bs-toggle="modal" data-bs-target="#annonce-modal" data-ticket-type="premium-access"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+          <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+        </svg> Deposer une annonce</a><br><br>
+      </div>  
     <div class="search-container">
       <div class="row">
         <div class="col-md-4">

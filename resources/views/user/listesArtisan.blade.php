@@ -43,7 +43,7 @@
   </header><!-- End Header -->
     <main id="main">
       
-  <section style="margin-top: 15%; margin-bottom:3%">
+  <section style="margin-top: 10%; margin-bottom:3%">
     <div class="section-header">
       <h2>Les Artisans</h2>
       <p>Faites votre choix</p>
@@ -100,47 +100,87 @@
                 <input type="radio" id="Ménage" name="drone" value="Ménage">
                 <label for="Ménage">Ménage</label>
               </div>
-            </div>
-            
+              <div>
+                <input type="radio" id="Lavage" name="drone" value="Lavage">
+                <label for="Lavage">Lavage</label>
+              </div>
+            </div>            
           </div>
+
           <div class="border" style="margin-top: 40px;" >
             <div class="border-bottom">
               <h1>Localisation</h1>
             </div>
             <h3>Ville</h3>
-            <select name="Categorie" id="" class="form-control">
-              <option value="Choisissez une categorie">Choisissez une categorie</option>
-              <option value="Maçonnerie">Maçonnerie</option>
-              <option value="Menuserie">Menuserie</option>
-              <option value="Coiffure Homme">Coiffure Homme</option>
-              <option value="Coiffure Femme">Coiffure Femme</option>
-              <option value="Plomberie">Plomberie</option>
-              <option value="Peinture">Peinture</option>
-              <option value="Electricité">Electricité</option>
-              <option value="Mecanique">Mecanique</option>
-              <option value="Carrelage">Carrelage</option>
-              <option value="Ménage">Ménage</option>
+            <select name="ville_id"  class="form-control" id="">
+              <option value="ville">Choisir une ville</option>
+              @foreach ($villes as $ville)
+              <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+              @endforeach
             </select>
-          </div>
-          
-        </div>
-        <div class="col-md-9 border d-flex flex-wrap" style="padding: 50px">
-          <div class="col-md-3 mb-3 text-center border">
-            <div class="thumbmail">
-              <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid col-12" alt="" height="200" width="200">
-                <div class="caption">
-                  <h5 class="card-title text-muted text-uppercase " >Categorie</h5>
-                <p><span class="bi bi-geo-alt-fill " ></span>Cotonou</p>
-                <div class="justify-content-center " style="display: flex; margin-top:-10%">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                </div><br>
-                    <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-                </div>
-            </div>
-          </div>
-            <div class="col-md-3 mb-3 text-center border">
+
+          </div>        
+        </div> <!-- ======= End col-md-3 border======= -->
+             <!-- ======= Liste Artisan ======= -->
+               <div class="col-md-9 border  " style="padding: 50px">
+                  <div class="tab-pane active">
+                    <div class="bloc1">
+                        <div class="row">
+                           @foreach ($artisans as $artisan)                         
+                           <div class="col-ms-6 col-md-3  mb-3  text-center border" style="margin:30px 30px 30px 30px">
+                            <div class="thumbmail">
+                              <img src="assets/img/images.png" class="img-fluid col-12" alt="" height="200" width="200">                                  
+                                <div class="caption">
+                                <h5 class="card-title text-muted text-uppercase ">{{ $artisan->categorie->name }}</h5>
+                                <h6><span class="bi bi-phone" ></span>{{$artisan->phone}}</h6>
+                                <p><span class="bi bi-geo-alt-fill" ></span>{{$artisan->ville->name.', '.$artisan->adresse}}</p>
+                                <div class="justify-content-center " style="display:flex; margin-top:-5%">
+                                  <img src="assets/img/Star 4.png" alt="">
+                                  <img src="assets/img/Star 4.png" alt="">
+                                  <img src="assets/img/Star 4.png" alt="">
+                                </div><br>
+                                <a href="" class="btn btn-order" role="button"><span> Contacter</span></a><br><br>
+                                </div>
+                            </div>
+                          </div>                              
+                           @endforeach                                     
+                        </div>
+                    </div>
+                  </div>            
+               </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{{--            
+             <div class="col-md-9 border  " style="padding: 50px">  
+                @foreach ($artisans as $artisan)  
+                  <div class=" d-flex flex-wrap">
+                    <div class="col-md-3 mb-3  text-center border"> 
+                      <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid col-12" alt="" height="200" width="200">
+                        <div class="caption">                        
+                          <h5 class="card-title text-muted text-uppercase " >{{ $artisan->categorie->name }}</h5>
+                          <p><span class="bi bi-geo-alt-fill " ></span>{{$artisan->adresse}}</p>
+                          <div class="justify-content-center " style="display: flex; margin-top:-10%">
+                            <img src="assets/img/Star 4.png" alt="">
+                            <img src="assets/img/Star 4.png" alt="">
+                            <img src="assets/img/Star 4.png" alt="">
+                          </div><br>
+                            <a href="" class="btn btn-order" role="button"><span> Contacter</span></a><br><br>
+                        </div>       
+                  </div>                            
+                  @endforeach                   
+             </div> --}}           
+
+            {{-- <div class="col-md-3 mb-3 text-center border">
               <div class="thumbmail">
                 <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid col-12" alt="" height="200" width="200">
                   <div class="caption">
@@ -196,7 +236,7 @@
                     <img src="assets/img/Star 4.png" alt="">
                     <img src="assets/img/Star 4.png" alt="">
                   </div><br>
-                      <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
+                      <a href="" class="btn btn-order" role="button"><span> Contacter</span></a><br><br>
                   </div>
               </div>
             </div>
@@ -244,11 +284,12 @@
                       <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
                   </div>
               </div>
-            </div>
+            </div> --}}
 
-        </div>
-      </div> 
-    </div>
+      </div>  <!-- ======= End Row ======= -->
+      
+    </div> <!-- ======= End container ======= -->
+    
   </section>
 
  </main><!-- End #main -->
