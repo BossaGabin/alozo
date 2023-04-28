@@ -1677,6 +1677,10 @@ h6 {
   background: #dcc72e; 
   border-color: #dcc72e;
   color: black;
+  padding: 5px 5px 5px 5px;
+  border-radius:0px 5px 5px 0px;
+  margin-right: 5%            
+  ;
 }
 /* .btn-search:hover{
   background: black;

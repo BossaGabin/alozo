@@ -20,6 +20,7 @@ class CreateAnnoncesTable extends Migration
             $table->integer('budget');
             $table->date('deadline');
             $table->foreignId("categories_id")->constrained("categories");
+            $table->boolean('statuts')->default(false);
             $table->timestamps();
         });
     }

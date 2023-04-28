@@ -48,18 +48,28 @@ Route::get('/listeAnnonces', function(){
 
 Route::middleware('auth')->group(function(){
     //Les routes GET
+    // Route::get('/listesArtisan', function(){
+    //     return view('user/listesArtisan');
+    // });
     Route::get('/user', function()    {
         $categories = Categorie::all();
         $villes = Ville::all();
         return view('user/accueilUser', compact('categories', 'villes')); 
     });
-    Route::get('/artisans', function(){ return view('artisan/artisans');});
-    Route::get('/annonces', function(){return view('annonce/annonces');});
+    Route::get('/profil', function(){ return view('artisan/profil');});
+    // Route::get('/annonces', function(){
+    //     $categories = Categorie::all();
+    //     return view('annonce/annonces', compact('categories')); 
+        
+    // });
     Route::get('/voirAnnonce', function(){return view('annonce/voirAnnonce');});
-    Route::get('/artisan', [ArtisanController::class , 'index'] )->name("view_artisan");
+    Route::get('/artisans', [ArtisanController::class , 'index'] )->name("artisan");
+    // Route::get('/annonces',[AnnonceController::class, 'index'])->name("annonces");
+
 
     //Les routes POST
-    Route::post('/user',[ArtisanController::class, 'store'])->name("create_artisan");;
+    Route::post('/user',[ArtisanController::class, 'store'])->name("create_artisan");
+    Route::post('/annonces',[AnnonceController::class, 'store'])->name("create_annonce");
 
 
 

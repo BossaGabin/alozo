@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Annonce;
+use App\Models\Categorie;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,9 @@ class AnnonceController extends Controller
     public function index()
     {
         //
+        $categories = Categorie::all();
+        $annonces = Annonce::orderBy("created_at", "desc")->get();
+        return view("annonce/annonces", compact("categories","annonces"));
     }
 
     /**
@@ -26,8 +30,7 @@ class AnnonceController extends Controller
     public function create()
     {
         //
-        $users = User::orderBy("created_at", "desc")->get();
-        return view("annonce", compact("users"));
+      
     }
 
     /**
@@ -44,7 +47,7 @@ class AnnonceController extends Controller
             'budget'=>'required',
             'deadline'=>'required',      
             'content'=>'required',      
-            'categories_id' => ['required'],
+            'categorie_id' => ['required'],
         ]);
         $annonce = Annonce::create($validateData);
         return back();

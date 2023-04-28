@@ -3,6 +3,17 @@
 @section('content')
 
 <main>
+  <div style="margin-top: 10%">
+    @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+          @endif 
+  </div>
      <!-- ======= Buy Ticket Section ======= -->
   <section id="buy-tickets" class="section-with-bg" style="margin-top: 10%">
     <div id="buy-annonce-modal" class="modal">
@@ -11,24 +22,25 @@
               <div class="modal-header">
                 <h4 class="modal-title"> Déposer une annonce</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
+              </div>              
               <div class="modal-body">
-                <form method="POST" action="#"> 
+                <form  action="{{ route('create_annonce') }}" method="POST"> 
                   @csrf                
                   <div class="form-group mt-3">
                     <label for="title">Titre:</label>
                     <input type="text" class="form-control" name="title" placeholder="Exemple:">
                   </div>
                   <div class="form-group mt-3">
-                    <label for="categories_id">Catégories:</label>
-                    <select name="categories_id"  class="form-control" id="">
+                    <select name="categorie_id"  class="form-control" id="">
                       <option value="categorie">Choisissez une catégorie</option>
-                    
+                      @foreach ($categories as $categorie)
+                      <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
+                      @endforeach
                     </select>
                   </div>
                   <div class="form-group mt-3">
                     <label for="budget">Budget:</label>
-                    <input type="text" class="form-control" name="budet" placeholder="Exemple:">
+                    <input type="text" class="form-control" name="budget" placeholder="Exemple:">
                   </div>
                   <div class="form-group mt-3">
                     <label for="deadline">Délai:</label>
@@ -62,6 +74,7 @@
         <!-- Modal Order Form -->
         
       <div class="row">
+        
         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
           <div class="card mb-5 mb-lg-0">
             
@@ -81,6 +94,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
           <div class="card mb-5 mb-lg-0">
             

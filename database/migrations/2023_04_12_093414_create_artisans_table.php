@@ -16,12 +16,14 @@ class CreateArtisansTable extends Migration
         Schema::create('artisans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('phone');
             $table->string('adresse');
             $table->integer('ID_number');
             $table->string('certificate');           
             $table->foreignId("categorie_id")->constrained("categories");
             $table->foreignId("user_id")->constrained("users");
             $table->foreignId("ville_id")->constrained("villes");
+            $table->boolean('statuts')->default(false);
             $table->timestamps();
         });
     }

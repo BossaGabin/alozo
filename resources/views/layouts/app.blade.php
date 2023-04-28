@@ -30,7 +30,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin: 2% 0% 2% 0%">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
@@ -42,13 +42,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link " href="{{ route('login') }}" style="color:black; font-size:18px">{{ __('Connexion') }}</a>
+                                    <a class="nav-link " href="{{ route('login') }}"  style="color:#dcc72e; font-size:25px">{{ __('Connexion') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}" style="color:black; font-size:18px;">{{ __("S'inscrire") }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"  style="color:#dcc72e; font-size:25px">{{ __("S'inscrire") }}</a>
                                 </li>
                             @endif
                         @else

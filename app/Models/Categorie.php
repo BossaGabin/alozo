@@ -9,10 +9,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Categorie extends Model
 {
     use HasFactory;
-    protected  $fillable = ['name'];
+    
 
     public function artisan(): HasMany
     {
         return $this->hasMany(Artisan::class);
+    }
+    
+    public function annonce(): HasMany
+    {
+        return $this->hasMany(Annonce::class);
     }
 }
