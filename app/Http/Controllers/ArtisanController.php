@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Artisan;
-use App\Models\Categorie;
 use App\Models\User;
 use App\Models\Ville;
+use App\Models\Annonce;
+use App\Models\Artisan;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,14 +17,11 @@ class ArtisanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){  
+        // dd('ici'); 
        
-        $users = User::all();
-        $villes = Ville::all();
-        $categories = Categorie::all();
-        $artisans = Artisan::orderBy("created_at", "desc")->get();
-        return view("user/listesArtisan", compact("users","villes", "categories", "artisans"));
+        // $artisans = Artisan::orderBy("created_at", "desc")->get();
+        // return view('artisan/artisans', compact("artisans"));
     }
 
     /**
@@ -34,6 +32,12 @@ class ArtisanController extends Controller
     public function create()
     {
         //
+        $villes = Ville::all();
+        $categories = Categorie::all();
+        $artisans = Artisan::orderBy("created_at", "desc")->get();
+        return view('artisan/artisans', compact("villes", "categories", "artisans"));
+       
+      
     }
 
     /**
@@ -104,5 +108,13 @@ class ArtisanController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function welcome(){
+        $villes = Ville::all();
+        $categories = Categorie::all();
+        $artisans = Artisan::orderBy("created_at", "desc")->take(8)->get();
+        $annonces = Annonce::orderBy("created_at", "desc")->take(6)->get();
+        return view('welcome', compact("villes", "categories", "artisans", "annonces"));
     }
 }

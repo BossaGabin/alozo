@@ -114,9 +114,9 @@
             <h3>Ville</h3>
             <select name="ville_id"  class="form-control" id="">
               <option value="ville">Choisir une ville</option>
-              @foreach ($villes as $ville)
+              {{-- @foreach ($villes as $ville)
               <option value="{{$ville->id}}">{{$ville->name}}</option>                              
-              @endforeach
+              @endforeach --}}
             </select>
 
           </div>        
@@ -126,14 +126,14 @@
                   <div class="tab-pane active">
                     <div class="bloc1">
                         <div class="row">
-                           @foreach ($artisans as $artisan)                         
+                           {{-- @foreach ($artisans as $artisan)                          --}}
                            <div class="col-ms-6 col-md-3  mb-3  text-center border" style="margin:30px 30px 30px 30px">
                             <div class="thumbmail">
                               <img src="assets/img/images.png" class="img-fluid col-12" alt="" height="200" width="200">                                  
                                 <div class="caption">
-                                <h5 class="card-title text-muted text-uppercase ">{{ $artisan->categorie->name }}</h5>
-                                <h6><span class="bi bi-phone" ></span>{{$artisan->phone}}</h6>
-                                <p><span class="bi bi-geo-alt-fill" ></span>{{$artisan->ville->name.', '.$artisan->adresse}}</p>
+                                <h5 class="card-title text-muted text-uppercase ">CATEGORIE</h5>
+                                <h6><span class="bi bi-phone" ></span>Phone</h6>
+                                <p><span class="bi bi-geo-alt-fill" ></span>VILLE, Quartier</p>
                                 <div class="justify-content-center " style="display:flex; margin-top:-5%">
                                   <img src="assets/img/Star 4.png" alt="">
                                   <img src="assets/img/Star 4.png" alt="">
@@ -143,7 +143,7 @@
                                 </div>
                             </div>
                           </div>                              
-                           @endforeach                                     
+                           {{-- @endforeach                                      --}}
                         </div>
                     </div>
                   </div>            

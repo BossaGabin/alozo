@@ -31,7 +31,7 @@
 
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
-            <li><a class="nav-link scrollto " href="/">Accueil</a></li>        
+            <li><a class="nav-link scrollto " href="/user">Accueil</a></li>        
             <li><a class="nav-link scrollto" href="/artisans">Artisans</a></li>  
             <li><a class="nav-link scrollto" href="/annonces">Annonces</a></li>  
             <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
@@ -62,7 +62,7 @@
       </div>
   </header><!-- End Header -->
     <main id="main">
-      <div style="margin-top: 7%;">
+      <div style="margin-top: 5%;">
         @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -93,7 +93,7 @@
                     <input type="text" class="form-control" name="phone" id="phone" placeholder="" value="{{ Auth::user()->phone }}">
                   </div>
                </div>
-ù2
+
                <div class="row">
                   <div class="form-group col mt-3">
                     <label for="email">Adresse mail:</label>
@@ -107,7 +107,7 @@
                 <div class="row">
                   <div class="form-group col mt-3">
                     <label for="ville_id">Ville:</label>
-  ù                  <select name="ville_id"  class="form-control" id="">
+                    <select name="ville_id"  class="form-control" id="">
                       <option value="ville">Choisissez une ville</option>
                       @foreach ($villes as $ville)
                       <option value="{{$ville->id}}">{{$ville->name}}</option>                              
@@ -261,193 +261,27 @@
       <h2>Les Artisans</h2>
       <p>Faites votre choix</p>
     </div>
+    {{-- @dd($artisans) --}}
     <div class="container">
       <div class="row">
-        <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-              <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
+        {{-- @foreach ($arts as $artisan)
+            <div class="col-ms-6 col-md-3">
+              <div class="thumbmail">
+                <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
                 <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right:70%">Categorie</h5>
-                <p><span class="bi bi-geo-alt-fill"></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
+                  <h5 class="card-title text-muted text-uppercase text-center" style="margin-right:70%">{{ $artisan->categorie->name }}</h5>
+                  <p><span class="bi bi-geo-alt-fill"></span>{{$artisan->ville->name.', '.$artisan->adresse}}</p>
+                  <div style="display: flex; margin-top:-10%">
+                    <img src="assets/img/Star 4.png" alt="">
+                    <img src="assets/img/Star 4.png" alt="">
+                    <img src="assets/img/Star 4.png" alt="">
+                  </div><br>
+                    <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
+                </div>
               </div>
           </div>
-       </div>
-       <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-            <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-              <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
-              <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-              </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-       </div>
-        <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-            <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-              <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
-                <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-        </div>
-        <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-            <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-              <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
-              <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-              </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-       </div>    
-      </div><br><br>
-      <div class="row">
-        <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-              <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-                <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right:70%">Categorie</h5>
-                <p><span class="bi bi-geo-alt-fill"></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-       </div>
-       <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-            <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-              <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
-              <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-              </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-       </div>
-        <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-            <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-              <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
-                <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-        </div>
-        <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-            <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-              <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
-              <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-              </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-       </div>    
-      </div><br><br>
-      <div class="row">
-        <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-              <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-                <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right:70%">Categorie</h5>
-                <p><span class="bi bi-geo-alt-fill"></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-       </div>
-       <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-            <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-              <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
-              <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-              </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-       </div>
-        <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-            <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-              <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
-                <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-                <div style="display: flex; margin-top:-10%">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                  <img src="assets/img/Star 4.png" alt="">
-                </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-        </div>
-        <div class="col-ms-6 col-md-3">
-          <div class="thumbmail">
-            <img src="assets/img/categories/building-1080596_1920.jpg" class="img-fluid" alt="" height="200" width="200">
-              <div class="caption">
-                <h5 class="card-title text-muted text-uppercase text-center" style="margin-right: 30%">Categorie</h5>
-              <p><span class="bi bi-geo-alt-fill" ></span>Cotonou</p>
-              <div style="display: flex; margin-top:-10%">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-                <img src="assets/img/Star 4.png" alt="">
-              </div><br>
-                  <a href="" class="btn btn-order" role="button"><span> Contacter</span></a>
-              </div>
-          </div>
-       </div>    
-      </div>
+        @endforeach       --}}
+      </div><br><br>           
     </div>
   </section><br><br>
 
