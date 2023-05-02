@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnnonceController;
 use App\Http\Controllers\ArtisanController;
+use App\Http\Controllers\CategorieController;
 use App\Models\User;
 use App\Models\Ville;
 
@@ -19,67 +20,43 @@ use App\Models\Ville;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/', [Categorie::class ,'index'] )->name("welcome");
-// Route::get('/artisan', [Artisan::class , 'index'] )->name("artisan");
-
+Route::get('/', [ArtisanController::class, 'welcome']);
 
 Route::get('/contact', function(){
     return view('contact');
 });
-// Route::get('/connexion', function(){
-//     return view('connexion');
-// });
-// Route::get('/inscription', function(){
-//     return view('inscription');
-// });
-Route::get('/dashboard', function(){
-    return view('admin/dashboard');
-})->name("Dashboard");
-Route::get('/listeArtisan', function(){
-    return view('admin/listeArtisan');
-})->name("Artisan");
-Route::get('/listeAnnonces', function(){
-    return view('admin/listeAnnonces');
-})->name("Annonce");
+// Route::get('/dashboard', function(){
+//     return view('admin/dashboard');
+// })->name("Dashboard");
+// Route::get('/listeArtisan', function(){
+//     return view('admin/listeArtisan');
+// })->name("Artisan");
+// Route::get('/listeAnnonces', function(){
+//     return view('admin/listeAnnonces');
+// })->name("Annonce");
 
 Route::middleware('auth')->group(function(){
-    //Les routes GET
-    // Route::get('/listesArtisan', function(){
-    //     return view('user/listesArtisan');
-    // });
-    Route::get('/user', function()    {
-        $categories = Categorie::all();
-        $villes = Ville::all();
-        return view('user/accueilUser', compact('categories', 'villes')); 
-    });
-    Route::get('/profil', function(){ return view('artisan/profil');});
-    // Route::get('/annonces', function(){
-    //     $categories = Categorie::all();
-    //     return view('annonce/annonces', compact('categories')); 
-        
-    // });
-    Route::get('/voirAnnonce', function(){return view('annonce/voirAnnonce');});
-    Route::get('/artisans', [ArtisanController::class , 'index'] )->name("artisan");
-    // Route::get('/annonces',[AnnonceController::class, 'index'])->name("annonces");
-
-
-    //Les routes POST
-    Route::post('/user',[ArtisanController::class, 'store'])->name("create_artisan");
-    Route::post('/annonces',[AnnonceController::class, 'store'])->name("create_annonce");
-
-
-
+    
+    Route::resource('artisan', ArtisanController::class);
+    Route::resource('annonces', AnnonceController::class);
+    Route::get('/categorie/{id}',[ AnnonceController::class, 'byCategorie']);
+    // Route::get('annonces/',[AnnonceController::class, 'index'])->name('annonces.index');
+    // Route::get('annonces/{id}',[AnnonceController::class, 'show'])->name('annonces.show');
+    // Route::get('annonces/create',[AnnonceController::class, 'create'])->name('annonces.create');
+    // Route::post('annonces/create',[AnnonceController::class, 'store'])->name('annonces.store');
+    // Route::get('annonces/edit/{id}',[AnnonceController::class, 'edit'])->name('annonces.edit');
+    // Route::put('annonces/edit/{id}',[AnnonceController::class, 'update'])->name('annonces.update');
+    // Route::delete('annonces/{id}',[AnnonceController::class, 'destroy'])->name('annonces.destroy');    
+    // Route::resources('artisan', ArtisanController::class);
+    Route::resource('user', User::class);
+    
+    
+    
+    
 });
 
-
-
-
-
-
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

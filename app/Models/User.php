@@ -5,6 +5,7 @@ namespace App\Models;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -25,15 +26,7 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function annonce(){
-
-     return $this->hasMany(Annonce::class);
-
-    }
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(Artisan::class);
-    }
+     
 
     /**
      * The attributes that should be hidden for serialization.

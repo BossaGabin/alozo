@@ -30,6 +30,7 @@ class AnnonceController extends Controller
     public function create()
     {
         //
+        // return view('annonce/annonces');
       
     }
 
@@ -62,6 +63,10 @@ class AnnonceController extends Controller
     public function show($id)
     {
         //
+        $view_annonces = Annonce::findOrFail($id);        
+        $categories = Categorie::all();
+        return view('annonce/voirAnnonce', compact('view_annonces','categories'));
+       
     }
 
     /**
@@ -96,5 +101,10 @@ class AnnonceController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function byCategorie($categorie_id){
+        $annonces = Annonce::where('categorie_id', '=', $categorie_id)->paginate(3);
+        $categories = Categorie::all();
+        return view('annonce/annonces', compact('annonces','categories'));
     }
 }
