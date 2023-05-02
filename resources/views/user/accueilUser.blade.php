@@ -35,24 +35,29 @@
             <li><a class="nav-link scrollto" href="/artisans">Artisans</a></li>  
             <li><a class="nav-link scrollto" href="/annonces">Annonces</a></li>  
             <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
-              role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-user me-2"></i>John Doe
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
-              </ul>
-            </li>
+            
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
+
+            <div class="text-center" style="margin-bottom:-25px">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
+              </div> 
+              <ul >
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ Auth::user()->name }}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{{ route('profil') }}">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
         </nav><!-- .navbar -->
       
-        <div class="text-center" style="margin-bottom:-25px">
-      ù2    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
-        </div>        
+               
         <!-- Modal Order Form -->
       </div>
   </header><!-- End Header -->

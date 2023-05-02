@@ -38,7 +38,7 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fas fa-user me-2"></i>John Doe
+                  {{ Auth::user()->name }}
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -63,7 +63,7 @@
                   ">
               </div>
               <div class="fs-6 fw-bold" style="margin-top: 50px">
-                  <label>Nom Complet:</label><br><br>
+                  <label>Nom Complet: {{ Auth::user()->name }}</label><br><br>
                   <label>Adresse:</label><br><br>
                   <label>Catégorie:</label><br><br>
                   <label>Contact:</label><br><br>
