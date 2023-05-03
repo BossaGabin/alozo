@@ -36,7 +36,7 @@
     <!-- ======= Hero Section ======= -->
     <div class="container">
       <div class="row">
-        <div class="col-md-3 border">
+        <div class="col-md-2 border">
           <div class="border " style="margin-top: 40px; height:300px" >
             <div class="border-bottom"  >
               <center><h2>Trier</h2></center>
@@ -94,7 +94,7 @@
 
           <div class="border" style="margin-top: 40px;" >
             <div class="border-bottom">
-              <h1>Localisation</h1>
+              <h4>Localisation</h4>
             </div>
             <h3>Ville</h3>
             <select name="ville_id"  class="form-control" id="">
@@ -107,7 +107,7 @@
           </div>        
         </div> <!-- ======= End col-md-3 border======= -->
              <!-- ======= Liste Artisan ======= -->
-               <div class="col-md-9 border  " style="padding: 50px">
+               <div class="col-md-10 border  " style="padding: 50px">
                   <div class="tab-pane active">
                     <div class="bloc1">
                         <div class="row">
@@ -125,7 +125,7 @@
                                   <img src="assets/img/Star 4.png" alt="">
                                   <img src="assets/img/Star 4.png" alt="">
                                 </div><br>
-                                <a href="" class="btn btn-order" role="button"><span> Contacter</span></a><br><br>
+                                <a href="/artisans/{{ $artisan->id }}" class="btn btn-order" role="button"><span>Consulter</span></a><br><br>
                                 </div>
                             </div>
                           </div>                              

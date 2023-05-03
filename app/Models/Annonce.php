@@ -16,5 +16,9 @@ class Annonce extends Model
     {
         return $this->belongsTo(Categorie::class);
     }    
+    public function annonceHasFile(): BelongsTo
+    {
+        return $this->belongsTo(AnnonceHasFile::class);
+    }    
    
 }

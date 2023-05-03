@@ -7,8 +7,8 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
   <!-- Favicons -->
-  <link href="assets/img/LOGO_Officiel2.jpg" rel="icon">
-  <link href="assets/img/LOGO_Officiel2.jpg" rel="apple-touch-icon">
+  <link href="{{asset('assets/img/LOGO_Officiel2.jpg')}}" rel="icon">
+  <link href="{{asset('assets/img/LOGO_Officiel2.jpg')}}" rel="apple-touch-icon">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -26,7 +26,7 @@
         <div class="container-fluid container-xxl d-flex align-items-center">
 
             <div id="logo" class="me-auto">
-                <a href="/" class="scrollto"><img src="assets/img/LOGO_Officiel2.jpg" alt="" title=""></a>
+                <a href="/" class="scrollto"><img src="{{asset('assets/img/LOGO_Officiel2.jpg')}}" alt="" title=""></a>
             </div>
 
             <nav id="navbar" class="navbar order-last order-lg-0">
@@ -58,16 +58,17 @@
           <form  >
               <h1>Profil</h1>
               <div class="border" style="width: 150px; height:150px;"   >
-                  <label for="picture"><img src="../assets/img/images.png" style="width: 150px;height:150px; "></i></label>
-                  <input type="file" id="picture"  name="picture" style="display:none
-                  ">
+                  <label for="picture"><img src="{{asset('assets/img/profil.png')}}" style="width: 150px;height:150px; "></i></label>
+                  <input type="file" id="picture"  name="picture" style="display:none                  ">
               </div>
-              <div class="fs-6 fw-bold" style="margin-top: 50px">
-                  <label>Nom Complet: {{ Auth::user()->name }}</label><br><br>
-                  <label>Adresse:</label><br><br>
-                  <label>Catégorie:</label><br><br>
-                  <label>Contact:</label><br><br>
-                  <label>Email:</label><br><br>
+              <div class="fs-6 fw-bold" style="margin-top: 50px">              
+                <label>Nom Complet: {{ $view_artisans->name }}</label><br><br>
+                <label>Ville: {{ $view_artisans->ville->name }}</label><br><br>
+                <label>Adresse:  {{ $view_artisans->adresse }} </label><br><br>
+                <label>Catégorie: {{ $view_artisans->categorie->name }}</label><br><br>
+                <label>Contact: {{ $view_artisans->phone }} </label><br><br>
+                {{-- <label>Email:</label><br><br> --}}
+                  
               </div>
               
           </form>
@@ -78,44 +79,36 @@
           </div>
           <div class="row ms-5 ">
             <div class=" col-md-2 mt-2" >
-              <label for="picture"><img src="../assets/img/images.png" style="width: 150px;height:150px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
+              <label for="picture"><img src="{{asset('assets/img/imagesArtisans/1.png')}}" style="width: 150px;height:150px; "></i></label>
+              <input type="file" id="picture"  name="picture" style="display:none">
             </div>
             <div class=" col-md-2 ms-5 mt-2 " >
-              <label for="picture"><img src="../assets/img/images.png" style="width: 150px;height:150px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
+              <label for="picture"><img src="{{asset('assets/img/imagesArtisans/2.png')}}" style="width: 150px;height:150px; "></i></label>
+              <input type="file" id="picture"  name="picture" style="display:none">
             </div>
             <div class=" col-md-2 ms-5 mt-2 ">
-              <label for="picture"><img src="../assets/img/images.png" style="width: 150px;height:150px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
+              <label for="picture"><img src="{{asset('assets/img/imagesArtisans/3.png')}}" style="width: 150px;height:150px; "></i></label>
+              <input type="file" id="picture"  name="picture" style="display:none">
             </div>
             <div class=" col-md-2 ms-5 mt-2">
-              <label for="picture"><img src="../assets/img/images.png" style="width: 150px;height:150px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
+              <label for="picture"><img src="{{asset('assets/img/imagesArtisans/4.png')}}" style="width: 150px;height:150px; "></i></label>
+              <input type="file" id="picture"  name="picture" style="display:none">
             </div>
             <div class=" col-md-2 mt-2  " >
-              <label for="picture"><img src="../assets/img/images.png" style="width: 150px;height:150px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
+              <label for="picture"><img src="{{asset('assets/img/imagesArtisans/5.png')}}" style="width: 150px;height:150px; "></i></label>
+              <input type="file" id="picture"  name="picture" style="display:none">
             </div>
             <div class=" col-md-2 ms-5 mt-2 " >
-              <label for="picture"><img src="../assets/img/images.png" style="width: 150px;height:150px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
+              <label for="picture"><img src="{{asset('assets/img/imagesArtisans/6.png')}}" style="width: 150px;height:150px; "></i></label>
+              <input type="file" id="picture"  name="picture" style="display:none">
             </div>
             <div class=" col-md-2 ms-5 mt-2 ">
-              <label for="picture"><img src="../assets/img/images.png" style="width: 150px;height:150px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
+              <label for="picture"><img src="{{asset('assets/img/imagesArtisans/7.png')}}" style="width: 150px;height:150px; "></i></label>
+              <input type="file" id="picture"  name="picture" style="display:none">
             </div>
             <div class=" col-md-2 ms-5 mt-2">
-              <label for="picture"><img src="../assets/img/images.png" style="width: 150px;height:150px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
+              <label for="picture"><img src="{{asset('assets/img/imagesArtisans/8.png')}}" style="width: 150px;height:150px; "></i></label>
+              <input type="file" id="picture"  name="picture" style="display:none">
             </div> 
           </div>
         
@@ -128,15 +121,48 @@
         <div class="col-md-12 border-top  mt-2 ps-2 ">
           <div class="d-flex">
             <label for="picture"><img src="../assets/img/images.png" style="width: 100px;height:100px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
+              <input type="file" id="picture"  name="picture" style="display:none">
               <h2 class="ms-4 mt-4">Nom utilisateur</h2>
           </div>
-          <div class="d-flex" ">
+          <div class="d-flex">
             <div class="ms-2 mt-2" style="display: flex;" >
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
+            </div>
+            <h4 class="ms-5">28/04/2023</h4>
+          </div>
+          
+              <p class=" mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. A rerum maiores earum,<br> accusantium quae laborum beatae eius sint deleniti dolor doloribus animi<br> autem quasi expedita suscipit necessitatibus sit ullam id.</p>
+        </div>
+        <div class="col-md-12 border-top  mt-2 ps-2 ">
+          <div class="d-flex">
+            <label for="picture"><img src="../assets/img/images.png" style="width: 100px;height:100px; "></i></label>
+              <input type="file" id="picture"  name="picture" style="display:none">
+              <h2 class="ms-4 mt-4">Nom utilisateur</h2>
+          </div>
+          <div class="d-flex">
+            <div class="ms-2 mt-2" style="display: flex;" >
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
+            </div>
+            <h4 class="ms-5">28/04/2023</h4>
+          </div>
+          
+              <p class=" mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. A rerum maiores earum,<br> accusantium quae laborum beatae eius sint deleniti dolor doloribus animi<br> autem quasi expedita suscipit necessitatibus sit ullam id.</p>
+        </div>
+        <div class="col-md-12 border-top  mt-2 ps-2 ">
+          <div class="d-flex">
+            <label for="picture"><img src="../assets/img/images.png" style="width: 100px;height:100px; "></i></label>
+              <input type="file" id="picture"  name="picture" style="display:none">
+              <h2 class="ms-4 mt-4">Nom utilisateur</h2>
+          </div>
+          <div class="d-flex" >
+            <div class="ms-2 mt-2" style="display: flex;" >
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
             </div>
             <h4 class="ms-5">28/04/2023</h4>
           </div>
@@ -152,45 +178,9 @@
           </div>
           <div class="d-flex" ">
             <div class="ms-2 mt-2" style="display: flex;" >
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
-            </div>
-            <h4 class="ms-5">28/04/2023</h4>
-          </div>
-          
-              <p class=" mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. A rerum maiores earum,<br> accusantium quae laborum beatae eius sint deleniti dolor doloribus animi<br> autem quasi expedita suscipit necessitatibus sit ullam id.</p>
-        </div>
-        <div class="col-md-12 border-top  mt-2 ps-2 ">
-          <div class="d-flex">
-            <label for="picture"><img src="../assets/img/images.png" style="width: 100px;height:100px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
-              <h2 class="ms-4 mt-4">Nom utilisateur</h2>
-          </div>
-          <div class="d-flex" ">
-            <div class="ms-2 mt-2" style="display: flex;" >
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
-            </div>
-            <h4 class="ms-5">28/04/2023</h4>
-          </div>
-          
-              <p class=" mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. A rerum maiores earum,<br> accusantium quae laborum beatae eius sint deleniti dolor doloribus animi<br> autem quasi expedita suscipit necessitatibus sit ullam id.</p>
-        </div>
-        <div class="col-md-12 border-top  mt-2 ps-2 ">
-          <div class="d-flex">
-            <label for="picture"><img src="../assets/img/images.png" style="width: 100px;height:100px; "></i></label>
-              <input type="file" id="picture"  name="picture" style="display:none
-              ">
-              <h2 class="ms-4 mt-4">Nom utilisateur</h2>
-          </div>
-          <div class="d-flex" ">
-            <div class="ms-2 mt-2" style="display: flex;" >
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
-              <img src="assets/img/Star 4.png" style="height:20px" alt="">
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
+              <img src="{{asset('assets/img/Star 4.png')}}" style="height:20px" alt="">
             </div>
             <h4 class="ms-5">28/04/2023</h4>
           </div>
@@ -208,7 +198,7 @@
             <div class="row">
     
               <div class="col-lg-3 col-md-6 footer-info">
-                <img src="assets/img/LOGO_Officiel2.jpg" alt="Alozo">
+                <img src="{{asset('assets/img/LOGO_Officiel2.jpg')}}" alt="Alozo">
                 <p></p>
               </div>
     

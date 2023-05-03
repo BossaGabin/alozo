@@ -42,7 +42,7 @@
   border: 2px solid  #dcc72e !important;
   }  
   </style>
-
+  
  <!-- ======= Hero Section ======= -->
  <section id="hero">
   <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
@@ -53,7 +53,7 @@
     <div class="search-container">
       <div class="row">
         <div class="col-md-6">
-          <select name="viile_id"  class="form-control" id="">
+          <select name="viile_id"  class="form-control" id="" style="height: 50px;">
             <option value="ville">Choisir une ville</option>
             @foreach ($villes as $ville)
             <option value="{{$ville->id}}">{{$ville->name}}</option>                              
@@ -125,7 +125,7 @@
                   <div class="row">
                      @foreach ($artisans as $artisan)  
                      {{-- @dd($artisan);                        --}}
-                     <div class="col-ms-6 col-md-2  mb-3  text-center border" style="margin:30px 40px 30px 40px">
+                     <div class="col-ms-6 col-md-3  mb-3  text-center border" style="margin:30px 40px 30px 40px">
                       <div class="thumbmail">
                         <img src="../assets/img/images.png" class="img-fluid col-12" alt="" height="200" width="200">                                  
                           <div class="caption">
@@ -137,7 +137,7 @@
                             <img src="assets/img/Star 4.png" alt="">
                             <img src="assets/img/Star 4.png" alt="">
                           </div><br>
-                          <a href="" class="btn btn-order" role="button"><span> Contacter</span></a><br><br>
+                          <a href="/artisan/{{ $artisan->id }}" class="btn btn-order" role="button"><span>Consulter</span></a><br><br>
                           </div>
                       </div>
                     </div>                              
@@ -164,7 +164,7 @@
         </svg> Deposer une annonce</a><br><br><br>
       </center> --}}
         <div class="text-center">
-          <button type="button"class="btn btn-order" data-bs-toggle="modal" data-bs-target="#buy-annonce-modal" data-ticket-type="premium-access"> Deposer une annonce</button><br><br>
+         <a href="{{route('login')}}" class="btn btn-order">Deposer une annonce</a><br><br>
         </div>        
         <!-- Modal Order Form -->
         

@@ -15,6 +15,8 @@ class CreateArtisanHasFilesTable extends Migration
     {
         Schema::create('artisan_has_files', function (Blueprint $table) {
             $table->id();
+            $table->string('path');
+            $table->foreignId("artisan_id")->constrained("artisans");
             $table->timestamps();
         });
     }
@@ -26,6 +28,9 @@ class CreateArtisanHasFilesTable extends Migration
      */
     public function down()
     {
+        Schema::table('artisans', function (Blueprint $table) {
+            $table->dropConstrainedForeignId("artisan_id");
+        });
         Schema::dropIfExists('artisan_has_files');
     }
 }

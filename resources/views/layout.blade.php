@@ -26,19 +26,52 @@
     <div class="container-fluid container-xxl d-flex align-items-center">
 
       <div id="logo" class="me-auto">
-        <a href="/" class="scrollto"><img src="../assets/img/LOGO_Officiel2.jpg" alt="" title=""></a>
+        <a href="/" class="scrollto"><img src="{{asset('assets/img/LOGO_Officiel2.jpg')}}" alt="" title=""></a>
       </div>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="/">Accueil</a></li>        
-          <li><a class="nav-link scrollto" href="/artisan/create">Artisans</a></li>  
+          <li><a class="nav-link scrollto " href="/home">Accueil</a></li>        
+          <li><a class="nav-link scrollto" href="/artisans">Artisans</a></li>  
           <li><a class="nav-link scrollto" href="/annonces">Annonces</a></li>  
           <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a class="buy-tickets scrollto" href="{{ route('login') }}">Se connecter</a>
+      <ul class="navbar-nav ms-5" >
+        <!-- Authentication Links -->
+              {{-- <div class="text-center" style="margin-bottom:-25px; margin-right:20px">
+                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
+                </div>                   --}}
+                {{-- <div class="text-center" style="margin-bottom:-25px; margin-right:20px">
+                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
+                </div>     --}}
+        @guest
+            @if (Route::has('login'))
+                <li class="nav-item">
+                     <a class="buy-tickets scrollto" href="{{ route('login') }}">Se connecter</a>    
+                </li>
+            @endif           
+        @else
+            <li class="nav-item dropdown fs-5" >
+                <a href="#" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access">Devenir un artisan</a>
+                <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="margin-left:10px">
+                    {{ Auth::user()->name }}
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a href="/profil" class="dropdown-item"><span class="bi bi-person"></span>Profil</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        @endguest
+    </ul>
 
     </div>
   </header><!-- End Header -->

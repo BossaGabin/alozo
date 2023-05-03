@@ -16,7 +16,7 @@ class CategoriesTableSeeder extends Seeder
     {
         //
         DB::table('Categories')->insert([
-            [ 
+     [ 
                 'name' => 'Menage',
                 
      ],

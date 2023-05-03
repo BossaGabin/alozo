@@ -19,33 +19,23 @@ use App\Models\Ville;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-Route::get('/', function () {
-    return view('welcome');
-});
+// */
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', [ArtisanController::class, 'welcome']);
 
 Route::get('/contact', function(){
     return view('contact');
 });
-// Route::get('/dashboard', function(){
-//     return view('admin/dashboard');
-// })->name("Dashboard");
-// Route::get('/listeArtisan', function(){
-//     return view('admin/listeArtisan');
-// })->name("Artisan");
-// Route::get('/listeAnnonces', function(){
-//     return view('admin/listeAnnonces');
-// })->name("Annonce");
 
 Route::middleware('auth')->group(function(){
     
-    Route::resource('artisan', ArtisanController::class);
+    Route::resource('artisans', ArtisanController::class);
     Route::resource('annonces', AnnonceController::class);
     Route::get('/categorie/{id}',[ AnnonceController::class, 'byCategorie']);
-    Route::get('/profil', function(){
-        return view('artisan/profil');
-    });
+    // Route::get('/profil',[ ArtisanController::class, 'profil_artisan']);
+    
     // Route::get('annonces/',[AnnonceController::class, 'index'])->name('annonces.index');
     // Route::get('annonces/{id}',[AnnonceController::class, 'show'])->name('annonces.show');
     // Route::get('annonces/create',[AnnonceController::class, 'create'])->name('annonces.create');
@@ -55,9 +45,21 @@ Route::middleware('auth')->group(function(){
     // Route::delete('annonces/{id}',[AnnonceController::class, 'destroy'])->name('annonces.destroy');    
     // Route::resources('artisan', ArtisanController::class);
     Route::resource('user', User::class);
-    
-    
-    
+        
+    Route::get('/listeArtisan', [ArtisanController::class, 'listArtisanByAdmin']);
+    Route::get('/statuts-update-artisan/{id}', [ArtisanController::class, 'statuts']);
+    Route::get('/listeAnnonces', [AnnonceController::class, 'listAnnonceByAdmin']);
+    Route::get('/statuts-update-annonce/{id}', [AnnonceController::class, 'statuts']);
+
+    Route::get('/dashboard', [ArtisanController::class, 'count'])->name("Dashboard");
+
+
+
+
+    // Route::get('/dashboard', function(){
+    //     return view('admin/dashboard');
+    // })->name("Dashboard");
+
     
 });
 

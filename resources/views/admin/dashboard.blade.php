@@ -5,7 +5,7 @@
 		<div class="cards">
 			<div class="card">
 				<div class="card-content">
-					<div class="number">457</div>
+					<div class="number">{{$users}}</div>
 					<div class="card-name">Inscriptions</div>
 				</div>
 				<div class="icon-box">
@@ -14,7 +14,7 @@
 			</div>
 			<div class="card">
 				<div class="card-content">
-					<div class="number">457</div>
+					<div class="number">{{$artisans}}</div>
 					<div class="card-name">Artisans</div>
 				</div>
 				<div class="icon-box"> 
@@ -23,7 +23,7 @@
 			</div>
 			<div class="card">
 				<div class="card-content">
-					<div class="number">457</div>
+					<div class="number"> {{ $annonces}} </div>
 					<div class="card-name">Annonces</div>
 				</div>
 				<div class="icon-box">
@@ -32,7 +32,7 @@
 			</div>
 			<div class="card">
 				<div class="card-content">
-					<div class="number">457</div>
+					<div class="number">{{$users}}</div>
 					<div class="card-name">Clients</div>
 				</div>
 				<div class="icon-box">

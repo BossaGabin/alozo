@@ -48,7 +48,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>              
               <div class="modal-body">
-                <form  action="#" method="POST"> 
+                <form  action="{{route('annonces.store')}}" method="POST" enctype="multipart/form-data"> 
                   @csrf                
                   <div class="form-group mt-3">
                     <label for="title">Titre:</label>
@@ -73,6 +73,10 @@
                   <div class="form-group mt-3">
                     <label for="content">Description:</label>
                    <textarea name="content" id="" class="form-control" cols="50" rows="3"></textarea>
+                  </div>                  
+                  <div class="form-group mt-3">
+                    <label for="content">Images:</label>
+                    <input type="file" class="form-control" name="picture" placeholder="Exemple:">
                   </div>                  
                   <div class="text-center mt-3">
                     <button type="submit" class="btn">Envoyer le dépôt</button>
@@ -105,12 +109,13 @@
         <!-- Modal Order Form -->        
       <div class="row ">
         @foreach ($annonces as $annonce)      
+        {{-- @dd($annonce) --}}
           <div class="col-lg-4 mt-3" data-aos="fade-up" data-aos-delay="100">
             <div class="card mb-5 mb-lg-0">            
               <div class="card-body">
                 <h5 class="card-title text-muted text-uppercase text-center" style="font-size: 25px">{{ $annonce->categorie->name }}</h5>
                 <div>
-                  <img src="{{ asset('assets/img/categories/auto-repair-3691962_1920.jpg') }}" class="img-fluid col-12" alt=""height="282" style="max-heigth:100%; max-width:100%;min-heigth:100%; min-width:100%">
+                  {{-- <img src="{{ Storage::url($annonce->picture->path) }}" class="img-fluid col-12" alt=""height="282" style="max-heigth:100%; max-width:100%;min-heigth:100%; min-width:100%"> --}}
                 </div>
                  <h5 class="card-title text-muted text-center" style="font-size: 10px; margin-bottom:-25px"><em>Publié le {{ $annonce->created_at }}</em></h5>
                 <hr>

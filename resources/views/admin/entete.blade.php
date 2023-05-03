@@ -16,7 +16,7 @@
 	<div class="col-md-12">
 		<div class="topbar">
 			<div class="logo">
-				<img src="assets/img/Log.PNG">
+				<img src="{{asset('assets/img/LOGO_Officiel2.jpg')}}">
 			</div>
 			<div class="search">
 				<input type="text" name="search" placeholder="search here">
@@ -36,41 +36,41 @@
 					</a>
 				</li>
 				<li>
-					<a href="{{route('Artisan')}}">
+					<a href="/listeArtisan">
 						<i class="fas fa-user"></i>
 						<div>Artisans</div>
 					</a>
 				</li>
 				<li>
-					<a href="{{route('Annonce')}}">
+					<a href="/listeAnnonces">
 						<i class="fas fa-scale-balanced"></i>
 						<div>Annonces</div>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<i class="fas fa-cog"></i>
-						<div>Sttings</div>
+						<i class="fas fa-user"></i>
+						<div>Clients</div>
 					</a>
 				</li>
-				<li>
+				{{-- <li>
 					<a href="#">
 						<i class="fa-regular fa-registered"></i>
 						<div>Register</div>
 					</a>
-				</li>
-				<li>
+				</li> --}}
+				{{-- <li>
 					<a href="">
 						<i class="fas fa-right-to-bracket"></i>
 						<div>Log in</div>
 					</a>
-				</li>
-				<li>
+				</li> --}}
+				{{-- <li>
 					<a href="">
 						<i class="fas fa-right-from-bracket"></i>
 						<div>Logout</div>
 					</a>
-				</li>
+				</li> --}}
 			</ul>
 		</div>
 		<div class="main">

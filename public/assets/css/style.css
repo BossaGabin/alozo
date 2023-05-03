@@ -1679,8 +1679,9 @@ h6 {
   color: black;
   padding: 5px 5px 5px 5px;
   border-radius:0px 5px 5px 0px;
-  margin-right: 5%            
-  ;
+  margin-right: 5%;
+  height: 50px;
+  width: 50px;
 }
 /* .btn-search:hover{
   background: black;

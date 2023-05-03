@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Ville;
 use App\Models\Annonce;
 use App\Models\Categorie;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\AnnonceHasFile;
+use App\Models\Annonces_has_file;
+use Illuminate\Support\Facades\DB;
 
 class AnnonceController extends Controller
 {
@@ -18,7 +22,7 @@ class AnnonceController extends Controller
     {
         //
         $categories = Categorie::all();
-        $annonces = Annonce::orderBy("created_at", "desc")->get();
+        $annonces = Annonce::where('statuts', '=', true)->orderBy("created_at", "desc")->take(6)->get();
         return view("annonce/annonces", compact("categories","annonces"));
     }
 
@@ -50,7 +54,18 @@ class AnnonceController extends Controller
             'content'=>'required',      
             'categorie_id' => ['required'],
         ]);
+        
+        // $filename = time(). '.' .$request->picture->extension();
+        // // dd($filename);
+        // $path = $request->file('picture')->storeAs(
+        //     'ImagesAnnoncs',
+        //     $filename,
+        //     'public'            
+        // );
         $annonce = Annonce::create($validateData);
+        // $picture = new AnnonceHasFile();
+        // $picture->path = $path;
+        // $annonce->picture()->save($picture);
         return back();
     }
 
@@ -90,6 +105,14 @@ class AnnonceController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $annonce = Annonce::findOrFail($id);
+        $annonce->title = $request->input('title');
+        $annonce->budget = $request->input('budget');
+        $annonce->content = $request->input('content');
+        $annonce->categorie_id = $request->input('categorie_id');
+        $annonce->deadline = $request->input('deadline');
+        $annonce->save();
+        return back();
     }
 
     /**
@@ -101,10 +124,30 @@ class AnnonceController extends Controller
     public function destroy($id)
     {
         //
+        Annonce::find($id)->delete();
+        return  back();
     }
     public function byCategorie($categorie_id){
-        $annonces = Annonce::where('categorie_id', '=', $categorie_id)->paginate(3);
+        $annonces = Annonce::where('categorie_id', '=', $categorie_id)->paginate(5);
         $categories = Categorie::all();
         return view('annonce/annonces', compact('annonces','categories'));
+    }
+    public function listAnnonceByAdmin(){
+        $villes = Ville::all();
+        $categories = Categorie::all();
+        $annonces = Annonce::orderBy("created_at", "desc")->get();
+        return view('admin/listeAnnonces', compact("villes", "categories", "annonces"));
+       }
+       public function statuts($id){
+        $annonce = DB::table('annonces')->select('statuts')->where('id', '=', $id)->first();
+    
+        if ($annonce->statuts == '1') {
+            $statuts = '0';
+        }else{
+            $statuts = '1';
+        }
+        $values = array('statuts' =>$statuts);
+        DB::table('annonces')->where('id',$id)->update($values);
+        return back();
     }
 }

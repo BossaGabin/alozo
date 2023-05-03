@@ -41,7 +41,7 @@
 
             <div class="text-center" style="margin-bottom:-25px">
               <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
-              </div> 
+            </div> 
               <ul >
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"

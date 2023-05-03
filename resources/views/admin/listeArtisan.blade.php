@@ -67,17 +67,109 @@
       <thead >
         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
           <th class="px-4 py-3">#</th>
-          <th class="px-4 py-3">Nom</th>
-          <th class="px-4 py-3">Prenoms</th>
-          <th class="px-4 py-3">Email</th>
+          <th class="px-4 py-3">Nom et Prénom</th>
+          <th class="px-4 py-3">Téléphone</th>
           <th class="px-4 py-3">Categories</th>
-          <th class="px-4 py-3">Photos</th>
+          <th class="px-4 py-3">Villes</th>
           <th class="px-4 py-3">Address</th>
+          <th class="px-4 py-3">Statut</th>
           <th class="px-4 py-3">Actions</th>
 
         </tr>
       </thead>
       <tbody>
+        @foreach ($artisans as $artisan)
+        <tr>
+          <td> {{$loop->index +1}} </td>
+          <td> {{$artisan->name}} </td>
+          <td> {{$artisan->phone}} </td>
+          <td> {{$artisan->categorie->name}} </td>
+          <td> {{$artisan->ville->name}} </td>
+          <td> {{$artisan->adresse}} </td>
+          <td>
+           <?php
+            if ($artisan->statuts == '1') {?>
+
+              <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-success">Actif</a>
+
+           <?php }
+           else {?>
+
+            <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-danger">inactif</a>
+            
+          <?php }          
+           ?>
+          </td>
+          
+          <td>
+              <div style="display:flex;">
+                 <!--boutton Modal  Nouveau   -->  
+                 <a href="#" type="submit" class="btn btn-primary fa fa-pencil" data-bs-toggle="modal" data-bs-target="#myModaleVe{{$artisan->id}}" style="color:white;margin-right:20px" ></a>     
+                 <!-- The Modal -->
+                 <div class="modal" id="myModaleVe{{$artisan->id}}">
+                   <div class="modal-dialog">
+                     <div class="modal-content">
+                 
+                       <!-- Modal Header -->
+                       <div class="modal-header">
+                         <h4 class="modal-title">Modifier les informations d'un artisan</h4>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                       </div>
+                 
+                       <!-- Modal body -->
+                       <div class="modal-body">                                 
+                         <form action="{{ route('artisans.update',$artisan->id ) }}" method="POST">
+                           @csrf
+                           @method('patch')
+                           <div class="mb-3 mt-3">
+                             <label for="nom" class="form-label">Nom et Prénom:</label>
+                             <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{$artisan->name}}">
+                           </div>
+                           <div class="mb-3">
+                             <label for="pwd" class="form-label">Télephone:</label>
+                             <input type="mail" class="form-control" id="phone"  name="phone" value="{{$artisan->phone}}">
+                           </div>
+                           <div class="mb-3">
+                            <select name="categorie_id"  class="form-control" id="" style="height: 50px;">
+                              <option value="{{$artisan->categorie->id}}">{{$artisan->categorie->name}}</option>
+                              @foreach ($categories as $categorie)
+                              <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
+                              @endforeach
+                            </select>
+                           </div>
+                           <div class="mb-3">
+                            <select name="ville_id"  class="form-control" id="" style="height: 50px;">
+                              <option value="{{$artisan->ville->id}}">{{$artisan->ville->name}}</option>
+                              @foreach ($villes as $ville)
+                              <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+                              @endforeach
+                            </select>
+                           </div>                                  
+                           <div class="mb-3">
+                             <label for="pwd" class="form-label">Adresse:</label>
+                             <input type="text" class="form-control" id="adresse" name="adresse" value="{{$artisan->adresse}}">
+                           </div>                                  
+                             <button type="submit" class="btn btn-success">Valider</button>
+                         </form>
+                       </div>
+                 
+                       <!-- Modal footer -->
+                       <div class="modal-footer">
+                         <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                       </div>
+                 
+                     </div>
+                   </div>
+                 </div>           
+                   <!-- End boutton Modal  Nouveau   -->              
+                   <form action="{{ route('artisans.destroy',$artisan->id ) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger fa fa-trash"></button>   
+                  </form>  
+         </td>  
+        </tr>          
+        @endforeach
       
       </tbody>
     </table>
