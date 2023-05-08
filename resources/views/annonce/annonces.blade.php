@@ -26,7 +26,7 @@
 }  
 </style>
 
-<main>
+<main style="background: rgb(241, 240, 239)">
   <div style="margin-top: 10%">
     @if ($errors->any())
             <div class="alert alert-danger">
@@ -93,13 +93,13 @@
       </div>   
        <div class="row">
           <div class="dropdown col-ms-4 my-2 col-md-6">
-            <button class="btn btn-secondary dropdown-toggle btn-order" type="button" data-bs-toggle="dropdown" aria-expanded="false">Trier par categorie</button>
+            {{-- <button class="btn btn-secondary dropdown-toggle btn-order" type="button" data-bs-toggle="dropdown" aria-expanded="false">Trier par categorie</button>
             <ul class="dropdown-menu">
               @foreach ($categories as $categorie)
                 <li><a href="/categorie/{{$categorie->id}}" class="dropdown-item"> {{ $categorie->name }} </a></li>                
-              @endforeach
+              @endforeach --}}
             </ul>
-        </div> 
+         </div> 
           <div class="text-center col-md-6">
             <button type="button" class="btn btn-order" data-bs-toggle="modal" data-bs-target="#buy-annonce-modal" data-ticket-type="premium-access"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16" style="margin-top: -3px">
               <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
@@ -107,35 +107,86 @@
           </div>         
       </div>     
         <!-- Modal Order Form -->        
-      <div class="row ">
-        @foreach ($annonces as $annonce)      
-        {{-- @dd($annonce) --}}
-          <div class="col-lg-4 mt-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="card mb-5 mb-lg-0">            
-              <div class="card-body">
-                <h5 class="card-title text-muted text-uppercase text-center" style="font-size: 25px">{{ $annonce->categorie->name }}</h5>
-                <div>
-                  {{-- <img src="{{ Storage::url($annonce->picture->path) }}" class="img-fluid col-12" alt=""height="282" style="max-heigth:100%; max-width:100%;min-heigth:100%; min-width:100%"> --}}
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2 border">
+              <div class="border " style="margin-top: 40px; height:400px;" >
+                <div class="border-bottom"  >
+                  <center><h2>Trier</h2></center>
                 </div>
-                 <h5 class="card-title text-muted text-center" style="font-size: 10px; margin-bottom:-25px"><em>Publié le {{ $annonce->created_at }}</em></h5>
-                <hr>
-                <h6 class="card-price text-center" style="margin-top:-25px"><span style="font-size: 23px"> <strong>{{ $annonce->title }}</strong></span></h6>
-                <hr>
-                  <h5  class="card-price" style="font-size: 17px">Mon budget est de <span style="font-size: 17px"><em> <strong style="color: #ddcc72">{{  $annonce->budget }}F CFA,</strong>  </em></span></h5>               
-                  <div class="d-flex">                
-                    <h5 class="card-price" style="font-size: 17px">Je veux que le travaille soit fait au plus tard le <span  style="font-size: 17px"><strong style="color: #ddcc72">{{ $annonce->deadline }}</strong></span></h5>
+                <form action="annonces" method="get">
+                  @csrf
+                    <div style="margin-left:20px">                 
+                      <div>
+                        <input type="radio" id="drone" name="drone" value="all" checked >
+                        <label for="">Toutes</label>
+                      </div>
+                      @foreach ($categories as $categorie)              
+                        <div>
+                          <input type="radio" id="drone" name="drone" value="{{$categorie->id}}" {{  $categorieId == $categorie->id ? 'checked' : ''  }} >
+                          <label for="">{{$categorie->name}}</label>
+                        </div>
+                      @endforeach
+                    </div>            
                   </div>
-                  {{-- <h5 class="card-price" style="font-size: 30px">Description: <span  style="font-size: 25px"> {{ $annonce->content }} </span></h5> --}}
-                <hr>
-                <div class="text-center">
-                  <a type="submit" class="btn btn-order" href="/annonces/{{ $annonce->id }}">Details annonce</a>
-                </div>
-              </div>
-            </div>
-          </div>          
-          <!-- Pro Tier --> 
-        @endforeach
-      </div>
+{{--       
+                  <div class="border" style="margin-top: 40px;" >
+                    <div class="border-bottom">
+                      <h4>Localisation</h4>
+                    </div>
+                    <h3>Ville</h3>
+                    <select name="ville_id"  class="form-control" id="">
+                      <option value="" selected>Toutes les villes</option>
+                      @foreach ($villes as $ville)
+                      <option value="{{$ville->id}}" {{  $villeId == $ville->id ? 'selected' : ''  }}>{{$ville->name}}</option>                              
+                      @endforeach
+                    </select>
+                  </div> --}}<br><br>
+                  <button type="submit" class="btn btn-order">Valider</button>
+                </form><br><br>
+                      
+            </div> <!-- ======= End col-md-3 border======= -->
+                 <!-- ======= Liste Artisan ======= -->
+                   <div class="col-md-10 " id="artisanByCategorie" style="padding: 50px">
+                      <div class="tab-pane active">
+                        <div class="bloc1">
+                          <div class="row ">
+                            @foreach ($annonces as $annonce)      
+                            {{-- @dd($annonce) --}}
+                              <div class="col-lg-4 mt-3" data-aos="fade-up" data-aos-delay="100">
+                                <div class="card mb-5 mb-lg-0">            
+                                  <div class="card-body">
+                                    <h5 class="card-title text-muted text-uppercase text-center" style="font-size: 18px">{{ $annonce->categorie->name }}</h5>
+                                    <div>
+                                      {{-- <img src="{{ Storage::url($annonce->picture->path) }}" class="img-fluid col-12" alt=""height="282" style="max-heigth:100%; max-width:100%;min-heigth:100%; min-width:100%"> --}}
+                                    </div>
+                                    <hr>
+                                     <h5 class="card-title text-muted text-center" style="font-size: 10px; margin-bottom:-25px;margin-top:-25px"><em>Publié le {{ $annonce->created_at }}</em></h5>
+                                    <hr>
+                                    <h6 class="card-price text-center" style="margin-top:-25px"><span style="font-size: 16px"-> <strong>{{ $annonce->title }}</strong></span></h6>
+                                    <hr>
+                                      <h5  class="card-price" style="font-size: 16px">Mon budget est de <span style="font-size: 16px"><em> <strong style="color: #ddcc72">{{  $annonce->budget }}F CFA,</strong>  </em></span></h5>               
+                                      <div class="d-flex">                
+                                        <h5 class="card-price" style="font-size: 16px">Je veux que le travaille soit fait au plus tard le <span  style="font-size: 16px"><strong style="color: #ddcc72">{{ $annonce->deadline }}</strong></span></h5>
+                                      </div>
+                                      {{-- <h5 class="card-price" style="font-size: 30px">Description: <span  style="font-size: 25px"> {{ $annonce->content }} </span></h5> --}}
+                                    <hr>
+                                    <div class="text-center">
+                                      <a type="submit" class="btn btn-order" href="/annonces/{{ $annonce->id }}">Details annonce</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>          
+                              <!-- Pro Tier --> 
+                            @endforeach
+                            {{-- {{ $annonces->links() }} --}}
+                          </div>
+                        </div>
+                      </div>            
+                   </div>
+          </div>  <!-- ======= End Row ======= -->      
+        </div> <!-- ======= End container ======= -->   
+    
     </div>   
   </section>
 </main>

@@ -3,6 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <!-- Favicons -->
+	 <link href="../assets/img/LOGO_Officiel2.jpg" rel="icon">
+	 <link href="../assets/img/LOGO_Officiel2.jpg" rel="apple-touch-icon">
+	 <!-- Google Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -24,7 +28,7 @@
 			</div>
 			<i class="fa-sharp fa-regular fa-bell"></i>
 			<div class="user">
-				<img src="assets/img/images.png">
+				<img src="{{asset('assets/img/images.png')}}">
 			</div>
 		</div>
 		<div class="sidebar">
@@ -48,7 +52,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="users">
 						<i class="fas fa-user"></i>
 						<div>Clients</div>
 					</a>

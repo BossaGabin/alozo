@@ -45,7 +45,7 @@
   
  <!-- ======= Hero Section ======= -->
  <section id="hero">
-  <div style="margin-top: 5%;">
+  <div style="margin-top: 15%;">
     @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -128,9 +128,8 @@
  
   <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
     <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme facilitant la mise en relation entre <br> les clients potentiels et les artisans qualifiés.</h1>
-    <div>
-    <a href="/register" class="btn btn-register text-uppercase">Inscription</a>
-    <br><br><br>
+  <div><br><br><br>
+
     <div class="search-container">
       <div class="row">
         <div class="col-md-6">
@@ -200,29 +199,33 @@
     <div class="container">
       <div class="row">
           <!-- ======= Liste Artisan ======= -->
-          <div class="col-md-12   " style="padding: 50px">
+          <div class="col-md-12" style="padding: 50px">
             <div class="tab-pane active">
               <div class="bloc1">
                   <div class="row">
-                     @foreach ($artisans as $artisan)  
-                     {{-- @dd($artisan);                        --}}
-                     <div class="col-ms-6 col-md-3  mb-3  text-center border" style="margin:30px 40px 30px 40px">
-                      <div class="thumbmail">
-                        <img src="../assets/img/images.png" class="img-fluid col-12" alt="" height="200" width="200">                                  
-                          <div class="caption">
-                          <h5 class="card-title text-muted text-uppercase ">{{$artisan->categorie->name}}</h5>
-                          <h6><span class="bi bi-phone" ></span>{{$artisan->phone}}</h6>
-                          <p><span class="bi bi-geo-alt-fill" ></span>{{ $artisan->ville->name.', '. $artisan->adresse }}</p>
-                          <div class="justify-content-center " style="display:flex; margin-top:-5%">
-                            <img src="assets/img/Star 4.png" alt="">
-                            <img src="assets/img/Star 4.png" alt="">
-                            <img src="assets/img/Star 4.png" alt="">
-                          </div><br>
-                          <a href="/artisan/{{ $artisan->id }}" class="btn btn-order" role="button"><span>Consulter</span></a><br><br>
-                          </div>
-                      </div>
-                    </div>                              
-                     @endforeach                                     
+                    @foreach ($artisans as $artisan)  
+                    {{-- @dd($artisan);  --}}
+                    <div class="col-lg-3 mt-3" data-aos="fade-up" data-aos-delay="100">
+                       <div class="card mb-5 mb-lg-0">
+                         <div class="card-body text-center">
+                           <div class="thumbmail">
+                             <img src="../assets/img/images.png" class="img-fluid col-8" alt="" style="min-width:90px; max-width:90px; min-heigth:90px; max-heigth:90px; margin-top:15px">                                  
+                               <div class="caption">
+                               <h6 class="card-title text-muted text-uppercase catego">{{$artisan->categorie->name}}</h6>
+                               <h6><span class="bi bi-user" ></span>{{$artisan->name}}</h6>
+                               <p><span class="bi bi-geo-alt-fill" ></span>{{ $artisan->ville->name.', '. $artisan->adresse }}</p>
+                               <div class="justify-content-center ">
+                                 <img src="assets/img/Star 4.png" alt="">
+                                 <img src="assets/img/Star 4.png" alt="">
+                                 <img src="assets/img/Star 4.png" alt="">
+                               </div><br>                                     
+                               <a href="/artisans/{{ $artisan->id }}" class="btn btn-order" role="button"><span>Consulter</span></a><br><br>
+                               </div>
+                           </div>
+                       </div> 
+                       </div>                            
+                    </div>                             
+                    @endforeach                                     
                   </div>
               </div>
             </div>            
@@ -256,7 +259,7 @@
             <div class="card-body">
               <h5 class="card-title text-muted text-uppercase text-center" style="font-size: 25px">{{ $annonce->categorie->name }}</h5>
               <div>
-                <img src="{{ asset('assets/img/categories/auto-repair-3691962_1920.jpg') }}" class="img-fluid col-12" alt=""height="282" style="max-heigth:100%; max-width:100%;min-heigth:100%; min-width:100%">
+                {{-- <img src="{{ asset('assets/img/categories/auto-repair-3691962_1920.jpg') }}" class="img-fluid col-12" alt=""height="282" style="max-heigth:100%; max-width:100%;min-heigth:100%; min-width:100%"> --}}
               </div>
                <h5 class="card-title text-muted text-center" style="font-size: 10px; margin-bottom:-25px"><em>Publié le {{ $annonce->created_at }}</em></h5>
               <hr>

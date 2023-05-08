@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Alôzô - Index</title>
+  <title>Alôzô</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <!-- Favicons -->
@@ -21,6 +21,33 @@
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
  </head>
 <body>
+  <style>
+    .btn-nav{
+   /* width: 100% */
+    padding: 8px !important;
+    font-size:20px !important;
+    color: black !important;
+    background-color: #ddc72e !important;
+    text-decoration: none !important;
+    /* text-shadow: 2px 2px black !important; */
+    border-style: none !important;
+    border-radius: 5px 5px 5px 5px !important;
+  }
+  .btn-nav:hover{
+   /* width: 100% */
+    padding: 8px !important;
+    font-size:20px !important;
+    color: #ddc72e !important;
+    text-decoration: none !important;
+    background: none !important;
+    /* text-shadow: 2px 2px black !important; */
+    border-style: none !important;
+    border-radius: 5px 5px 5px 5px !important;
+  } 
+  
+  </style>
+  {{-- (Auth::user()->id = $artisan->user_id) --}}
+  {{-- @dd($artisan->user_id) --}}
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center bg-dark">
     <div class="container-fluid container-xxl d-flex align-items-center">
@@ -53,9 +80,18 @@
                 </li>
             @endif           
         @else
-            <li class="nav-item dropdown fs-5" >
-                <a href="#" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access">Devenir un artisan</a>
-                <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="margin-left:10px">
+        <li class="nav-item dropdown fs-5" >
+          @can('create', 'App\User')
+          <a href="/dashboard" type="button" class="btn-nav">Dashboard</a>                  
+          @endcan 
+
+        @if (Auth::user()->role_id == 2)
+        <a href="#" type="button" class="btn-nav">Abonnement</a>  
+        @else
+        <a href="#" type="button" class="btn-nav" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access">Devenir un artisan</a>
+        @endif            
+
+                 <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="margin-left:10px">
                     {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -70,6 +106,7 @@
                     </form>
                 </div>
             </li>
+          
         @endguest
     </ul>
 
@@ -90,35 +127,35 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Liens rapide</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/artisans">Annonces</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/annonces">Artisans</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/contact">Contact</a></li>
+              {{-- <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li> --}}
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            {{-- <h4>Useful Links</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
+            </ul> --}}
           </div>
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
+            <h4>Contactez-nous</h4>
             <p>
               
               Calavi, cloture IITA<br>
               Benin <br>
               <strong>Telephone:</strong> +229 52091145<br>
-              <strong>Email:</strong> gabinAziz@example.com<br>
+              <strong>Email:</strong> projetalozo@gmail.com<br>
             </p>
 
             <div class="social-links">

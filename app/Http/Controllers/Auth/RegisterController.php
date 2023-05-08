@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Ville;
+use App\Models\Artisan;
+use App\Models\Categorie;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -69,8 +73,11 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],            
-            'role_id' => 3,            
             'password' => Hash::make($data['password']),
+            'role_id'=>3
+
         ]);
     }
+
+    
 }

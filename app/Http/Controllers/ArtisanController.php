@@ -10,6 +10,7 @@ use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ArtisanController extends Controller
 {
@@ -18,13 +19,37 @@ class ArtisanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){  
+    public function index(Request $request ){
+        $categorieId = '';
+        $villeId = '';
+        if ($request->filled('drone') && $request->filled('ville_id')) {
+            
+            $categorieId  = (int)$request->drone;
+
+            $villeId = (int)$request->ville_id;
+            
+            $artisans = Artisan::where('ville_id', $villeId)->where('categorie_id', $categorieId)->where('statuts', '=', true)->get();
+        }elseif ($request->filled('drone')){
+
+            $categorieId  = (int)$request->drone ;
+            $artisans = Artisan::where('categorie_id', $categorieId)->where('statuts', '=', true)->get();
+        }
+        // elseif ($request->filled('ville_id') && $request->filled('drone','=', 'all')){
+
+        //     $villeId = (int)$request->ville_id;
+        //     $artisans = Artisan::where('ville_id', $villeId)->where('statuts', '=', true)->get();
+        // }
         
+        else{
+
+            $artisans = Artisan::where('statuts', '=', true)->orderBy("created_at", "desc")->get();
+            // return view('artisan/artisans', compact("artisans"));
+        }
+        // return view('artisan/artisans', compact("artisans"));
         $villes = Ville::all();
         $categories = Categorie::all();
-        $artisans = Artisan::where('statuts', '=', true)->orderBy("created_at", "desc")->get();
-        return view('artisan/artisans', compact("villes", "categories", "artisans"));
-        // return view('artisan/artisans', compact("artisans"));
+        return view('artisan/artisans', compact("categories","villes",  "artisans","categorieId","villeId" ));
+
     }
 
     /**
@@ -54,16 +79,21 @@ class ArtisanController extends Controller
             'name' => 'required',
             'adresse' => 'required',
             'phone' => 'required',
-            'certificate' => 'required',
+            // 'certificate' => 'required',
             'categorie_id' => 'required',
             'ville_id' => 'required',           
             'ID_number' => 'required',
 
         ]);
-        $validateData['role_id'] =2;
-        $validateData['user_id'] = Auth::user()->id;
-        $artisan = Artisan::create($validateData);       
-        return back();
+
+        try {
+            // $validateData['role_id'] = 2;
+            $validateData['user_id'] = Auth::user()->id;
+            $artisan = Artisan::create($validateData);       
+            return back()->with('success', "Votre demande a été envoyé");
+        } catch (\Throwable $th) {
+            return back()->withErrors($th->getMessage());
+        }
     }
 
     /**
@@ -124,6 +154,42 @@ class ArtisanController extends Controller
         Artisan::find($id)->delete();
         return  back();
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function activate(Request $request)
+    {
+        if(Auth::user()->role_id != 1) abort(403); 
+
+        $artisan = Artisan::findOrFail($request->artisanId);
+
+        if($artisan && ($request->decision =='approuver' || $request->decision =='Rejeter')){
+            if($request->decision =='approuver'){
+
+                $artisan->verified = true;
+                $artisan->statuts = true;
+                $artisan->save();
+                $users = User::find($artisan->user_id);
+                $users->role_id = 2;
+                $users->save();
+                return back()->with('success',"Le compte artisan à été validé");
+
+            } else{
+                $artisan->delete();
+                return back()->with('success',"La demande à été supprimé");
+            }
+
+            return back()->with('success');
+        }else abort(404);
+
+        return  back();
+    }
+
+
     
     public function welcome(){
         $villes = Ville::all();
@@ -134,26 +200,35 @@ class ArtisanController extends Controller
     }
 
    public function listArtisanByAdmin(){
+
+    if (!Gate::allows('access-admin')) {
+        abort('403');
+     }
     $villes = Ville::all();
     $categories = Categorie::all();
     $artisans = Artisan::orderBy("created_at", "desc")->get();
     return view('admin/listeArtisan', compact("villes", "categories", "artisans"));
    }
-   public function statuts($id){
-    $artisan = DB::table('artisans')->select('statuts')->where('id', '=', $id)->first();
 
-    if ($artisan->statuts == '1') {
-        $statuts = '0';
-    }else{
-        $statuts = '1';
-    }
-    $values = array('statuts' =>$statuts);
-    DB::table('artisans')->where('id',$id)->update($values);
-    return back();
+   public function statuts($id){
+        $artisan = DB::table('artisans')->select('statuts')->where('id', '=', $id)->first();
+
+        if ($artisan->statuts == true) {
+            $statuts = false;
+        }else{
+            $statuts = true;
+            // Artisan::find($id)->delete();
+        }
+        $values = array('statuts' =>$statuts);
+        DB::table('artisans')->where('id',$id)->update($values);
+        return back();
    }
 
    public function count(){
 
+    if (!Gate::allows('access-admin')) {
+       abort('403');
+    }
     // $artisans = Artisan::orderBy("created_at", "desc")->take(8)->get();
     $artisans = Artisan::count('*');
     $annonces = Annonce::count('*');

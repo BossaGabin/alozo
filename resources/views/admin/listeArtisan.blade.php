@@ -47,8 +47,7 @@
         <div class="col-md-12">
           <label for="inputCity" class="form-label">Photo</label>
           <input type="file" name="" class="form-control" id="">
-        </div>
-        
+        </div>    
       
             <!-- Modal footer -->
             
@@ -72,7 +71,7 @@
           <th class="px-4 py-3">Categories</th>
           <th class="px-4 py-3">Villes</th>
           <th class="px-4 py-3">Address</th>
-          <th class="px-4 py-3">Statut</th>
+          <th class="px-4 py-3">Resultat</th>
           <th class="px-4 py-3">Actions</th>
 
         </tr>
@@ -86,19 +85,93 @@
           <td> {{$artisan->categorie->name}} </td>
           <td> {{$artisan->ville->name}} </td>
           <td> {{$artisan->adresse}} </td>
-          <td>
-           <?php
-            if ($artisan->statuts == '1') {?>
-
-              <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-success">Actif</a>
-
-           <?php }
-           else {?>
-
-            <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-danger">inactif</a>
+          <td>           
             
-          <?php }          
-           ?>
+            
+            <!--?php
+                // if ($artisan->statuts == true) {?-->
+
+                  {{-- <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-success">Accepter</a> --}}
+
+              <!--?php }
+              else {?>
+
+                {{-- <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-danger">Rejeter</a> --}}
+                
+              <--?php }          
+              ?-->
+              <?php 
+              if ($artisan->verified == true) { ?>
+
+              <a href="#" class="btn btn-success">Approuver</a>
+
+             <?php } else {?>
+
+              <a href="#" type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myModaleResultat{{$artisan->id}}">En attente</a> 
+
+              <div class="modal" id="myModaleResultat{{$artisan->id}}">
+               <div class="modal-dialog">
+                 <div class="modal-content">
+             
+                   <!-- Modal Header -->
+                   <div class="modal-header">
+                     <h4 class="modal-title">Décision de l'admin</h4>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                   </div>
+             
+                   <!-- Modal body -->
+                   <div class="modal-body">     
+                     <div class="mb-3 mt-3">
+                       <label for="nom" class="form-label">Nom et Prénom:</label>
+                       <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{$artisan->name}}">
+                     </div>
+                     <div class="mb-3">
+                       <label for="pwd" class="form-label">Télephone:</label>
+                       <input type="mail" class="form-control" id="phone"  name="phone" value="{{$artisan->phone}}">
+                     </div>
+                     <div class="mb-3">
+                      <select name="categorie_id"  class="form-control" id="" style="height: 50px;">
+                        <option value="{{$artisan->categorie->id}}">{{$artisan->categorie->name}}</option>
+                        @foreach ($categories as $categorie)
+                        <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
+                        @endforeach
+                      </select>
+                     </div>
+                     <div class="mb-3">
+                      <select name="ville_id"  class="form-control" id="" style="height: 50px;">
+                        <option value="{{$artisan->ville->id}}">{{$artisan->ville->name}}</option>
+                        @foreach ($villes as $ville)
+                        <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+                        @endforeach
+                      </select>
+                     </div>                                  
+                     <div class="mb-3">
+                       <label for="pwd" class="form-label">Adresse:</label>
+                       <input type="text" class="form-control" id="adresse" name="adresse" value="{{$artisan->adresse}}">
+                     </div>                                  
+                    
+                     
+                    <a href="{{ route('artisans.verify',['artisanId' => $artisan->id ,'decision' => 'approuver']) }}" type="submit" class="btn btn-success btn-lg">Accepter</a>
+                    <a href="{{ route('artisans.verify',['artisanId' => $artisan->id ,'decision' => 'rejeter']) }}" type="submit" class="btn btn-danger btn-lg" style="margin-left: 5%">Rejetter</a>
+                   </div>
+             
+                   <!-- Modal footer -->
+                   <div class="modal-footer">
+                     <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Retour</button>
+                   </div>
+             
+                 </div>
+               </div>
+             </div>     
+          
+
+                
+             <?php }
+              
+
+
+              ?>
+                
           </td>
           
           <td>
@@ -169,8 +242,7 @@
                   </form>  
          </td>  
         </tr>          
-        @endforeach
-      
+        @endforeach      
       </tbody>
     </table>
   </div>

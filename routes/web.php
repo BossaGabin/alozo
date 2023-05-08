@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnnonceController;
 use App\Http\Controllers\ArtisanController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 use App\Models\Ville;
 
@@ -24,6 +26,7 @@ use App\Models\Ville;
 //     return view('welcome');
 // });
 Route::get('/', [ArtisanController::class, 'welcome']);
+// Route::get('/', [ArtisanController::class, 'gab']);
 
 Route::get('/contact', function(){
     return view('contact');
@@ -44,23 +47,20 @@ Route::middleware('auth')->group(function(){
     // Route::put('annonces/edit/{id}',[AnnonceController::class, 'update'])->name('annonces.update');
     // Route::delete('annonces/{id}',[AnnonceController::class, 'destroy'])->name('annonces.destroy');    
     // Route::resources('artisan', ArtisanController::class);
-    Route::resource('user', User::class);
+    Route::resource('users', UserController::class);
+    Route::get('/admin-update-user/{id}', [UserController::class, 'admin']);
         
     Route::get('/listeArtisan', [ArtisanController::class, 'listArtisanByAdmin']);
-    Route::get('/statuts-update-artisan/{id}', [ArtisanController::class, 'statuts']);
     Route::get('/listeAnnonces', [AnnonceController::class, 'listAnnonceByAdmin']);
+    // Route::get('/listeArtisan/?decision/{user_id}', [ArtisanController::class, 'activate']);
     Route::get('/statuts-update-annonce/{id}', [AnnonceController::class, 'statuts']);
-
+    Route::get('/statuts-update-artisan/{id}', [ArtisanController::class, 'statuts']);
+    Route::get('/statuts-verify-artisan/', [ArtisanController::class, 'activate'])->name('artisans.verify');
     Route::get('/dashboard', [ArtisanController::class, 'count'])->name("Dashboard");
-
-
-
-
-    // Route::get('/dashboard', function(){
-    //     return view('admin/dashboard');
-    // })->name("Dashboard");
-
     
+        // Route::get('/dashboard', function(){
+        //     return view('admin/dashboard');
+        // })->name("Dashboard");
 });
 
 Auth::routes();

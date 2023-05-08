@@ -132,7 +132,6 @@
             </div>
             <h4 class="ms-5">28/04/2023</h4>
           </div>
-          
               <p class=" mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. A rerum maiores earum,<br> accusantium quae laborum beatae eius sint deleniti dolor doloribus animi<br> autem quasi expedita suscipit necessitatibus sit ullam id.</p>
         </div>
         <div class="col-md-12 border-top  mt-2 ps-2 ">

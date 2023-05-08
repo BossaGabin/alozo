@@ -25,6 +25,7 @@
             <i class="bi bi-phone"></i>
             <h3>Téléphone</h3>
             <p><a href="tel:+229 52091145">+229 52091145</a></p>
+            <p><a href="tel:+229 97848174">+229 97848174</a></p>
           </div>
         </div>
 
@@ -32,7 +33,7 @@
           <div class="contact-email">
             <i class="bi bi-envelope"></i>
             <h3>Email</h3>
-            <p><a href="mailto:info@example.com">bossaziz@example.com</a></p>
+            <p><a href="mailto:info@example.com">projetalozo@gmail.com</a></p>
           </div>
         </div>
 
