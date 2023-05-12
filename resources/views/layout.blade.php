@@ -9,7 +9,11 @@
   <!-- Favicons -->
   <link href="../assets/img/LOGO_Officiel2.jpg" rel="icon">
   <link href="../assets/img/LOGO_Officiel2.jpg" rel="apple-touch-icon">
+  <!-- CDN -->
+  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> --}}
   <!-- Google Fonts -->
+  
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
     <!-- Vendor CSS Files -->
   <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
@@ -19,13 +23,16 @@
   <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/dashboard2.css') }}" rel="stylesheet">
+
  </head>
-<body>
+<body style="background: rgb(231, 231, 229)">
   <style>
+   
     .btn-nav{
    /* width: 100% */
     padding: 8px !important;
-    font-size:20px !important;
+    /* font-size:20px !important; */
     color: black !important;
     background-color: #ddc72e !important;
     text-decoration: none !important;
@@ -36,7 +43,7 @@
   .btn-nav:hover{
    /* width: 100% */
     padding: 8px !important;
-    font-size:20px !important;
+    /* font-size:20px !important; */
     color: #ddc72e !important;
     text-decoration: none !important;
     background: none !important;
@@ -58,10 +65,10 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="/home">Accueil</a></li>        
-          <li><a class="nav-link scrollto" href="/artisans">Artisans</a></li>  
-          <li><a class="nav-link scrollto" href="/annonces">Annonces</a></li>  
-          <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
+          <li><a class="nav-link scrollto fs-4 " href="/home">Accueil</a></li>        
+          <li><a class="nav-link scrollto fs-4" href="/artisans">Artisans</a></li>  
+          <li><a class="nav-link scrollto fs-4" href="/annonces">Annonces</a></li>  
+          <li><a class="nav-link scrollto fs-4" href="/contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -76,26 +83,26 @@
         @guest
             @if (Route::has('login'))
                 <li class="nav-item">
-                     <a class="buy-tickets scrollto" href="{{ route('login') }}">Se connecter</a>    
+                     <a class="buy-tickets scrollto btn-nav fs-4" href="{{ route('login') }}">Se connecter</a>    
                 </li>
             @endif           
         @else
         <li class="nav-item dropdown fs-5" >
-          @can('create', 'App\User')
+          {{-- @can('create', 'App\User')
           <a href="/dashboard" type="button" class="btn-nav">Dashboard</a>                  
-          @endcan 
+          @endcan  --}}
 
         @if (Auth::user()->role_id == 2)
-        <a href="#" type="button" class="btn-nav">Abonnement</a>  
+        <a href="#" type="button" class="btn-nav fs-4">Abonnement</a>  
         @else
-        <a href="#" type="button" class="btn-nav" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access">Devenir un artisan</a>
+        <a href="#" type="button" class="btn-nav fs-4" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access">Devenir un artisan</a>
         @endif            
 
-                 <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="margin-left:10px">
+                 <a id="navbarDropdown" class="dropdown-toggle fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="margin-left:10px">
                     {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <a href="/profil" class="dropdown-item"><span class="bi bi-person"></span>Profil</a>
+                  <a href="{{route('user.show')}}" class="dropdown-item"><span class="bi bi-person"></span>Profil</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
@@ -181,9 +188,12 @@
   <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="jquery.star-rating-svg.js"></script>
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
+  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> --}}
 
 </body>
 

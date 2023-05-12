@@ -143,6 +143,16 @@ color:#222;
 	border-radius: 10px;
 	box-shadow: 0 7px 25px 0 rgba(0,0,0,0.08);
 }
+.cards .card1{
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	margin-top: 0px;
+	justify-content: space-between;
+	background: rgb(27, 26, 26);
+	border-radius: 10px;
+	box-shadow: 0 7px 25px 0 rgba(0,0,0,0.08);
+}
 .cards .card:hover{
 	background:#ddc72e;	
 }

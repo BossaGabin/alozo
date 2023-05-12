@@ -24,6 +24,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'phone',       
+        'profil',       
         'email',
         'role_id',
         'password',
@@ -59,5 +60,9 @@ class User extends Authenticatable
     public function artisan()
     {
         return $this->hasOne(Artisan::class);
+    }
+    public function annonce(): HasMany
+    {
+        return $this->hasMany(Annonce::class);
     }
 }

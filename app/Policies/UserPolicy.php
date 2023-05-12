@@ -46,7 +46,7 @@ class UserPolicy
     public function create(User $user)
     {
         //
-        return in_array($user->admin,['1']);        
+        // return in_array($user->admin,['1']);        
     }
 
     /**

@@ -71,6 +71,7 @@
           <th class="px-4 py-3">Categories</th>
           <th class="px-4 py-3">Villes</th>
           <th class="px-4 py-3">Address</th>
+          <th class="px-4 py-3">Statut</th>
           <th class="px-4 py-3">Resultat</th>
           <th class="px-4 py-3">Actions</th>
 
@@ -85,21 +86,22 @@
           <td> {{$artisan->categorie->name}} </td>
           <td> {{$artisan->ville->name}} </td>
           <td> {{$artisan->adresse}} </td>
-          <td>           
-            
-            
-            <!--?php
-                // if ($artisan->statuts == true) {?-->
+          <td>
+              <?php
+                if ($artisan->statuts == true) {?>
 
-                  {{-- <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-success">Accepter</a> --}}
+                  <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-success">Actif</a>
 
-              <!--?php }
+              <?php }
               else {?>
 
-                {{-- <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-danger">Rejeter</a> --}}
+                <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-danger">Inactif</a>
                 
-              <--?php }          
-              ?-->
+              <?php }          
+              ?>
+
+          </td>
+          <td>       
               <?php 
               if ($artisan->verified == true) { ?>
 

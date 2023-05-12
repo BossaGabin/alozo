@@ -25,9 +25,9 @@
     border-radius: 5px 5px 5px 5px !important;
   }  
    .btn-register{
-   width: 40% !important;
+   width: 50% !important;
     padding: 10px !important;
-    font-size:16px !important;
+    font-size:20px;
     color: black !important;
     background-color: #ddc72e !important;
     text-decoration: none !important;
@@ -37,7 +37,8 @@
   }
  .btn-register:hover{
   background: none !important;
-  color: #fff !important;
+  color: #ddc72e  !important;
+  background-color: black!important;
   /* border-radius: 50px !important; */
   border: 2px solid  #dcc72e !important;
   }  
@@ -48,7 +49,7 @@
   <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
     <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme facilitant la mise en relation entre <br> les clients potentiels et les artisans qualifiés.</h1>
     <div>
-    <a href="/register" class="btn btn-register text-uppercase">Inscription</a>
+    <a href="/register" class="btn btn-register text-uppercase fs-4">Inscription</a>
     <br><br><br>
     <div class="search-container">
       <div class="row">

@@ -33,7 +33,7 @@ class HomeController extends Controller
         $villes = Ville::all();
         $categories = Categorie::all();
         $artisans =Artisan::where('statuts', '=', true)->orderBy("created_at", "desc")->take(8)->get();
-        $annonces = Annonce::where('statuts', '=', true)->orderBy("created_at", "desc")->take(6)->get();
+        $annonces = Annonce::where('statuts', '=', true)->orderBy("created_at", "desc")->take(4)->get();
         return view('home', compact('villes','categories','artisans','annonces','user'));
     }
 }

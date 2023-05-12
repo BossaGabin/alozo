@@ -21,10 +21,10 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
-</head>
+ </head>
 
 <body>    
-  <main style="">
+  <main style="margin-top:-5%">
     <div class="container">
 
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
@@ -34,7 +34,7 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="/" class="logo d-flex align-items-center w-auto">
-                  <img src="{{asset('assets/img/LOGO_Officiel2.jpg')}}" alt="" style="border-radius: 200px;margin-top:5%" width="80" height="80">
+                  <img src="assets/img/alozo.PNG" alt="" style="border-radius: 200px;margin-top:5%" width="80" height="80">
                   
                 </a>
               </div><!-- End Logo -->
@@ -44,47 +44,38 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-3">Connectez-vous</h5>
-                    {{-- <p class="text-center small">Entrez votre email et mot de passe</p> --}}
+                    <h5 class="card-title text-center pb-0 fs-4">Connectez-vous</h5>
+                    <p class="text-center small">Entrez votre email et mot de passe</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate  method="POST" action="{{ route('login') }}">
-                    @csrf
+                  <form class="row g-3 needs-validation" novalidate>
+
                     <div class="col-12">
-                      <label for="email" class="form-label fs-5">Email:</label>
+                      <label for="Email" class="form-label">Email:</label>
                       <div class="input-group has-validation">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        {{-- <span class="input-group-text" id="inputGroupPrepend">@</span> --}}
+                        <input type="mail" name="email" class="form-control" id="email" required>
                         <div class="invalid-feedback">votre mail.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="password" class="form-label fs-5 ">Mot de passe:</label>
-                      <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                      <label for="yourPassword" class="form-label">Mot de passe:</label>
+                      <input type="password" name="password" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Votre mot de passe</div>
                     </div>
 
                     <div class="col-12">
-                      <div class="form-check justify-content-center"  >
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                        <label class="form-check-label fs-6" for="remember">Se souvenir de moi</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">se souvenir de moi</label>
                       </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-between">
-                        <div class="col-md-6">
-                          <button class="btn btn-order" type="submit" style="font-size:18px !important;">Connexion</button>
-                          
-                        </div>
-                        <div class="col-md-6">
-                            @if (Route::has('password.request'))
-                            <a class=" btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
-                            </a>                          
-                        </div>
-                  @endif
+                    <div class="col-12">
+                      <button class="btn  w-80" type="submit" style="margin-left: 20%">Connexion</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0 fs-6">Vous n'avez pas de compte? <a class="btn-link" href="{{route('register')}}">Creer un compte</a></p>
+                      <p class="small mb-0">Vous n'avez pas de compte? <a href="/inscription">Creer un compte</a></p>
                     </div>
                   </form>
 

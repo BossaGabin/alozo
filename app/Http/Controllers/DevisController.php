@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Devis;
+use App\Models\DevisHasFile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
-class UserController extends Controller
+class DevisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +18,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        // if (!Gate::allows('access-admin')) {
-        //     abort('403');
-        //  }            
-        $users = User::orderBy("created_at", "desc")->get();
-        
-        return view('admin/listeClients', compact("users"));    
+       
     }
 
     /**
@@ -41,9 +37,40 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         //
+        $validateData = $request->validate([
+            
+            'price' => 'required',
+            'delivery_date' => 'required',
+            'content' => 'required', 
+            // 'images' => 'required',
+            'images.*' =>['image','mimes:jpeg,jpg,png']         
+            
+        ]);
+        
+        $validateData['annonces_id'] = $id;
+        $validateData['artisans_id'] = Auth::user()->id;
+        
+        
+        try {
+            $devis = Devis::create($validateData);
+            
+            foreach ($request->file('images') as $image) {
+                $path =  Storage::disk('public')->put('devis', $image);
+                // dd($path, $devis->id);
+                DevisHasFile::create([
+                    'path' => $path,
+                    'devis_id' => $devis->id
+                ]);
+
+            }
+            return back()->with('success', "Votre devis a été envoyé");
+        } catch (\Throwable $th) {
+            return back()->withErrors($th->getMessage());
+        }
+
     }
 
     /**
@@ -78,13 +105,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $users = User::findOrFail($id);
-        $users->name = $request->input('name');
-        $users->phone = $request->input('phone');
-        $users->email = $request->input('email');
-        $users->profil = $request->input('profil');
-        $users->save();
-        return back();
     }
 
     /**
@@ -95,19 +115,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
-       
-    }
-     public function admin($id){
-        $user = DB::table('users')->select('admin')->where('id', '=', $id)->first();
-    
-        if ($user->admin == '1') {
-            $admin = '0';
-        }else{
-            $admin = '1';
-        }
-        $values = array('admin' =>$admin);
-        DB::table('users')->where('id',$id)->update($values);
-        return back();
+        Devis::find($id)->delete();
+        return  back();
     }
 }

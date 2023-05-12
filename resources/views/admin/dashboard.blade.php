@@ -6,7 +6,7 @@
 			<a href="#" style="text-decoration: none">
 				<div class="card">
 					<div class="card-content">
-						<div class="number">{{$users}}</div>
+						<div class="number"></div>
 						<div class="card-name">Inscriptions</div>
 					</div>
 					<div class="icon-box">
@@ -17,7 +17,7 @@
 			<a href="/listeArtisan" style="text-decoration: none">
 				<div class="card">
 					<div class="card-content">
-						<div class="number">{{$artisans}}</div>
+						<div class="number"></div>
 						<div class="card-name">Artisans</div>
 					</div>
 					<div class="icon-box"> 
@@ -28,7 +28,7 @@
 			<a href="/listeAnnonces" style="text-decoration: none">
 			<div class="card">
 				<div class="card-content">
-						<div class="number"> {{ $annonces}} </div>
+						<div class="number"> </div>
 						<div class="card-name">Annonces</div>
 					</div>
 					<div class="icon-box">
@@ -39,7 +39,7 @@
 			<a href="users" style="text-decoration: none">
 				<div class="card">
 					<div class="card-content">
-						<div class="number">{{$users}}</div>
+						<div class="number"></div>
 						<div class="card-name">Clients</div>
 					</div>
 					<div class="icon-box">

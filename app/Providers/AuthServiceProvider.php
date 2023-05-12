@@ -29,9 +29,9 @@ class AuthServiceProvider extends ServiceProvider
           Schema::defaultStringLength(191);
 
         //
-        Gate::define('access-admin', function(User $user){
+        // Gate::define('access-admin', function(User $user){
 
-            return $user->admin;
-        });
+        //     return $user->admin;
+        // });
     }
 }

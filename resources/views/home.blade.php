@@ -3,26 +3,13 @@
 @section('content') <main id="main">
   <style>
     .btn-order{
-   width: 100%
-    padding: 10px !important;
-    font-size:16px !important;
-    color: black !important;
-    background-color: #ddc72e !important;
-    text-decoration: none !important;
-    /* text-shadow: 2px 2px black !important; */
-    border-style: none !important;
-    border-radius: 5px 5px 5px 5px !important;
+   width: 70%;
+    
   }
   .btn-order:hover{
-   width: 100%
-    padding: 10px !important;
-    font-size:16px !important;
-    color: #ddc72e !important;
-    background-color: black !important;
-    text-decoration: none !important;
-    /* text-shadow: 2px 2px black !important; */
-    border-style: none !important;
-    border-radius: 5px 5px 5px 5px !important;
+    width: 70%;
+
+   
   }  
    .btn-register{
    width: 40% !important;
@@ -118,7 +105,7 @@
               </div>   
           </div>                 
             <div class="text-center mt-3">
-              <button type="submit" class="btn"> Soumettre </button>
+              <button type="submit" class="btn-order" style="width: 30%"> Soumettre </button>
             </div>
           </form>
         </div>
@@ -164,7 +151,7 @@
   </section><!-- End Hero Section -->
 
   <!-- ======= Gallery Section ======= -->
-  <section id="gallery" style="margin-top: 5%">
+  <section id="gallery" style="margin-top: 5%"  class="section-with-bg">
 
     <div class="container" data-aos="fade-up">
       <div class="section-header">
@@ -191,7 +178,7 @@
   </section><!-- End Gallery Section -->
 
   <!-- Section  artisan  list -->
-  <section>
+  <section  class="section-with-bg">
     <div class="section-header">
       <h2>Les Artisans</h2>
       <p>Faites votre choix</p>
@@ -219,7 +206,7 @@
                                  <img src="assets/img/Star 4.png" alt="">
                                  <img src="assets/img/Star 4.png" alt="">
                                </div><br>                                     
-                               <a href="/artisans/{{ $artisan->id }}" class="btn btn-order" role="button"><span>Consulter</span></a><br><br>
+                               <a href="/artisans/{{ $artisan->id }}" class="btn btn-order fs-4" role="button"><span>Consulter</span></a><br><br>
                                </div>
                            </div>
                        </div> 
@@ -248,13 +235,13 @@
         </svg> Deposer une annonce</a><br><br><br>
       </center> --}}
         <div class="text-center">
-         <a href="{{route('login')}}" class="btn btn-order">Deposer une annonce</a><br><br>
+         <a href="{{route('login')}}" class="btn btn-order" style="width: 20% !important;">Deposer une annonce</a><br><br>
         </div>        
         <!-- Modal Order Form -->
         
       <div class="row">
         @foreach ($annonces as $annonce)      
-        <div class="col-lg-4 mt-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-3 mt-3" data-aos="fade-up" data-aos-delay="100">
           <div class="card mb-5 mb-lg-0">            
             <div class="card-body">
               <h5 class="card-title text-muted text-uppercase text-center" style="font-size: 25px">{{ $annonce->categorie->name }}</h5>
@@ -272,7 +259,7 @@
                 {{-- <h5 class="card-price" style="font-size: 30px">Description: <span  style="font-size: 25px"> {{ $annonce->content }} </span></h5> --}}
               <hr>
               <div class="text-center">
-                <a type="submit" class="btn btn-order" href="/annonces/{{ $annonce->id }}">Details annonce</a>
+                <a type="submit" class="btn btn-order" href="/annonces/{{ $annonce->id }}" style="width: 50% !important;">Details annonce</a>
               </div>
             </div>
           </div>

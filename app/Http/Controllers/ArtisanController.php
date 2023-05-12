@@ -28,11 +28,11 @@ class ArtisanController extends Controller
 
             $villeId = (int)$request->ville_id;
             
-            $artisans = Artisan::where('ville_id', $villeId)->where('categorie_id', $categorieId)->where('statuts', '=', true)->get();
+            $artisans = Artisan::where('ville_id', $villeId)->where('categorie_id', $categorieId)->where('statuts', '=', true)->paginate(8);
         }elseif ($request->filled('drone')){
 
             $categorieId  = (int)$request->drone ;
-            $artisans = Artisan::where('categorie_id', $categorieId)->where('statuts', '=', true)->get();
+            $artisans = Artisan::where('categorie_id', $categorieId)->where('statuts', '=', true)->paginate(8);
         }
         // elseif ($request->filled('ville_id') && $request->filled('drone','=', 'all')){
 
@@ -42,7 +42,7 @@ class ArtisanController extends Controller
         
         else{
 
-            $artisans = Artisan::where('statuts', '=', true)->orderBy("created_at", "desc")->get();
+            $artisans = Artisan::where('statuts', '=', true)->orderBy("created_at", "desc")->paginate(8);
             // return view('artisan/artisans', compact("artisans"));
         }
         // return view('artisan/artisans', compact("artisans"));
@@ -201,9 +201,9 @@ class ArtisanController extends Controller
 
    public function listArtisanByAdmin(){
 
-    if (!Gate::allows('access-admin')) {
-        abort('403');
-     }
+    // if (!Gate::allows('access-admin')) {
+    //     abort('403');
+    //  }
     $villes = Ville::all();
     $categories = Categorie::all();
     $artisans = Artisan::orderBy("created_at", "desc")->get();
@@ -226,9 +226,9 @@ class ArtisanController extends Controller
 
    public function count(){
 
-    if (!Gate::allows('access-admin')) {
-       abort('403');
-    }
+    // if (!Gate::allows('access-admin')) {
+    //    abort('403');
+    // }
     // $artisans = Artisan::orderBy("created_at", "desc")->take(8)->get();
     $artisans = Artisan::count('*');
     $annonces = Annonce::count('*');

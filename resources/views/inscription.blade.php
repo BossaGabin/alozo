@@ -25,7 +25,7 @@
 
 <body>    
     <main>
-        <div class="container" style="margin-top: -5%">    
+        <div class="container" style="margin-top: ">    
           <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
             <div class="container">
               <div class="row justify-content-center">
@@ -33,7 +33,7 @@
     
                   <div class="d-flex justify-content-center py-4">
                     <a href="/" class="logo d-flex align-items-center w-auto">
-                      <img src="assets/img/LogoA.PNG" alt="" style="border-radius: 200px" width="100" height="100">                      
+                      <img src="{{asset('assets/img/LOGO_Officiel2.jpg')}}" alt="" style="border-radius: 200px" width="100" height="100">                      
                     </a>
                   </div><!-- End Logo -->
     
@@ -46,31 +46,43 @@
                         <p class="text-center small">Entrez vos informations</p>
                       
     
-                      <form class="row g-3 needs-validation" novalidate>
+                      <form class="row g-3 needs-validation" novalidate action="{{ route('register') }}" method="POST">
+                        @csrf
                         <div class="col-12">
-                          <label for="yourName" class="form-label">Nom:</label>
-                          <input type="text" name="name" class="form-control" id="yourName" required>
+                          <label   for="name" class="form-label">Nom et Prenom:</label>
+                          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+{{-- 
+                          @error('name')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror --}}
                           <div class="invalid-feedback">Votre nom s'il vous plait!</div>
                         </div>
     
                         <div class="col-12">
-                          <label for="yourUsername" class="form-label">Nom d'utilisateur:</label>
-                          <input type="text" name="username" class="form-control" id="yourUsername" required>
-                          <div class="invalid-feedback">Votre nom d'utilisateur.</div>
+                          <label id="phone" type="text" class="form-label">Telephone:</label>
+                          <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                          <div class="invalid-feedback">Votre telephone.</div>
                         </div>
     
                         <div class="col-12">
-                            <label for="Email" class="form-label">Email:</label>
+                            <label id="email" type="email" class="form-label">Email:</label>
                             <div class="input-group has-validation">
-                              <input type="mail" name="email" class="form-control" id="email" required>
+                              <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                               <div class="invalid-feedback">votre mail.</div>
                             </div>
                           </div>
     
                         <div class="col-12">
-                          <label for="yourPassword" class="form-label">Mot de passe:</label>
-                          <input type="password" name="password" class="form-control" id="yourPassword" required>
+                          <label id="password" type="password" class="form-label">Mot de passe:</label>
+                          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                           <div class="invalid-feedback">Votre mot de passe!</div>
+                        </div>
+                        <div class="col-12">
+                          <label for="password-confirm" type="password" class="form-label">Confirmez le mot de passe:</label>
+                          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                          <div class="invalid-feedback">Votre mot de passe n'est pas correcte!</div>
                         </div>
     
                         <div class="col-12">

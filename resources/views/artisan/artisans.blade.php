@@ -2,27 +2,13 @@
 
 @section('content')  
   <!-- Section  artisan  list -->
-  <section style="background: rgb(241, 240, 239)">
+  <section style="background: rgb(231, 231, 229)">
     <style>
       .btn-order{
-     width: 70%;
-      padding: 10px !important;
-      font-size:16px !important;
-      color: black !important;
-      background-color: #ddc72e !important;
-      text-decoration: none !important;
-      border-style: none !important;
-      border-radius: 5px 5px 5px 5px !important;
+     width: 70%;    
     }
     .btn-order:hover{
-     width: 70%;
-      padding: 10px !important;
-      font-size:16px !important;
-      color: #ddc72e !important;
-      background-color: black !important;
-      text-decoration: none !important;      
-      border-style: none !important;
-      border-radius: 5px 5px 5px 5px !important;
+     width: 70%;   
     } 
     .catego{
       font-size: 20px !important;
@@ -100,12 +86,13 @@
                               </div>                            
                            </div>                             
                            @endforeach                                     
-                        </div>
+                        </div><br>
+                        {{ $artisans->links('pagination::bootstrap-4') }}
                     </div>
                   </div>            
                </div>
       </div>  <!-- ======= End Row ======= -->      
     </div> <!-- ======= End container ======= -->   
-    </section>
+    </section><br><br><br>
   <!-- End Section  artisan  list -->  
 @endsection

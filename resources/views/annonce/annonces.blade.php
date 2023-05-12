@@ -2,31 +2,10 @@
 
 @section('content')
 <style>
-  .btn-order{
- width: 100%
-  padding: 10px !important;
-  font-size:16px !important;
-  color: black !important;
-  background-color: #ddc72e !important;
-  text-decoration: none !important;
-  /* text-shadow: 2px 2px black !important; */
-  border-style: none !important;
-  border-radius: 5px 5px 5px 5px !important;
-}
-.btn-order:hover{
- width: 100%
-  padding: 10px !important;
-  font-size:16px !important;
-  color: #ddc72e !important;
-  background-color: black !important;
-  text-decoration: none !important;
-  /* text-shadow: 2px 2px black !important; */
-  border-style: none !important;
-  border-radius: 5px 5px 5px 5px !important;
-}  
+ 
 </style>
 
-<main style="background: rgb(241, 240, 239)">
+<main>
   <div style="margin-top: 10%">
     @if ($errors->any())
             <div class="alert alert-danger">
@@ -39,54 +18,62 @@
           @endif 
   </div>
      <!-- ======= Buy Ticket Section ======= -->
-  <section id="buy-tickets" class="section-with-bg" style="margin-top: 10%">
-    <div id="buy-annonce-modal" class="modal">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title"> Déposer une annonce</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>              
-              <div class="modal-body">
-                <form  action="{{route('annonces.store')}}" method="POST" enctype="multipart/form-data"> 
-                  @csrf                
-                  <div class="form-group mt-3">
-                    <label for="title">Titre:</label>
-                    <input type="text" class="form-control" name="title" placeholder="Exemple:">
-                  </div>
-                  <div class="form-group mt-3">
-                    <select name="categorie_id"  class="form-control" id="">
-                      <option value="categorie">Choisissez une catégorie</option>
-                      @foreach ($categories as $categorie)
-                      <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
-                      @endforeach
-                    </select>
-                  </div>
-                  <div class="form-group mt-3">
-                    <label for="budget">Budget:</label>
-                    <input type="text" class="form-control" name="budget" placeholder="Exemple:">
-                  </div>
-                  <div class="form-group mt-3">
-                    <label for="deadline">Délai:</label>
-                    <input type="date" class="form-control" name="deadline" placeholder="Exemple:">
-                  </div>
-                  <div class="form-group mt-3">
-                    <label for="content">Description:</label>
-                   <textarea name="content" id="" class="form-control" cols="50" rows="3"></textarea>
-                  </div>                  
-                  <div class="form-group mt-3">
-                    <label for="content">Images:</label>
-                    <input type="file" class="form-control" name="picture" placeholder="Exemple:">
-                  </div>                  
-                  <div class="text-center mt-3">
-                    <button type="submit" class="btn">Envoyer le dépôt</button>
-                  </div>
-                </form>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-    <div class="container" data-aos="fade-up">
+  <section id="buy-tickets" class="section-with-bg" style="margin-top: 10%;background: rgb(231, 231, 229)">
+      <div id="buy-annonce-modal" class="modal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title"> Déposer une annonce</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>              
+                <div class="modal-body">
+                  <form  action="{{route('annonces.store')}}" method="POST" enctype="multipart/form-data"> 
+                    @csrf                
+                    <div class="form-group mt-3">
+                      <label for="title">Titre:</label>
+                      <input type="text" class="form-control" name="title" placeholder="Exemple:">
+                    </div>
+                    <div class="form-group mt-3">
+                      <select name="categorie_id"  class="form-control" id="">
+                        <option value="categorie">Choisissez une catégorie</option>
+                        @foreach ($categories as $categorie)
+                        <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group mt-3">
+                      <select name="ville_id"  class="form-control" id="" style="height: 50px;">
+                        <option value="ville">Choisir une ville</option>
+                        @foreach ($villes as $ville)
+                        <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+                        @endforeach
+                      </select>          
+                    </div>
+                    <div class="form-group mt-3">
+                      <label for="budget">Budget:</label>
+                      <input type="text" class="form-control" name="budget" placeholder="Exemple:">
+                    </div>
+                    <div class="form-group mt-3">
+                      <label for="deadline">Délai:</label>
+                      <input type="date" class="form-control" name="deadline" placeholder="Exemple:">
+                    </div>
+                    <div class="form-group mt-3">
+                      <label for="content">Description:</label>
+                    <textarea name="content" id="" class="form-control" cols="50" rows="3"></textarea>
+                    </div>                  
+                    <div class="form-group mt-3">
+                      <label for="content">Images:</label>
+                      <input type="file" class="form-control" name="picture" placeholder="Exemple:">
+                    </div>                  
+                    <div class="text-center mt-3">
+                      <button type="submit" class="btn-order">Envoyer le dépôt</button>
+                    </div>
+                  </form>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+      <div class="container" data-aos="fade-up">
       <div class="section-header">
         <h2>Les annonces</h2>
         <p>N'hesitez pas a réagir par rapport à une annonce, si elle vous interesse.</p>        
@@ -109,7 +96,7 @@
         <!-- Modal Order Form -->        
         <div class="container">
           <div class="row">
-            <div class="col-md-2 border">
+            <div class="col-md-2 border bg-dark" >
               <div class="border " style="margin-top: 40px; height:400px;" >
                 <div class="border-bottom"  >
                   <center><h2>Trier</h2></center>
@@ -129,7 +116,7 @@
                       @endforeach
                     </div>            
                   </div>
-{{--       
+      
                   <div class="border" style="margin-top: 40px;" >
                     <div class="border-bottom">
                       <h4>Localisation</h4>
@@ -141,7 +128,7 @@
                       <option value="{{$ville->id}}" {{  $villeId == $ville->id ? 'selected' : ''  }}>{{$ville->name}}</option>                              
                       @endforeach
                     </select>
-                  </div> --}}<br><br>
+                  </div><br><br>
                   <button type="submit" class="btn btn-order">Valider</button>
                 </form><br><br>
                       
@@ -166,8 +153,9 @@
                                     <h6 class="card-price text-center" style="margin-top:-25px"><span style="font-size: 16px"-> <strong>{{ $annonce->title }}</strong></span></h6>
                                     <hr>
                                       <h5  class="card-price" style="font-size: 16px">Mon budget est de <span style="font-size: 16px"><em> <strong style="color: #ddcc72">{{  $annonce->budget }}F CFA,</strong>  </em></span></h5>               
-                                      <div class="d-flex">                
-                                        <h5 class="card-price" style="font-size: 16px">Je veux que le travaille soit fait au plus tard le <span  style="font-size: 16px"><strong style="color: #ddcc72">{{ $annonce->deadline }}</strong></span></h5>
+                                      <div class="">                
+                                        <h5 class="card-price" style="font-size: 16px">Je veux que le travaille soit fait au plus tard le <span  style="font-size: 16px"><strong style="color: #ddcc72">{{ $annonce->deadline }} .</strong></span></h5>
+                                        <h5 class="card-price" style="font-size: 16px">Je réside dans la ville de  <span  style="font-size: 16px"><strong style="color: #ddcc72">{{ $annonce->ville_id }}</strong></span></h5>
                                       </div>
                                       {{-- <h5 class="card-price" style="font-size: 30px">Description: <span  style="font-size: 25px"> {{ $annonce->content }} </span></h5> --}}
                                     <hr>
@@ -179,8 +167,8 @@
                               </div>          
                               <!-- Pro Tier --> 
                             @endforeach
-                            {{-- {{ $annonces->links() }} --}}
-                          </div>
+                          </div><br>
+                          {{ $annonces->links('pagination::bootstrap-4') }}
                         </div>
                       </div>            
                    </div>

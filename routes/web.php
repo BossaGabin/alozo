@@ -8,6 +8,8 @@ use App\Http\Controllers\AnnonceController;
 use App\Http\Controllers\ArtisanController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DevisController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use App\Models\Ville;
@@ -27,10 +29,15 @@ use App\Models\Ville;
 // });
 Route::get('/', [ArtisanController::class, 'welcome']);
 // Route::get('/', [ArtisanController::class, 'gab']);
-
+Route::get('/log', function () {
+    return view('connexion');
+});
 Route::get('/contact', function(){
     return view('contact');
 });
+// Route::get('/client', function(){
+//     return view('dasboard');
+// });
 
 Route::middleware('auth')->group(function(){
     
@@ -47,20 +54,48 @@ Route::middleware('auth')->group(function(){
     // Route::put('annonces/edit/{id}',[AnnonceController::class, 'update'])->name('annonces.update');
     // Route::delete('annonces/{id}',[AnnonceController::class, 'destroy'])->name('annonces.destroy');    
     // Route::resources('artisan', ArtisanController::class);
+    Route::prefix('dashboard')->group(function () {
+            // Matches The "/admin/users" URL
+            Route::name('dashboard.')->group(function () {
+                // Route assigned name "admin.users"...
+                Route::get('/', [DashboardController::class,'dashboard'])->name('dashboard');
+                Route::get('/annonces', [DashboardController::class,'annonces'])->name('annonces');
+                Route::get('/devis-recu', [DashboardController::class,'devisRecus'])->name('devis-recu');
+                
+            });
+
+            Route::resource('devis', DevisController::class)->except(['store']);
+
+    });
+
+
+    
+    Route::post('/devis/{id}', [DevisController::class, 'store'])->name('devis.store');
     Route::resource('users', UserController::class);
+
+    Route::get('/user-annonces', [DashboardController::class,'annonces'])->name('user.annonces');
+    Route::get('/user-show', [DashboardController::class,'stats'])->name('user.show');
+
+        //  Route::get('/user-show', function(){
+        //     return view('user/user-show');
+        // })->name("user.show");
+        //  Route::get('/user-annonces', function(){
+        //     return view('user/user-annonces');
+        // })->name("user.annonces");
+
+
     Route::get('/admin-update-user/{id}', [UserController::class, 'admin']);
-        
-    Route::get('/listeArtisan', [ArtisanController::class, 'listArtisanByAdmin']);
-    Route::get('/listeAnnonces', [AnnonceController::class, 'listAnnonceByAdmin']);
-    // Route::get('/listeArtisan/?decision/{user_id}', [ArtisanController::class, 'activate']);
     Route::get('/statuts-update-annonce/{id}', [AnnonceController::class, 'statuts']);
     Route::get('/statuts-update-artisan/{id}', [ArtisanController::class, 'statuts']);
     Route::get('/statuts-verify-artisan/', [ArtisanController::class, 'activate'])->name('artisans.verify');
-    Route::get('/dashboard', [ArtisanController::class, 'count'])->name("Dashboard");
+    Route::get('/dashboard', [ArtisanController::class, 'count'])->name("Dashboard");        
+    Route::get('/listeArtisan', [ArtisanController::class, 'listArtisanByAdmin']);
+    Route::get('/listeAnnonces', [AnnonceController::class, 'listAnnonceByAdmin']);
+    Route::get('/listeArtisan/?decision/{user_id}', [ArtisanController::class, 'activate']);
     
-        // Route::get('/dashboard', function(){
-        //     return view('admin/dashboard');
-        // })->name("Dashboard");
+        Route::get('/tableauDeBord', function(){
+            return view('admin/dashboard');
+        })->name("Dashboard");
 });
 
 Auth::routes();
