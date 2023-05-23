@@ -18,4 +18,8 @@ class Ville extends Model
     {
         return $this->hasMany(Annonce::class);
     }
+    public function ville(): HasMany
+    {
+        return $this->hasMany(Ville::class);
+    }
 }

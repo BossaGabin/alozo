@@ -60,7 +60,7 @@
             <div class="error-message"></div>
             <div class="sent-message">Votre message a été bin envoyé. Merci à vous!</div>
           </div>
-          <div class="text-center"><button type="submit" class="btn">Envoyé</button></div>
+          <div class="text-center"><button type="submit" class="btn-order">Envoyer</button></div>
         </form>
       </div>
 

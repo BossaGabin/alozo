@@ -16,19 +16,27 @@ class Annonce extends Model
     public function categorie(): BelongsTo
     {
         return $this->belongsTo(Categorie::class);
-    }    
-    public function annonceHasFile(): BelongsTo
+    } 
+    
+
+    public function annonceHasFile(): HasMany
     {
-        return $this->belongsTo(AnnonceHasFile::class);
-    }    
+        return $this->hasMany(AnnonceHasFile::class);
+    } 
+    
+    
     public function ville(): BelongsTo
     {
         return $this->belongsTo(Ville::class);
     }
+
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     } 
+
+
     public function devis(): HasMany
     {
         return $this->hasMany(Devis::class, 'annonces_id');

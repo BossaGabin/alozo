@@ -10,6 +10,7 @@
   <link href="../assets/img/LOGO_Officiel2.jpg" rel="icon">
   <link href="../assets/img/LOGO_Officiel2.jpg" rel="apple-touch-icon">
   <!-- CDN -->
+  
   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> --}}
   <!-- Google Fonts -->
@@ -65,7 +66,12 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto fs-4 " href="/home">Accueil</a></li>        
+            @if (Auth::check())
+            <li><a class="nav-link scrollto fs-4 " href="/home">Accueil</a></li>             
+            @else
+            <li><a class="nav-link scrollto fs-4 " href="/">Accueil</a></li>             
+              
+            @endif
           <li><a class="nav-link scrollto fs-4" href="/artisans">Artisans</a></li>  
           <li><a class="nav-link scrollto fs-4" href="/annonces">Annonces</a></li>  
           <li><a class="nav-link scrollto fs-4" href="/contact">Contact</a></li>
@@ -102,8 +108,8 @@
                     {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <a href="{{route('user.show')}}" class="dropdown-item"><span class="bi bi-person"></span>Profil</a>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+                  <a href="{{route('user.show')}}" class="dropdown-item fs-5"><span class="bi bi-person"></span>Profil</a>
+                    <a class="dropdown-item fs-5" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}

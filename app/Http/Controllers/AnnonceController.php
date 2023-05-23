@@ -9,9 +9,11 @@ use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Models\AnnonceHasFile;
 use App\Models\Annonces_has_file;
+use App\Models\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class AnnonceController extends Controller
 {
@@ -44,8 +46,8 @@ class AnnonceController extends Controller
         
         else{
 
-            $annonces = Annonce::orderBy("created_at", "desc")->paginate(6);
-            // $annonces = Annonce::where('statuts', '=', true)->orderBy("created_at", "desc")->get();
+            // $annonces = Annonce::orderBy("created_at", "desc")->paginate(6);
+            $annonces = Annonce::where('statuts', '=', true)->orderBy("created_at", "desc")->paginate(6);
             // return view('artisan/artisans', compact("artisans"));
         }
         // return view('artisan/artisans', compact("artisans"));
@@ -114,6 +116,18 @@ class AnnonceController extends Controller
         // );
         $validateData['user_id'] = Auth::user()->id;
         $annonce = Annonce::create($validateData);
+        if($request->filled('images')){
+            foreach ($request->file('images') as $image) {
+                $path =  Storage::disk('public')->put('annonce', $image);
+                // dd($path, $devis->id);
+                AnnonceHasFile::create([
+                    'path' => $path,
+                    'annonce_id' => $annonce->id
+                ]);
+    
+            }
+        }
+
         // $picture = new AnnonceHasFile();
         // $picture->path = $path;
         // $annonce->picture()->save($picture);
@@ -130,6 +144,7 @@ class AnnonceController extends Controller
     {
         //
         $annonce = Annonce::findOrFail($id);        
+        
         $categories = Categorie::all();
         return view('annonce/voirAnnonce', compact('annonce','categories'));
        

@@ -43,7 +43,7 @@
             </div>
           @endif 
   </div>
-  <div id="devenirArtisan-modal" class="modal">
+  <div id="devenirArtisan-modal" class="modal modal-lg">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -115,39 +115,42 @@
  
   <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
     <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme facilitant la mise en relation entre <br> les clients potentiels et les artisans qualifiés.</h1>
-  <div><br><br><br>
-
-    <div class="search-container">
-      <div class="row">
-        <div class="col-md-6">
-          <select name="viile_id"  class="form-control" id="" style="height: 50px;">
-            <option value="ville">Choisir une ville</option>
-            @foreach ($villes as $ville)
-            <option value="{{$ville->id}}">{{$ville->name}}</option>                              
-            @endforeach
-          </select>
+  </div>
+      <div class="container search-container">
+        <div class="row">
+          <div class="col-md-2">
+          <form action="{{ route('recherche') }}">
+              <select name="villes"  class="form-control" id="" style="height: 50px;">
+                <option value="ville">Choisir une ville</option>
+                @foreach ($villes as $ville)
+                <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+                @endforeach
+              </select>
+            </div>
+            <div class="col-md-2 d-flex">
+              <select name="categories"  class="form-control" id="" >
+                <option value="categorie">Choisir une catégorie</option>
+                @foreach ($categories as $categorie)
+                <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
+                @endforeach
+              </select>           
+            </div>    
+            <div class="col-md-6 d-flex">
+              <input type="text" name="name"  class="form-control" placeholder="Rechercher un artisan" style="border-radius:5px 0px 0px 5px;margin-left:5%">
+              <button type="submit" class="btn-search"><i class="bi bi-search"></i></button>
+            </form>  
+            </div>
         </div>
-        <div class="col-md-6 d-flex">
-          <select name="categories_id"  class="form-control" id="" style="border-radius:5px 0px 0px 5px">
-            <option value="categorie">Choisir une catégorie</option>
-            @foreach ($categories as $categorie)
-            <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
-            @endforeach
-          </select>
-          <form action="#">
-            <button type="submit" class="btn-search"><i class="bi bi-search"></i></button>
-          </form>
-        </div>
-  
-        {{-- <div class="col-md-4">
-          <form action="/action_page.php" style="display: flex;">
-            <input type="text" class="form-control" placeholder="Rechercher un artisan..." name="search" style="border-radius:5px 0px 0px 5px">
-            <button type="submit" class="btn-search"><i class="bi bi-search"></i></button>
-          </form>
-        </div> --}}
       </div>
-    </div>
-    </div>
+
+      {{-- <div class="col-md-4">
+        <form action="/action_page.php" style="display: flex;">
+          <input type="text" class="form-control" placeholder="Rechercher un artisan..." name="search" style="border-radius:5px 0px 0px 5px">
+          <button type="submit" class="btn-search"><i class="bi bi-search"></i></button>
+        </form>
+      </div> --}}
+    
+    
   </section><!-- End Hero Section -->
 
   <!-- ======= Gallery Section ======= -->
@@ -190,32 +193,43 @@
             <div class="tab-pane active">
               <div class="bloc1">
                   <div class="row">
-                    @foreach ($artisans as $artisan)  
-                    {{-- @dd($artisan);  --}}
-                    <div class="col-lg-3 mt-3" data-aos="fade-up" data-aos-delay="100">
-                       <div class="card mb-5 mb-lg-0">
-                         <div class="card-body text-center">
-                           <div class="thumbmail">
-                             <img src="../assets/img/images.png" class="img-fluid col-8" alt="" style="min-width:90px; max-width:90px; min-heigth:90px; max-heigth:90px; margin-top:15px">                                  
-                               <div class="caption">
-                               <h6 class="card-title text-muted text-uppercase catego">{{$artisan->categorie->name}}</h6>
-                               <h6><span class="bi bi-user" ></span>{{$artisan->name}}</h6>
-                               <p><span class="bi bi-geo-alt-fill" ></span>{{ $artisan->ville->name.', '. $artisan->adresse }}</p>
-                               <div class="justify-content-center ">
-                                 <img src="assets/img/Star 4.png" alt="">
-                                 <img src="assets/img/Star 4.png" alt="">
-                                 <img src="assets/img/Star 4.png" alt="">
-                               </div><br>                                     
-                               <a href="/artisans/{{ $artisan->id }}" class="btn btn-order fs-4" role="button"><span>Consulter</span></a><br><br>
-                               </div>
-                           </div>
-                       </div> 
-                       </div>                            
-                    </div>                             
-                    @endforeach                                     
-                  </div>
-              </div>
-            </div>            
+                     @foreach ($artisans as $artisan)  
+                     {{-- @dd($artisan);  --}}
+                     <div class="col-lg-3 mt-3" data-aos="fade-up" data-aos-delay="100" style="max-height:70%;">
+                        <div class="card mb-5 mb-lg-0">
+                          <div class="card-body text-center">
+                            <div class="thumbmail">
+                              <img src="../assets/img/images.png" class="img-fluid col-8" alt="" style="min-width:90px; max-width:90px; min-heigth:90px; max-heigth:90px; margin-top:15px">                                  
+                                <div class="caption">
+                                <h6 class="card-title text-muted text-uppercase catego">{{$artisan->categorie->name}}</h6>
+                                <h6 class="fs-5"><span class="bi bi-user" ></span>{{$artisan->name}}</h6>
+                                <p class="fs-5"><span class="bi bi-geo-alt-fill" ></span>{{ $artisan->ville->name}}, <br> {{$artisan->adresse }} </p>
+                                <div class="justify-content-center d-flex "> 
+                                  @if ($artisan->moyenne <= 0)
+                                  <div class="fs-3">
+                                    0                                          
+                                  </div> 
+                                  <div>
+                                  <img src="assets/img/Star 4.png" alt="" class="fs-3" style="margin-bottom: -10px">
+                                  </div>                                   
+                                </div><br> 
+                                  @else                                          
+                                  <div class="fs-3">
+                                    {{$artisan->moyenne}}                                          
+                                  </div> 
+                                  <div>
+                                  <img src="assets/img/Star 4.png" alt="" class="fs-3" style="margin-bottom: -10px">
+                                  </div>                                   
+                                </div><br>                                     
+                                  @endif
+                                <a href="/artisans/{{ $artisan->id }}" class="btn btn-order" role="button"><span>Consulter</span></a><br><br>
+                                </div>
+                            </div>
+                        </div> 
+                        </div>                            
+                     </div>                             
+                     @endforeach                                     
+                  </div><br>          
          </div>
 
     </section><br><br>
@@ -240,32 +254,45 @@
         <!-- Modal Order Form -->
         
       <div class="row">
-        @foreach ($annonces as $annonce)      
-        <div class="col-lg-3 mt-3" data-aos="fade-up" data-aos-delay="100">
-          <div class="card mb-5 mb-lg-0">            
-            <div class="card-body">
-              <h5 class="card-title text-muted text-uppercase text-center" style="font-size: 25px">{{ $annonce->categorie->name }}</h5>
-              <div>
-                {{-- <img src="{{ asset('assets/img/categories/auto-repair-3691962_1920.jpg') }}" class="img-fluid col-12" alt=""height="282" style="max-heigth:100%; max-width:100%;min-heigth:100%; min-width:100%"> --}}
-              </div>
-               <h5 class="card-title text-muted text-center" style="font-size: 10px; margin-bottom:-25px"><em>Publié le {{ $annonce->created_at }}</em></h5>
-              <hr>
-              <h6 class="card-price text-center" style="margin-top:-25px"><span style="font-size: 23px"> <strong>{{ $annonce->title }}</strong></span></h6>
-              <hr>
-                <h5  class="card-price" style="font-size: 17px">Mon budget est de <span style="font-size: 17px"><em> <strong style="color: #ddcc72">{{  $annonce->budget }}F CFA,</strong>  </em></span></h5>               
-                <div class="d-flex">                
-                  <h5 class="card-price" style="font-size: 17px">Je veux que le travaille soit fait au plus tard le <span  style="font-size: 17px"><strong style="color: #ddcc72">{{ $annonce->deadline }}</strong></span></h5>
+        @foreach ($annonces as $annonce) 
+        <div class="col-lg-4 mt-3">
+          <div class="col">
+              <div class="card" style="background-color: rgb(243, 243, 243); border-radius: 24px;">
+                <h5 class="card-title annonceCardTitle fs-5" style="margin-top: -2% !important">{{$annonce->title}}</h5>
+                <div class="text-center">
+                  <?php   
+                    // $dateSql = $annonce->deadline;
+                    // $dateReelle = \Carbon\Carbon::parse($dateSql)->formatLocalized('%A %d %B %Y');
+                    $dateAnglaise =  $annonce->created_at;
+                    $date =\Carbon\Carbon::parse($dateAnglaise)->locale('fr');
+                    $dateCreation = $date->isoFormat('dddd D MMMM YYYY à HH:mm:ss');
+                  ?>                                      
+                  <p> <em> Publié le {{ $dateCreation }} par </em><br> <strong>{{$annonce->user->name}}</strong></p>
                 </div>
-                {{-- <h5 class="card-price" style="font-size: 30px">Description: <span  style="font-size: 25px"> {{ $annonce->content }} </span></h5> --}}
-              <hr>
-              <div class="text-center">
-                <a type="submit" class="btn btn-order" href="/annonces/{{ $annonce->id }}" style="width: 50% !important;">Details annonce</a>
+                <div class="card" style="margin-bottom:-1.2%;">
+                  <div class="card-body mt-3" style="">
+                    <strong class="fs-5">Budget: {{$annonce->budget}} F CFA </strong><br><br>
+                    <?php   
+                    // $dateSql = $annonce->deadline;
+                    // $dateReelle = \Carbon\Carbon::parse($dateSql)->formatLocalized('%A %d %B %Y');
+                    $dateAnglaise = $annonce->deadline;
+                    $date =\Carbon\Carbon::parse($dateAnglaise)->locale('fr');
+                    $dateFormatee = $date->isoFormat('dddd D MMMM YYYY');
+                  ?>
+                    <strong class="card-text fs-5">Délai: {{$dateFormatee}} </strong><br><br>
+                    <strong class="fs-5"> {{\Illuminate\Support\Str::words($annonce->content, 8, '...') }} </strong><br><br>
+                    <a href="/annonces/{{ $annonce->id }}" class="btn btn-order fs-5" style="width: 40% !important;margin-left:25% !important">Détails</a>                                      
+                    </div>
+                  </div>
+                  <div class="card-footer" style="position: relative;background-color:#ddcc72">
+                    <center>
+                      <strong style="color:black" class="fs-5 text-center">{{ $annonce->categorie->name }}</strong>
+                    </center>
+                  </div>
+                </div>                                   
               </div>
-            </div>
-          </div>
-        </div>          
-        <!-- Pro Tier --> 
-      @endforeach     
+          </div>    
+          @endforeach  
     </div>
 
   </section><!-- End Buy Ticket Section -->

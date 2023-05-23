@@ -10,7 +10,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DevisController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\UserController;
+use App\Models\Devis;
 use App\Models\User;
 use App\Models\Ville;
 
@@ -36,16 +38,16 @@ Route::get('/contact', function(){
     return view('contact');
 });
 // Route::get('/client', function(){
-//     return view('dasboard');
-// });
-
-Route::middleware('auth')->group(function(){
+    //     return view('dasboard');
+    // });
     
+    Route::middleware('auth')->group(function(){
+        
+    Route::get('/recherche', [ArtisanController::class, 'rechercher'])->name('recherche');
     Route::resource('artisans', ArtisanController::class);
     Route::resource('annonces', AnnonceController::class);
     Route::get('/categorie/{id}',[ AnnonceController::class, 'byCategorie']);
     // Route::get('/profil',[ ArtisanController::class, 'profil_artisan']);
-    
     // Route::get('annonces/',[AnnonceController::class, 'index'])->name('annonces.index');
     // Route::get('annonces/{id}',[AnnonceController::class, 'show'])->name('annonces.show');
     // Route::get('annonces/create',[AnnonceController::class, 'create'])->name('annonces.create');
@@ -71,31 +73,31 @@ Route::middleware('auth')->group(function(){
 
     
     Route::post('/devis/{id}', [DevisController::class, 'store'])->name('devis.store');
+    // Route::post('/profil', [ArtisanController::class, 'portfolio'])->name('ajout-portfolio');
+    Route::post('/upload-image', [ArtisanController::class, 'uploadImage'])->name('upload.image');
+    Route::post('/ratings/{id}', [RatingController::class, 'store'])->name('ratings.store');
     Route::resource('users', UserController::class);
+    Route::resource('/ratings', RatingController::class)->except((['store']));
 
     Route::get('/user-annonces', [DashboardController::class,'annonces'])->name('user.annonces');
     Route::get('/user-show', [DashboardController::class,'stats'])->name('user.show');
 
-        //  Route::get('/user-show', function(){
-        //     return view('user/user-show');
-        // })->name("user.show");
-        //  Route::get('/user-annonces', function(){
-        //     return view('user/user-annonces');
-        // })->name("user.annonces");
-
-
     Route::get('/admin-update-user/{id}', [UserController::class, 'admin']);
     Route::get('/statuts-update-annonce/{id}', [AnnonceController::class, 'statuts']);
+    Route::get('/statuts-update-devis/{id}', [DevisController::class, 'statuts']);
     Route::get('/statuts-update-artisan/{id}', [ArtisanController::class, 'statuts']);
     Route::get('/statuts-verify-artisan/', [ArtisanController::class, 'activate'])->name('artisans.verify');
     Route::get('/dashboard', [ArtisanController::class, 'count'])->name("Dashboard");        
     Route::get('/listeArtisan', [ArtisanController::class, 'listArtisanByAdmin']);
     Route::get('/listeAnnonces', [AnnonceController::class, 'listAnnonceByAdmin']);
     Route::get('/listeArtisan/?decision/{user_id}', [ArtisanController::class, 'activate']);
+
+    Route::get('/tableauDeBord', [DashboardController::class,'count'])->name('admin');
+
     
-        Route::get('/tableauDeBord', function(){
-            return view('admin/dashboard');
-        })->name("Dashboard");
+        // Route::get('/tableauDeBord', function(){
+        //     return view('admin/dashboard');
+        // })->name("Dashboard");
 });
 
 Auth::routes();

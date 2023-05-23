@@ -41,7 +41,7 @@
     border-radius: 5px 5px 5px 5px !important;   
 }
 </style>
-<div id="devenirArtisan-modal" class="modal">
+<div id="devenirArtisan-modal" class="modal modal-lg">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -113,13 +113,22 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
   <div class="modal-content">
       <div class="modal-header">
-      <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier votre profil</h1>
+      <h1 class="modal-title fs-4" id="exampleModalLabel">Modifier votre profil</h1>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif 
           <form action="{{route('users.update', Auth::user()->id)}}" method="POST">
             @csrf
             @method('patch')
@@ -127,6 +136,26 @@
               <label for="name">Nom et Prénoms:</label>
               <input type="text" class="form-control" name="name" id="name" placeholder="" value="{{Auth::user()->name }}">
             </div>
+
+            @if (Auth::user()->sexe !== '')
+            <div class="form-group col mt-3">
+              <label for="sexe">Sexe:</label>
+              <select name="sexe"  class="form-control" id="">
+                <option value="{{Auth::user()->id}}">{{Auth::user()->sexe}}</option>
+                  <option value="Masculin">Masculin</option>
+                  <option value="Feminin">Feminin</option>
+              </select>
+            </div>
+            @else
+            <div class="form-group col mt-3">
+              <label for="sexe">Sexe:</label>
+              <select name="sexe"  class="form-control" id="">
+                <option value="sexe">Choisissez votre sexe</option>
+                  <option value="Masculin">Masculin</option>
+                  <option value="Feminin">Feminin</option>
+              </select>
+            </div>              
+            @endif
             <div class="form-group col mt-3">
               <label for="phone">Téléphone:</label>
               <input type="text" class="form-control" name="phone" id="phone" placeholder="" value="{{ Auth::user()->phone }}">
@@ -136,12 +165,38 @@
               <label for="email">Adresse mail:</label>
               <input type="email" class="form-control" name="email" id="email" placeholder="" value="{{ Auth::user()->email }}">
             </div>
+
+            @if (Auth::user()->ville_id !==0)
+            <div class="form-group col mt-3">
+              <label for="ville_id">Ville:</label>
+              <select name="ville_id"  class="form-control" id="">
+                <option value="{{$ville->id}}">{{ Auth::user()->ville->name }}</option>
+                @foreach ($villes as $ville)
+                <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+                @endforeach
+              </select>
+            </div>
+            @else
+            <div class="form-group col mt-3">
+              <label for="ville_id">Ville:</label>
+              <select name="ville_id"  class="form-control" id="">
+                <option value="ville">Choisissez une ville</option>
+                @foreach ($villes as $ville)
+                <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+                @endforeach
+              </select>
+            </div>              
+            @endif
+            <div class="form-group col mt-3">
+              <label for="email">Quartier:</label>
+              <input type="text" class="form-control" name="adresse" id="adresse" placeholder="" value="{{ Auth::user()->adresse }}">
+            </div>
             <div class="form-group col mt-3">
               <label for="profil">Profil:</label>
               <input type="file" class="form-control" name="profil" id="profil" placeholder="" value="{{ Auth::user()->profil }}">
             </div><br><br>
-              <div style="margin-left:15%">
-                <button type="submit" class="btn btn-primary text-center btn-lg" >Modifier</button>
+              <div style="margin-left:30%">
+                <button type="submit" class="btn btn-primary text-center btn-lg fs-3" >Sauvegarder</button>
               </div>
           </form>
 
@@ -155,7 +210,7 @@
 
 
 <div class="container justify-content-center">
-  <div style="margin-top: 13%; margin-bottom:5%;margin-left:5%">
+  <div style="margin-top: 13%; margin-bottom:5%;margin-left:5%" class="">
     <ul class="nav nav-pills">
         <li class="nav-item">
           <a class="nav-link fw-bold fs-5 text-dark active btn-order" aria-current="page" href="{{route('user.show')}}">Mes informations</a>
@@ -163,12 +218,10 @@
         <li class="nav-item">
           <a class="nav-link fw-bold fs-5 text-dark" href="{{route('user.annonces')}}">Mes annonces</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link fw-bold fs-5 text-dark" href="#">Nom de l'entreprise</a>
-        </li>      
+            
       </ul>
     @if (Auth::user()->role_id == 3)
-    <a href="#" type="button" class="btn-nav" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access" style="margin-left: 80%;">Devenir un artisan</a>    
+    <a href="#" type="button" class="btn-order fs-4" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access" style="margin-left: 80%;">Devenir un artisan</a>    
     @endif      
   </div>
 </div>
@@ -192,22 +245,53 @@
             <a href="" class="btn-order fs-5 fw-bold ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 35% !important">Modifier mon profil</a><br><br><br><br><br><br><br>           
           </div>
         </div>
-    </div> 
- </div> --}}
-
-
-   <!-- ======= Speakers Section ======= -->
-<div class="container">
-  <div class="row">
-      <div>
-        <section id="speakers">
-          <div class="container" data-aos="fade-up">
-            {{-- <div class="section-header" >
-              <h2 style="margin-rigth:90% !important">Profil</h2>
-            </div> --}}
-      
-            <div class="row">
-              <div class="col-lg-4 col-md-6">
+      </div> 
+    </div> --}}
+    
+    
+    <!-- ======= Speakers Section ======= -->
+    <div class="container">
+      <div class="row">
+        <div>
+          <section id="speakers">
+            <div class="container" data-aos="fade-up">           
+              
+              <div class="row">
+                <div class="card">
+                  <h5 class="card-header fs-3">Identifiants et Données</h5>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-4 border">
+                        <img src="assets/img/{{Auth::user()->profil}}"   style="min-width:100%;max-width:100%;min-heigth:100%;max-heigth:100%border-radius:5px;margin-top:4%;">
+                      </div>
+                      <div class="col-md-4 border">
+                        <div class="mt-5">
+                          <label class="fs-4"><span class="fw-bold">Nom complet:</span> {{Auth::user()->name}} </label><br><br><br><br>
+                          <label class="fs-4 "><span class="fw-bold"> Email:</span>:  {{Auth::user()->email}} </label><br><br><br><br>
+                          <label class="fs-4"><span class="fw-bold">Téléphone:</span> {{Auth::user()->phone}} </label><br><br><br><br>
+                        </div>
+                      </div>
+                      <div class="col-md-4 border">
+                        <div class="mt-5">
+                          @if (Auth::user()->ville_id == 0)
+                          <label class="fs-4"><span class="fw-bold">Ville:</span></span> </label><br><br><br><br>                            
+                          @else                            
+                          <label class="fs-4"><span class="fw-bold">Ville:</span> {{Auth::user()->ville->name}}</span> </label><br><br><br><br>
+                          @endif
+                          <label class="fs-4 "><span class="fw-bold">Quartier:</span> {{Auth::user()->adresse}}</span>:   </label><br><br><br><br>
+                          <label class="fs-4"><span class="fw-bold">Sexe:</span> {{Auth::user()->sexe}}</span>  </label><br><br><br><br>
+                        </div>
+                      </div>
+                    </div><br><br>
+                    <div class="col-12 d-flex justify-content-between">
+                                            
+                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="padding:15px 15px 15px 15px !important; font-size:25px !important">Modifier mon profil</a>
+                      {{-- <a href="" class="btn-order fs-5 fw-bold ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 35% !important">Modifier mon profil</a><br><br><br><br><br><br><br>            --}}
+                  </div>
+                </div>
+              </div>
+              
+              {{-- <div class="col-lg-4 col-md-6">
                 <div class="speaker" data-aos="fade-up" data-aos-delay="100">
                   <img src="assets/img/{{Auth::user()->profil}}" alt="Speaker 1" class="img-fluid" style="min-width:100%;max-width:100%;min-heigth:100%;max-heigth:100%;">
                   <div class="details">
@@ -215,16 +299,16 @@
                       <a href="#"><i class="bi bi-envelope"></i>  {{Auth::user()->email}}</a><br>
                       <a href="#"><i class="bi bi-phone"></i>  {{Auth::user()->phone}}</a><br><br>
                       <div class="social">
-                        {{-- <a href=""><i class="bi bi-twitter"></i></a>
-                        <a href=""><i class="bi bi-facebook"></i></a>
-                        <a href=""><i class="bi bi-instagram"></i></a>
-                        <a href=""><i class="bi bi-linkedin"></i></a> --}}
+                       
                         <a href="" class="btn-primary fs-5 fw-bold ms-4 me-5" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 20% !important;">Modifier mon profil</a>
+                      </div>
+                      <div class="social">
+                 
                       </div>
                   </div>
                 </div>
-              </div>  
-              <div class="col-md-6" style="margin-top: -1%; margin-left:10%; color:black">
+              </div>   --}}
+              {{-- <div class="col-md-6" style="margin-top: -1%; margin-left:10%; color:black">
                   <div class="row">
                     @if (Auth::user()->role_id == 2)
                       <div class="col-md-12 mt-3 ms-5" data-aos="fade-up" data-aos-delay="100">
@@ -284,7 +368,7 @@
                       <div class="card mb-5 mb-lg-0">            
                         <div class="card-body">
                           <div class="card-content mt-3">
-                            <div class="number text-center  mb-6">{{  $nombreDevisRecus}}</div>
+                            <div class="number text-center  mb-6">{{  $nombreDevis}}</div>
                             <div class="card-name fs-6">DEVIS RECUS</div>
                           </div>
                         </div>
@@ -313,7 +397,7 @@
                       
                     @endif   
                   </div>  
-              </div>      
+              </div>       --}}
             </div>
           </div>
         </section><!-- End Speakers Section -->                
@@ -321,112 +405,119 @@
       
   </div>
 </div>
+<div class="container">
 
- {{-- <div class="container">
-  <div class="section-header" >
-    <h2 style="margin-rigth:90% !important">Les stats</h2>
-  </div>
-    @if (Auth::user()->role_id == 2)
-
-    <div class ms-5="cards">
-      <a href="#" style="text-decoration: none">
-        <div class="card1" style="border-radius: 5px !important">
-          <div class="card-content mt-3">
-            <div class="number text-center  mb-6">{{ $nombreAnnonces}}</div>
-            <div class="card-name fs-6">ANNONCES PUBLIES</div>
-          </div>
-          <div class="icon-box">
-            <i class="fa-regular fa-registered"></i>
-          </div>
+  <div class="card">
+    <h5 class="card-header fs-2">Les stats</h5>
+    <div class="card-body">
+      <div class="container">
+       {{-- <div class="section-header" >
+         <h2 style="margin-rigth:90% !important">Les stats</h2>
+       </div> --}}
+         @if (Auth::user()->role_id == 2)     
+         <div class="cards">
+          <a href="#" style="text-decoration: none">
+            <div class="card1" style="border-radius: 5px !important">
+              <div class="card-content">
+                <div class="number text-center  mb-6">{{ $nombreAnnonces}}</div>
+                <div class="card-name fs-6">ANNONCES PUBLIES</div>
+              </div>
+              <div class="icon-box">
+                <i class="fa-regular fa-registered"></i>
+              </div>
+            </div>
+          </a>
+          <a href="#" style="text-decoration: none">
+            <div class="card1" style="border-radius: 5px !important">
+              <div class="card-content">
+                <div class="number text-center  mb-6">{{  $nombreDevisRecus}}</div>
+                 <div class="card-name fs-6">DEVIS RECUS</div>
+              </div>
+              <div class="icon-box"> 
+                <i class="fas fa-user"></i>
+              </div>
+            </div>
+          </a>
+          <a href="#" style="text-decoration: none">
+          <div class="card1" style="border-radius: 5px !important">
+            <div class="card-content">
+              <div class="number text-center  mb-6 mb-6">{{ $nombreDevisEnvoyes }}</div>
+              <div class="card-name fs-6">DEVIS ENVOYES</div>
+              </div>
+              <div class="icon-box">
+                <i class="fas fa-scale-balanced"></i>
+              </div>
+            </div>
+          </a>
+          <a href="#" style="text-decoration: none">
+            <div class="card1" style="border-radius: 5px !important">
+              <div class="card-content">
+                <div class="number text-center  mb-6">{{ $nombreDevisValide }}</div>
+                <div class="card-name fs-6">DEVIS VALIDES</div>
+              </div>
+              <div class="icon-box">
+                <i class="fas fa-user"></i>
+              </div>
+            </div>
+          </a>
         </div>
-      </a>
-      <a href="#" style="text-decoration: none">
-        <div class="card1" style="border-radius: 5px !important">
-          <div class="card-content">
-            <div class="number text-center  mb-6">{{  $nombreDevisRecus}}</div>
-            <div class="card-name fs-6">DEVIS RECUS</div>
-          </div>
-          <div class="icon-box"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-      </a>
-      <a href="#" style="text-decoration: none">
-      <div class="card1" style="border-radius: 5px !important">
-        <div class="card-content">
-          <div class="number text-center  mb-6 mb-6">{{ $nombreDevisAttente }}</div>
-          <div class="card-name fs-6">DEVIS EN ATTENTES</div>
-        </div>
-          <div class="icon-box">
-            <i class="fas fa-scale-balanced"></i>
-          </div>
-        </div>
-      </a>
-      <a href="#" style="text-decoration: none">
-        <div class="card1" style="border-radius: 5px !important">
-          <div class="card-content">
-            <div class="number text-center  mb-6">{{ $nombreDevisValide }}</div>
-            <div class="card-name fs-6">DEVIS VALIDES</div>
-          </div>
-          <div class="icon-box">
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-      </a>
-    </div>
-      
-    @else
     
-    <div class="cards">
-      <a href="#" style="text-decoration: none">
-        <div class="card1" style="border-radius: 5px !important">
-          <div class="card-content">
-            <div class="number text-center  mb-6">{{ $nombreAnnonces}}</div>
-            <div class="card-name fs-6">ANNONCES PUBLIES</div>
-          </div>
-          <div class="icon-box">
-            <i class="fa-regular fa-registered"></i>
-          </div>
-        </div>
-      </a>
-      <a href="#" style="text-decoration: none">
-        <div class="card1" style="border-radius: 5px !important">
-          <div class="card-content">
-            <div class="number text-center  mb-6">{{  $nombreDevisRecus}}</div>
-            <div class="card-name fs-6">DEVIS RECUS</div>
-          </div>
-          <div class="icon-box"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-      </a>
-      <a href="#" style="text-decoration: none">
-      <div class="card1" style="border-radius: 5px !important">
-        <div class="card-content">
-            <div class="number text-center  mb-6 mb-6">{{ $nombreDevisAttente }}</div>
-            <div class="card-name fs-6">DEVIS EN ATTENTES</div>
-          </div>
-          <div class="icon-box">
-            <i class="fas fa-scale-balanced"></i>
-          </div>
-        </div>
-      </a>
-      <a href="#" style="text-decoration: none">
-        <div class="card1" style="border-radius: 5px !important">
-          <div class="card-content">
-            <div class="number text-center  mb-6">{{ $nombreDevisValide }}</div>
-            <div class="card-name fs-6">DEVIS VALIDES</div>
-          </div>
-          <div class="icon-box">
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-      </a>
+         @else
+         
+         <div class="cards">
+           <a href="#" style="text-decoration: none">
+             <div class="card1" style="border-radius: 5px !important">
+               <div class="card-content">
+                 <div class="number text-center  mb-6">{{ $nombreAnnonces}}</div>
+                 <div class="card-name fs-6">ANNONCES PUBLIES</div>
+               </div>
+               <div class="icon-box">
+                 <i class="fa-regular fa-registered"></i>
+               </div>
+             </div>
+           </a>
+           <a href="#" style="text-decoration: none">
+             <div class="card1" style="border-radius: 5px !important">
+               <div class="card-content">
+                 <div class="number text-center  mb-6">{{  $nombreDevis}}</div>
+                 <div class="card-name fs-6">DEVIS RECUS</div>
+               </div>
+               <div class="icon-box"> 
+                 <i class="fas fa-user"></i>
+               </div>
+             </div>
+           </a>
+           <a href="#" style="text-decoration: none">
+           <div class="card1" style="border-radius: 5px !important">
+             <div class="card-content">
+                 <div class="number text-center  mb-6 mb-6">{{ $nombreDevisAttente }}</div>
+                 <div class="card-name fs-6">DEVIS EN ATTENTES</div>
+               </div>
+               <div class="icon-box">
+                 <i class="fas fa-scale-balanced"></i>
+               </div>
+             </div>
+           </a>
+           <a href="#" style="text-decoration: none">
+             <div class="card1" style="border-radius: 5px !important">
+               <div class="card-content">
+                 <div class="number text-center  mb-6">{{ $nombreDevisValide }}</div>
+                 <div class="card-name fs-6">DEVIS VALIDES</div>
+               </div>
+               <div class="icon-box">
+                 <i class="fas fa-user"></i>
+               </div>
+             </div>
+           </a>
+         </div>
+     
+         @endif
+      
+      </div>
+    
     </div>
-
-    @endif
- 
- </div> --}}
+  </div>
+</div>
 
 
 @endsection

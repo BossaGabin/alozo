@@ -83,6 +83,9 @@ class UserController extends Controller
         $users->phone = $request->input('phone');
         $users->email = $request->input('email');
         $users->profil = $request->input('profil');
+        $users->adresse = $request->input('adresse');
+        $users->sexe = $request->input('sexe');
+        $users->ville_id = $request->input('ville_id');
         $users->save();
         return back();
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddProfilToUsersTable extends Migration
+class AddSexeToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class AddProfilToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('profil')->default('user.jpg');
+            $table->string('sexe')->nullable();
         });
     }
 

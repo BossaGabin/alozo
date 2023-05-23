@@ -15,5 +15,9 @@ class Devis extends Model
     {
         return $this->belongsTo(Annonce::class, 'annonces_id');
     } 
+    public function artisan(): BelongsTo
+    {
+        return $this->belongsTo(Artisan::class, 'annonces_id');
+    } 
 
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddProfilToUsersTable extends Migration
+class AddVilleIdToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,8 @@ class AddProfilToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('profil')->default('user.jpg');
+            $table->foreignId("ville_id")->constrained("villes");
+
         });
     }
 
@@ -26,6 +27,9 @@ class AddProfilToUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('villes', function (Blueprint $table) {
+            $table->dropConstrainedForeignId("villes_id")->nullable();
+        });
         Schema::table('users', function (Blueprint $table) {
             //
         });

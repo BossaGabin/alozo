@@ -510,11 +510,22 @@ h6 {
   top: 90px;
   right: 0;
   display: flex;
-  justify-content: center;
+  margin-top: 15%;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   text-align: center;
   padding: 0 15px;
+}
+#hero .search-container{  
+  position: absolute;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 15%;
+  margin-left: 13%;
+
+  
+  
 }
 
 @media (max-width: 991px) {
@@ -1783,6 +1794,100 @@ h6 {
    border-style: none !important;
    border-radius: 5px 5px 5px 5px !important;
  } 
+ .btn-footer{
+  width: 100% !important;
+  background-color: #ddc72e;
+  
+  
+ }
+ * {
+    margin: 0;
+    padding: 0;
+}
+/* .card {
+    width: 320px;
+    height: auto;
+    box-shadow: #747171ab 0px 2px 5px 0px;
+    background-color: #e8e8e8;
+    border-radius: 24px;
+} */
+
+.annonceCardTitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 14px;
+    background-color: #FFF;
+    height: 50px;
+    padding:15px 15px 15px 15px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    /* color: #ddc72e; */
+    /* margin-top: -5%; */
+    text-transform: uppercase;
+}
+.trait{
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 5px;
+  background: #dcc72e;
+  bottom: 0;
+  left: calc(50% - 25px);
+}
+
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    margin: 8px;
+}
+
+.info-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.button {
+    background-color: #ddc72e;
+    margin-top: 14px;
+    height: 30px;
+    padding: 4px;
+    width: 80px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: #00000052 0px 2px 5px 0px;
+}
+
+.contentBox {
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 14px;
+    border-radius: 24px;
+    box-shadow: #00000052 0px -5px 5px 0px;
+    text-align: center;
+}
+
+.badge {
+    background-color: #ddc72e;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    padding: 10px;
+    color: #FFF;
+}
+
+.content-text{
+    text-align: center;
+}
 
   
    

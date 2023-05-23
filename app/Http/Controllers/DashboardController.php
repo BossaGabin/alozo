@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Annonce;
+use App\Models\Artisan;
 use App\Models\Categorie;
 use App\Models\Devis;
+use App\Models\User;
 use App\Models\Ville;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +51,14 @@ class DashboardController extends Controller
         $devisRecus = Devis::join('annonces','annonces.id','=','devis.annonces_id')->where('user_id',Auth::user()->id)->get();
         // dd($devisRecus);
         return view('user.devis-recus', compact("devisRecus"));
+    }
+    public function count(){
+        $artisans = Artisan::all()->count();
+        $annonces = Annonce::all()->count();
+        $users = User::all()->count();
+        $devis = Devis::all()->count();
+        // dd($devis);
+        return view('admin/dashboard', compact("artisans","annonces","users","devis"));
     }
 
 }

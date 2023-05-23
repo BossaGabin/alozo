@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -28,6 +29,20 @@ class Artisan extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function ratings(): HasMany
+    {
+        return $this->hasMany(Ratings::class, 'artisan_id');
+    }
+
+    public function devis(): HasMany
+    {
+        return $this->hasMany(Devis::class, 'artisans_id');
+    }
+    public function artisanHasFile(): HasMany
+    {
+        return $this->hasMany(artisanHasFile::class);
+    } 
 
    
 }

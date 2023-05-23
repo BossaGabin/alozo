@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Devis;
-use App\Models\Artisan;
-use App\Models\DevisHasFile;
+use App\Models\Ratings;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
-class DevisController extends Controller
+class RatingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +15,10 @@ class DevisController extends Controller
      */
     public function index()
     {
-        //
-       
+        // //
+        // $ratings = Ratings::all();
+        // dd($ratings);
+        // return view("artisan/profil", compact("ratings"));
     }
 
     /**
@@ -43,34 +41,21 @@ class DevisController extends Controller
     {
         //
         $validateData = $request->validate([
-            
-            'price' => 'required',
-            'delivery_date' => 'required',
-            'content' => 'required', 
-            // 'images' => 'required',
-            'images.*' =>['image','mimes:jpeg,jpg,png']         
-            
+
+            'score' => 'required |min:1 |max:5',
+            'comment' => 'required',           
+
         ]);
-        $validateData['annonces_id'] = $id;
-        $validateData['artisans_id'] = Artisan::select('id')->where('user_id',Auth::user()->id)->first()->id;
-        
-        
+
         try {
-            $devis = Devis::create($validateData);
-            
-            foreach ($request->file('images') as $image) {
-                $path =  Storage::disk('public')->put('devis', $image);
-                // dd($path, $devis->id);
-                DevisHasFile::create([
-                    'path' => $path,
-                    'devis_id' => $devis->id
-                ]);
-            }
-            return back()->with('success', "Votre devis a été envoyé");
+            $validateData['artisan_id'] = $id;
+            $validateData['user_id'] = Auth::user()->id;
+            // dd($validateData);
+            $ratings = Ratings::create($validateData);       
+            return back()->with('success', "Bien..");
         } catch (\Throwable $th) {
             return back()->withErrors($th->getMessage());
         }
-
     }
 
     /**
@@ -115,19 +100,6 @@ class DevisController extends Controller
      */
     public function destroy($id)
     {
-        Devis::find($id)->delete();
-        return  back();
-    }
-    public function statuts($id){
-        $devis = DB::table('devis')->select('statut')->where('id', '=', $id)->first();
-    
-        if ($devis->statut == '1') {
-            $statut = '0';
-        }else{
-            $statut = '1';
-        }
-        $values = array('statut' =>$statut);
-        DB::table('devis')->where('id',$id)->update($values);
-        return back();
+        //
     }
 }

@@ -34,7 +34,7 @@
 		<div class="sidebar">
 			<ul>
 				<li>
-					<a  href="{{route('Dashboard')}}">
+					<a  href="{{route('admin')}}">
 						<i class="fas fa-home"></i>
 						<div>Dashboard</div>
 					</a>

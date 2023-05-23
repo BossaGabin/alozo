@@ -17,8 +17,8 @@ class CreateRatingsTable extends Migration
             $table->id();
             $table->string('score');
             $table->string('comment');
-            $table->foreignId("users_id")->constrained("users");
-            $table->foreignId("artisans_id")->constrained("artisans");
+            $table->foreignId("user_id")->constrained("users");
+            $table->foreignId("artisan_id")->constrained("artisans");
             $table->timestamps();
         });
     }

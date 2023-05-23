@@ -25,6 +25,9 @@ class User extends Authenticatable
         'name',
         'phone',       
         'profil',       
+        'adresse',       
+        'sexe',       
+        'ville_id',       
         'email',
         'role_id',
         'password',
@@ -64,5 +67,14 @@ class User extends Authenticatable
     public function annonce(): HasMany
     {
         return $this->hasMany(Annonce::class);
+    }
+    
+    public function rating(): HasMany
+    {
+        return $this->hasMany(Ratings::class);
+    }
+    public function ville(): BelongsTo
+    {
+        return $this->belongsTo(Ville::class);
     }
 }
