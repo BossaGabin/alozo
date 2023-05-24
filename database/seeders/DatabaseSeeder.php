@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             CountriesTableSeeder::class,
             VillesTableSeeder::class,
             RolesTableSeeder::class,
-            CategoriesTableSeeder::class
+            CategoriesTableSeeder::class,
+            AdminTableSeeder::class,
+            ArtisansTableSeeder::class
         ]);
     }
 }
