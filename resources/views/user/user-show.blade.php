@@ -170,9 +170,9 @@
             <div class="form-group col mt-3">
               <label for="ville_id">Ville:</label>
               <select name="ville_id"  class="form-control" id="">
-                <option value="{{$ville->id}}">{{ Auth::user()->ville->name }}</option>
+                {{-- <option value="{{$ville->id}}">{{ Auth::user()->ville->name }}</option> --}}
                 @foreach ($villes as $ville)
-                <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+                    <option {{Auth::user()->ville_id == $ville->id ? 'selected' : ''}} value="{{$ville->id}}">{{$ville->name}}</option>                              
                 @endforeach
               </select>
             </div>
@@ -276,7 +276,7 @@
                           @if (Auth::user()->ville_id == 0)
                           <label class="fs-4"><span class="fw-bold">Ville:</span></span> </label><br><br><br><br>                            
                           @else                            
-                          <label class="fs-4"><span class="fw-bold">Ville:</span> {{Auth::user()->ville->name}}</span> </label><br><br><br><br>
+                          <label class="fs-4"><span class="fw-bold">Ville:</span> {{Auth::user()->ville->name??''}}</span> </label><br><br><br><br>
                           @endif
                           <label class="fs-4 "><span class="fw-bold">Quartier:</span> {{Auth::user()->adresse}}</span>:   </label><br><br><br><br>
                           <label class="fs-4"><span class="fw-bold">Sexe:</span> {{Auth::user()->sexe}}</span>  </label><br><br><br><br>

@@ -75,12 +75,21 @@ class RegisterController extends Controller
             'phone' => $data['phone'],            
             'password' => Hash::make($data['password']),
             'role_id'=>3,
-            'profil' => 'images.png',            
-            'adresse' => '',            
-            'sexe' => '',            
-            'ville_id' => 0,            
+            'profil' => 'user.jpg',   
+            'ville_id' => $data['ville'],            
 
         ]);
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+        $villes = Ville::all();
+        return view('auth.register', compact('villes'));
     }
 
     

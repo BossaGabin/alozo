@@ -25,18 +25,18 @@ class ArtisanController extends Controller
     public function index(Request $request ){
         $categorieId = '';
         $villeId = '';
-        
+        $artisans = Artisan::where('statuts', '=', true);
         if ($request->filled('drone') && $request->filled('ville_id')) {
             
             $categorieId  = (int)$request->drone;
 
             $villeId = (int)$request->ville_id;
             
-            $artisans = Artisan::where('ville_id', $villeId)->where('categorie_id', $categorieId)->where('statuts', '=', true)->paginate(8);
+            $artisans = $artisans->where('ville_id', $villeId)->where('categorie_id', $categorieId);
         }elseif ($request->filled('drone')){
 
             $categorieId  = (int)$request->drone ;
-            $artisans = Artisan::where('categorie_id', $categorieId)->where('statuts', '=', true)->paginate(8);
+            $artisans = $artisans->where('categorie_id', $categorieId);
         }
         // elseif ($request->filled('ville_id') && $request->filled('drone','=', 'all')){
 
@@ -47,13 +47,13 @@ class ArtisanController extends Controller
         else{
 
             // $artisans = Artisan::withAvg('ratings', 'score')->where('statuts', '=', true)->orderBy("created_at", "desc")->paginate(8);
-            $artisans = Artisan::with('ratings')
+            $artisans = $artisans->with('ratings')
             ->select('artisans.*')
             ->withAvg('ratings', 'score')
-            ->orderByDesc('ratings_avg_score')
-            ->paginate(8);
+            ->orderByDesc('ratings_avg_score');
             // return view('artisan/artisans', compact("artisans"));
         }
+        $artisans->paginate(8);
         // return view('artisan/artisans', compact("artisans"));
         $villes = Ville::all();
         $categories = Categorie::all();
@@ -62,7 +62,7 @@ class ArtisanController extends Controller
             $artisan->moyenne = $moyenne;
         }
 
-        return view('artisan/artisans', compact("categories","villes",  "artisans","categorieId","villeId","moyenne" ));
+        return view('artisan/artisans', compact("categories","villes", "artisans","categorieId","villeId"));
 
     }
 

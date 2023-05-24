@@ -15,7 +15,9 @@ class AddVilleIdToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->foreignId("ville_id")->constrained("villes");
+            $table->unsignedBigInteger('ville_id')->nullable()->after('phone');
+            $table->foreign('ville_id')->references('id')->on('villes');
+            // $table->foreignId("ville_id")->constrained("villes");
 
         });
     }
@@ -27,11 +29,6 @@ class AddVilleIdToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('villes', function (Blueprint $table) {
-            $table->dropConstrainedForeignId("villes_id")->nullable();
-        });
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+
     }
 }
