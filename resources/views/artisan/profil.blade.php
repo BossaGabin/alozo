@@ -40,13 +40,13 @@
           </div>
           @endforeach
         </div><br><br>
-        @if (Auth::user()->role_id == 2 && Auth::user()->id == $artisan->user_id)          
+        {{-- @if (Auth::user()->role_id == 2 && Auth::user()->id == $artisan->user_id)          
         <form action="{{ route('upload.image') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <input type="file" name="images[]"  class="form-control" multiple><br>
           <input type="submit" class="btn-order" value="Ajouter de photos ">
        </form>
-        @endif
+        @endif --}}
       </div>  
     </div>      
   </div>

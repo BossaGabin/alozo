@@ -206,19 +206,21 @@
                                 <p class="fs-5"><span class="bi bi-geo-alt-fill" ></span>{{ $artisan->ville->name}}, <br> {{$artisan->adresse }} </p>
                                 <div class="justify-content-center d-flex "> 
                                   @if ($artisan->moyenne <= 0)
-                                  <div class="fs-3">
+                                  <div class="fs-2">
                                     0                                          
                                   </div> 
                                   <div>
-                                  <img src="assets/img/Star 4.png" alt="" class="fs-3" style="margin-bottom: -10px">
+                                    <i class="bi bi-star-fill fs-2 " style="color: orange"></i>
+                                  {{-- <img src="assets/img/Star 4.png" alt="" class="fs-2" style="margin-bottom: -10px"> --}}
                                   </div>                                   
                                 </div><br> 
                                   @else                                          
-                                  <div class="fs-3">
+                                  <div class="fs-2">
                                     {{$artisan->moyenne}}                                          
                                   </div> 
                                   <div>
-                                  <img src="assets/img/Star 4.png" alt="" class="fs-3" style="margin-bottom: -10px">
+                                    <i class="bi bi-star-fill fs-2 " style="color: orange"></i>
+                                  {{-- <img src="assets/img/Star 4.png" alt="" class="fs-2" style="margin-bottom: -10px"> --}}
                                   </div>                                   
                                 </div><br>                                     
                                   @endif

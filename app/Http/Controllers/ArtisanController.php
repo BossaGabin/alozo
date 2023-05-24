@@ -294,6 +294,7 @@ class ArtisanController extends Controller
 
         // Récupérer l'ID de l'artisan
         $artisanId = Auth::user()->artisan->id; // Supposons que l'artisan soit authentifié
+        // $artisanId = Auth::user()->artisan->id; // Supposons que l'artisan soit authentifié
 
         // Parcourir chaque fichier téléchargé
         foreach ($request->file('images') as $image) {

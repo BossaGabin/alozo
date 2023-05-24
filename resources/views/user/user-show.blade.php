@@ -283,9 +283,17 @@
                         </div>
                       </div>
                     </div><br><br>
-                    <div class="col-12 d-flex justify-content-between">
-                                            
-                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="padding:15px 15px 15px 15px !important; font-size:25px !important">Modifier mon profil</a>
+                    <div class="col-12 d-flex justify-content-between"> 
+                      <div>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="font-size:25px !important">Modifier mon profil</a>
+                        </div>                                           
+                      @if (Auth::user()->role_id == 2 )          
+                      <form action="{{ route('upload.image') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="images[]"  class="form-control" multiple><br>
+                        <input type="submit" class="btn-order" value="Ajouter de photos ">
+                     </form>
+                      @endif
                       {{-- <a href="" class="btn-order fs-5 fw-bold ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 35% !important">Modifier mon profil</a><br><br><br><br><br><br><br>            --}}
                   </div>
                 </div>

@@ -6,6 +6,8 @@
   <title>Alôzô - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <link href="../assets/img/LOGO_Officiel2.jpg" rel="icon">
+  <link href="../assets/img/LOGO_Officiel2.jpg" rel="apple-touch-icon">
   <!-- Favicons -->
   {{-- <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> --}}
@@ -24,14 +26,14 @@
  </head>
 
 <body>    
-    <main>
-        <div class="container" style="margin-top: ">    
+    <main id="hero">
+        <div class="container" style="margin-top:%" >    
           <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
             <div class="container">
               <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center" style=" height:150px">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center" style=" height:150px; width:70%">
     
-                  <div class="d-flex justify-content-center py-4">
+                  <div class="d-flex justify-content-center py-4" style="position: relative">
                     <a href="/" class="logo d-flex align-items-center w-auto">
                       <img src="{{asset('assets/img/LOGO_Officiel2.jpg')}}" alt="" style="border-radius: 200px" width="100" height="100">                      
                     </a>
@@ -43,28 +45,32 @@
     
                       
                         <h5 class="card-title text-center pb-0 fs-3">Création de compte</h5>
+                        <hr><br>
                         {{-- <p class="text-center small">Entrez vos informations</p> --}}
                       
     
                       <form class="row g-3 needs-validation" novalidate action="{{ route('register') }}" method="POST">
                         @csrf
-                        <div class="col-12">
-                          <label   for="name" class="form-label fs-6">Nom et Prenom:</label>
-                          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-{{-- 
-                          @error('name')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror --}}
-                          <div class="invalid-feedback">Votre nom s'il vous plait!</div>
+                        <div class="row">
+                          <div class="col-md-6 form-group">
+                            <label   for="name" class="form-label fs-6">Nom et Prenom:</label>
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+  {{-- 
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror --}}
+                            <div class="invalid-feedback">Votre nom s'il vous plait!</div>
+                          </div>
+                          <div class="col-md-6 form-group">
+                            <label id="phone" type="text" class="form-label fs-6">Telephone:</label>
+                            <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                            <div class="invalid-feedback">Votre telephone.</div>
+                          </div>
+
                         </div>
     
-                        <div class="col-12">
-                          <label id="phone" type="text" class="form-label fs-6">Telephone:</label>
-                          <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
-                          <div class="invalid-feedback">Votre telephone.</div>
-                        </div>
     
                         <div class="col-12">
                             <label id="email" type="email" class="form-label fs-6">Email:</label>
@@ -92,11 +98,13 @@
                             <div class="invalid-feedback">!!</div>
                           </div>
                         </div>
-                        <div class="col-12">
-                          <button class="btn  btn-order" type="submit"  style="margin-left: 20%">Creer un compte</button>
+                        <div class="col-8 " style="margin-left: 15%">
+                          <button class="btn  btn-order w-100" type="submit" >Creer un compte</button>
                         </div>
                         <div class="col-12">
-                          <p class="small mb-0 fs-6">Avez-vous deja un compte? <a href="{{ route('login') }}">connectez-vous</a></p>
+                          <center>                            
+                            <label class="small mb-0 fs-6 ">Avez-vous deja un compte? <a href="{{ route('login') }}">connectez-vous</a></label>
+                          </center>
                         </div>
                       </form>
     

@@ -97,12 +97,16 @@
           {{-- @can('create', 'App\User')
           <a href="/dashboard" type="button" class="btn-nav">Dashboard</a>                  
           @endcan  --}}
+          
 
         @if (Auth::user()->role_id == 2)
         <a href="#" type="button" class="btn-nav fs-4">Abonnement</a>  
-        @else
+        @elseif (Auth::user()->role_id == 3)
         <a href="#" type="button" class="btn-nav fs-4" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access">Devenir un artisan</a>
-        @endif            
+        @else()
+        <a href="/tableauDeBord" type="button" class="btn-nav fs-4">Dashboard</a>  
+        @endif  
+
 
                  <a id="navbarDropdown" class="dropdown-toggle fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="margin-left:10px">
                     {{ Auth::user()->name }}

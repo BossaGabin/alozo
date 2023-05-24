@@ -36,7 +36,7 @@
         </li>     
       </ul>
     @if (Auth::user()->role_id == 3)
-    <a href="#" type="button" class="btn-nav" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access" style="margin-left: 80%;">Devenir un artisan</a>    
+    {{-- <a href="#" type="button" class="btn-nav" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access" style="margin-left: 80%;">Devenir un artisan</a>     --}}
     @endif      
   </div>
 </div>
