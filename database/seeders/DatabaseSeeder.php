@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
+            UsersTableSeeder::class,
+            AnnoncesTableSeeder::class,
             CountriesTableSeeder::class,
             VillesTableSeeder::class,
             RolesTableSeeder::class,
@@ -22,6 +24,8 @@ class DatabaseSeeder extends Seeder
             
             AdminTableSeeder::class,
             ArtisansTableSeeder::class
-        ]);
+    ]);
+           
+        
     }
 }
