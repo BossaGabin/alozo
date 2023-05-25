@@ -16,7 +16,7 @@ class CreateAnnonceHasFilesTable extends Migration
         Schema::create('annonce_has_files', function (Blueprint $table) {
             $table->id();
             $table->string('path');
-            $table->foreignId("annonce_id")->constrained("annonce");
+            $table->foreignId("annonce_id")->constrained("annonces");
             $table->timestamps();
         });
     }

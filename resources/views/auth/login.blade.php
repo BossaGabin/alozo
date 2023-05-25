@@ -24,15 +24,15 @@
 </head>
 
 <body>    
-  <main style="">
+  <main style="" id="hero">
     <div class="container">
 
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center" style="width:50%">
 
-              <div class="d-flex justify-content-center py-4">
+              <div class="d-flex justify-content-center py-4" style="position: relative">
                 <a href="/" class="logo d-flex align-items-center w-auto">
                   <img src="{{asset('assets/img/LOGO_Officiel2.jpg')}}" alt="" style="border-radius: 200px;margin-top:5%" width="80" height="80">
                   
@@ -70,22 +70,23 @@
                         <label class="form-check-label fs-6" for="remember">Se souvenir de moi</label>
                       </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-between">
-                        <div class="col-md-6">
-                          <button class="btn btn-order" type="submit" style="font-size:18px !important;">Connexion</button>
-                          
-                        </div>
-                        <div class="col-md-6">
-                            @if (Route::has('password.request'))
-                            <a class=" btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
-                            </a>                          
-                        </div>
+                    <center>
+                      <div class="col-8" >                       
+                           <button class="btn btn-order w-100" type="submit" style="font-size:18px !important;">Connexion</button>                    
+                       </div><br>
+                       <div class="col-md-">
+                           @if (Route::has('password.request'))
+                           <a class=" btn-link" href="{{ route('password.request') }}">
+                               {{ __('Forgot Your Password?') }}
+                           </a>                          
+                       </div>
+                    </center>
                   @endif
-                    </div>
+                  <center>
                     <div class="col-12">
-                      <p class="small mb-0 fs-6">Vous n'avez pas de compte? <a class="btn-link" href="{{route('register')}}">Creer un compte</a></p>
+                      <label class="small mb-0 fs-6" style="color:black !important">Vous n'avez pas de compte? <a class="btn-link" href="{{route('register')}}">Creer un compte</a></label>
                     </div>
+                  </center>
                   </form>
 
                 </div>

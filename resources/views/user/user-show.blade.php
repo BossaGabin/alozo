@@ -170,9 +170,9 @@
             <div class="form-group col mt-3">
               <label for="ville_id">Ville:</label>
               <select name="ville_id"  class="form-control" id="">
-                <option value="{{$ville->id}}">{{ Auth::user()->ville->name }}</option>
+                {{-- <option value="{{$ville->id}}">{{ Auth::user()->ville->name }}</option> --}}
                 @foreach ($villes as $ville)
-                <option value="{{$ville->id}}">{{$ville->name}}</option>                              
+                    <option {{Auth::user()->ville_id == $ville->id ? 'selected' : ''}} value="{{$ville->id}}">{{$ville->name}}</option>                              
                 @endforeach
               </select>
             </div>
@@ -276,16 +276,24 @@
                           @if (Auth::user()->ville_id == 0)
                           <label class="fs-4"><span class="fw-bold">Ville:</span></span> </label><br><br><br><br>                            
                           @else                            
-                          <label class="fs-4"><span class="fw-bold">Ville:</span> {{Auth::user()->ville->name}}</span> </label><br><br><br><br>
+                          <label class="fs-4"><span class="fw-bold">Ville:</span> {{Auth::user()->ville->name??''}}</span> </label><br><br><br><br>
                           @endif
                           <label class="fs-4 "><span class="fw-bold">Quartier:</span> {{Auth::user()->adresse}}</span>:   </label><br><br><br><br>
                           <label class="fs-4"><span class="fw-bold">Sexe:</span> {{Auth::user()->sexe}}</span>  </label><br><br><br><br>
                         </div>
                       </div>
                     </div><br><br>
-                    <div class="col-12 d-flex justify-content-between">
-                                            
-                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="padding:15px 15px 15px 15px !important; font-size:25px !important">Modifier mon profil</a>
+                    <div class="col-12 d-flex justify-content-between"> 
+                      <div>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="font-size:25px !important">Modifier mon profil</a>
+                        </div>                                           
+                      @if (Auth::user()->role_id == 2 )          
+                      <form action="{{ route('upload.image') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="images[]"  class="form-control" multiple><br>
+                        <input type="submit" class="btn-order" value="Ajouter de photos ">
+                     </form>
+                      @endif
                       {{-- <a href="" class="btn-order fs-5 fw-bold ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 35% !important">Modifier mon profil</a><br><br><br><br><br><br><br>            --}}
                   </div>
                 </div>

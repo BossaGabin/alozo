@@ -242,7 +242,7 @@
                                         $dateFormatee = $date->isoFormat('dddd D MMMM YYYY');
                                       ?>
                                         <strong class="card-text fs-5">Délai: {{$dateFormatee}} </strong><br><br>
-                                        <strong class="fs-5"> {{\Illuminate\Support\Str::words($annonce->content, 8, '...') }} </strong><br><br>
+                                        <strong class="fs-5"> {{\Illuminate\Support\Str::words($annonce->content, 7, '...') }} </strong><br><br>
                                         <a href="/annonces/{{ $annonce->id }}" class="btn btn-order fs-5" style="width: 40% !important;margin-left:25% !important">Détails</a>                                      
                                         </div>
                                       </div>

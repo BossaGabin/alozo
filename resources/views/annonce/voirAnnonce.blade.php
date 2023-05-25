@@ -157,20 +157,33 @@
     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white border" >
         <div class="col p-4 d-flex flex-column position-static">
             <h3 class="mb-0">{{ $annonce->title }}</h3><br><br>
+            
             <div class="mb-1 fs-5"><strong>Budget prévu: </strong> <span style="color: black">{{ $annonce->budget }}F CFA</span></div>
             <?php   
-              $dateSql = $annonce->deadline;
-              $dateReelle = \Carbon\Carbon::parse($dateSql)->formatLocalized('%A %d %B %Y');
-            ?>
-            <div class="mb-1 fs-5"><strong>Délai:  <span style="color: black">{{  $dateReelle }}</span></strong></div><br>
+            // $dateSql = $annonce->deadline;
+            // $dateReelle = \Carbon\Carbon::parse($dateSql)->formatLocalized('%A %d %B %Y');
+            $dateAnglaise = $annonce->deadline;
+            $date =\Carbon\Carbon::parse($dateAnglaise)->locale('fr');
+            $dateFormatee = $date->isoFormat('dddd D MMMM YYYY');
+          ?>
+          <div>
+            <strong class="card-text fs-5">Délai:</strong><span style="color: black" class="fs-5">  {{$dateFormatee}}</span><br><br>
+          </div>
             <p class="card-text mb-auto fs-5"> {{ $annonce->content}}</p>
-            <h5 class="card-title text-muted " style="font-size: 17px; margin-bottom:-25px"><em>Publié le {{ $annonce->created_at }}</em> par <strong>{{$annonce->user->name}}</strong></h5>
+            <?php   
+            // $dateSql = $annonce->deadline;
+            // $dateReelle = \Carbon\Carbon::parse($dateSql)->formatLocalized('%A %d %B %Y');
+            $dateAnglaise =$annonce->created_at;
+            $date =\Carbon\Carbon::parse($dateAnglaise)->locale('fr');
+            $dateCreation = $date->isoFormat('dddd D MMMM YYYY');
+          ?>
+            <h5 class="card-title text-muted " style="font-size: 17px; margin-bottom:-25px"><em>Publié le {{ $dateCreation }}</em> par <strong>{{$annonce->user->name}}</strong></h5>
             <br>
            <div class="d-flex mt-5" >
             <a  href="{{ url()->previous() }}" class="btn btn-order   my-1" style="margin: auto; width: auto;" >
                 Retour
             </a>
-            @if (Auth::user()->role_id == 2 && Auth::user()->id !== $annonce->user_id)              
+            @if (Auth::user()->role_id == 2 && Auth::user()->id !== $annonce->user_id  && Auth::user()->artisan->categorie_id == $annonce->categorie_id)              
             <a  href="#" class="btn btn-order   my-1" data-bs-toggle="modal" data-bs-target="#buy-annonce-devis" data-ticket-type="premium-access" style="margin-left:-40% ; width: auto;">
                 Proposer un devis
             </a>
@@ -215,7 +228,7 @@
     <thead >
       <tr>
         <th class="px-4 py-3">#</th>
-        {{-- <th class="px-4 py-3">Artisans</th> --}}
+        <th class="px-4 py-3">Artisans</th>
         <th class="px-4 py-3">Budget</th>
         <th class="px-4 py-3">Delai</th>
         <th class="px-4 py-3">Description</th>
@@ -229,13 +242,20 @@
       @foreach ($annonce->devis as $devisByAnnonce)
       <tr>
         <td> {{$loop->index +1}} </td>            
-        {{-- <td> {{$devisByAnnonce->artisan->name }}</td> --}}
+        <td> {{$devisByAnnonce->artisan->name }}</td>
         <td> {{$devisByAnnonce->price}}F CFA </td>
-        <td> {{$devisByAnnonce->delivery_date}}</td>
+        <?php   
+          // $dateSql = $annonce->deadline;
+          // $dateReelle = \Carbon\Carbon::parse($dateSql)->formatLocalized('%A %d %B %Y');
+          $dateAnglaise = $devisByAnnonce->delivery_date;
+          $date =\Carbon\Carbon::parse($dateAnglaise)->locale('fr');
+          $delaiDevis = $date->isoFormat('dddd D MMMM YYYY');
+          ?>
+          <td> {{ $delaiDevis}}</td>
         <td> {{$devisByAnnonce->content}} </td>          
         <td>
           <?php
-          if ($devisByAnnonce->statut == '1') {?>
+          if ($devisByAnnonce->statut == true) {?>
 
             <a href="/statuts-update-devis/{{$devisByAnnonce->id}}" class="btn btn-sucess">Valider</a>
 
