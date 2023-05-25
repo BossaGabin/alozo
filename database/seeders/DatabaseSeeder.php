@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             VillesTableSeeder::class,
             RolesTableSeeder::class,
             CategoriesTableSeeder::class,
+            
             AdminTableSeeder::class,
             ArtisansTableSeeder::class
         ]);

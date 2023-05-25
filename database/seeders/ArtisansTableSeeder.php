@@ -39,6 +39,7 @@ class ArtisansTableSeeder extends Seeder
         $artisan1->categorie_id = '4';
         $artisan1->statuts = '1';
         $artisan1->verified = '1';   
+        $artisan1->save();   
 
         $user2 = new User();
         $user2->name = 'AMOUSSOU Jordan';
@@ -62,6 +63,7 @@ class ArtisansTableSeeder extends Seeder
         $artisan2->categorie_id = '2';
         $artisan2->statuts = '1';
         $artisan2->verified = '1';  
+        $artisan2->save();  
 
         $user3 = new User();
         $user3->name = 'DEGKOF Archange';
@@ -85,6 +87,7 @@ class ArtisansTableSeeder extends Seeder
         $artisan3->categorie_id = '5';
         $artisan3->statuts = '1';
         $artisan3->verified = '1';   
+        $artisan3->save();   
 
         $user4 = new User();
         $user4->name = 'AKOTO Consuela';
@@ -108,6 +111,7 @@ class ArtisansTableSeeder extends Seeder
         $artisan4->categorie_id = '1';
         $artisan4->statuts = '1';
         $artisan4->verified = '1';   
+        $artisan4->save();   
 
          
         $user5 = new User();
@@ -132,6 +136,7 @@ class ArtisansTableSeeder extends Seeder
         $artisan5->categorie_id = '8';
         $artisan5->statuts = '1';
         $artisan5->verified = '1';  
+        $artisan5->save();  
          
         $user6 = new User();
         $user6->name = 'Franel B';
@@ -155,6 +160,7 @@ class ArtisansTableSeeder extends Seeder
         $artisan6->categorie_id = '10';
         $artisan6->statuts = '1';
         $artisan6->verified = '1';   
+        $artisan6->save();   
          
         $user7 = new User();
         $user7->name = 'Gedeon Gedson';
@@ -178,6 +184,7 @@ class ArtisansTableSeeder extends Seeder
         $artisan7->categorie_id = '6';
         $artisan7->statuts = '1';
         $artisan7->verified = '1';   
+        $artisan7->save();   
          
         $user8 = new User();
         $user8->name = 'Max ALDO';
@@ -201,6 +208,7 @@ class ArtisansTableSeeder extends Seeder
         $artisan8->categorie_id = '6';
         $artisan8->statuts = '1';
         $artisan8->verified = '1';   
+        $artisan8->save();   
          
         $user9 = new User();
         $user9->name = 'TOSSA Justine';
@@ -224,6 +232,7 @@ class ArtisansTableSeeder extends Seeder
         $artisan9->categorie_id = '1';
         $artisan9->statuts = '1';
         $artisan9->verified = '1';   
+        $artisan9->save();   
          
         $user10 = new User();
         $user10->name = 'ZV Ola';
@@ -247,6 +256,7 @@ class ArtisansTableSeeder extends Seeder
         $artisan10->categorie_id = '1';
         $artisan10->statuts = '1';
         $artisan10->verified = '1';        
+        $artisan10->save();        
                
         
     }

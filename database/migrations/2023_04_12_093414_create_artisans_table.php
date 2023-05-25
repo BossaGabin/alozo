@@ -19,7 +19,7 @@ class CreateArtisansTable extends Migration
             $table->integer('phone');
             $table->string('adresse');
             $table->integer('ID_number');
-            $table->string('certificate');           
+            $table->string('certificate')->nullable();           
             $table->foreignId("categorie_id")->constrained("categories");
             $table->foreignId("user_id")->constrained("users");
             // $table->foreignId("role_id")->constrained("roles");

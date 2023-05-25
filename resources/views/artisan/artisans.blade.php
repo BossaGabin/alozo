@@ -196,9 +196,9 @@
                                                                 <i class="bi bi-star-fill fs-3 check"></i>
                                                                 {{-- <img src="assets/img/Star 4.png" alt="" class="fs-3" style="margin-bottom: -10px"> --}}
                                                             </div>
-                                                        </div>
-                                                    </div><br>
-                                @endif
+                                                            </div>
+                                                        </div><br>
+                                                     @endif
                                 <a href="/artisans/{{ $artisan->id }}" class="btn btn-order"
                                     role="button"><span>Consulter</span></a><br><br>
                             </div>
