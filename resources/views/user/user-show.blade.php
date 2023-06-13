@@ -149,7 +149,7 @@
             @else
             <div class="form-group col mt-3">
               <label for="sexe">Sexe:</label>
-              <select name="sexe"  class="form-control" id="">
+              <select name="sexe"  class="form-control" id="" required>
                 <option value="sexe">Choisissez votre sexe</option>
                   <option value="Masculin">Masculin</option>
                   <option value="Feminin">Feminin</option>
@@ -163,33 +163,21 @@
            
             <div class="form-group col mt-3">
               <label for="email">Adresse mail:</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="" value="{{ Auth::user()->email }}">
-            </div>
-
-            @if (Auth::user()->ville_id !==0)
+              <input type="email" class="form-control" name="email" id="email" placeholder="" value="{{ Auth::user()->email }}" required>
+            </div>            
             <div class="form-group col mt-3">
               <label for="ville_id">Ville:</label>
-              <select name="ville_id"  class="form-control" id="">
+              <select name="ville_id"  class="form-control" id="" required>
                 {{-- <option value="{{$ville->id}}">{{ Auth::user()->ville->name }}</option> --}}
                 @foreach ($villes as $ville)
                     <option {{Auth::user()->ville_id == $ville->id ? 'selected' : ''}} value="{{$ville->id}}">{{$ville->name}}</option>                              
                 @endforeach
               </select>
             </div>
-            @else
-            <div class="form-group col mt-3">
-              <label for="ville_id">Ville:</label>
-              <select name="ville_id"  class="form-control" id="">
-                <option value="ville">Choisissez une ville</option>
-                @foreach ($villes as $ville)
-                <option value="{{$ville->id}}">{{$ville->name}}</option>                              
-                @endforeach
-              </select>
-            </div>              
-            @endif
+           
             <div class="form-group col mt-3">
               <label for="email">Quartier:</label>
-              <input type="text" class="form-control" name="adresse" id="adresse" placeholder="" value="{{ Auth::user()->adresse }}">
+              <input type="text" class="form-control" name="adresse" id="adresse" placeholder="" value="{{ Auth::user()->adresse }}" required>
             </div>
             <div class="form-group col mt-3">
               <label for="profil">Profil:</label>
@@ -272,13 +260,9 @@
                         </div>
                       </div>
                       <div class="col-md-4 border">
-                        <div class="mt-5">
-                          @if (Auth::user()->ville_id == 0)
-                          <label class="fs-4"><span class="fw-bold">Ville:</span></span> </label><br><br><br><br>                            
-                          @else                            
+                        <div class="mt-5">                                                   
                           <label class="fs-4"><span class="fw-bold">Ville:</span> {{Auth::user()->ville->name??''}}</span> </label><br><br><br><br>
-                          @endif
-                          <label class="fs-4 "><span class="fw-bold">Quartier:</span> {{Auth::user()->adresse}}</span>:   </label><br><br><br><br>
+                          <label class="fs-4 "><span class="fw-bold">Quartier:</span> {{Auth::user()->adresse}}</span>   </label><br><br><br><br>
                           <label class="fs-4"><span class="fw-bold">Sexe:</span> {{Auth::user()->sexe}}</span>  </label><br><br><br><br>
                         </div>
                       </div>

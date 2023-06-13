@@ -25,16 +25,13 @@
           <form action="" method="POST" class="row g-3" style="padding:30px;">
             @csrf
         <div class="col-md-6">
-          <label for="lastname" class="form-label">Nom</label>
-          <input type="text" class="form-control" name="" id="">
+          <label for="lastname" class="form-label">Nom Complet</label>
+          <input type="text" class="form-control" name="" id="" required>
         </div>
         <div class="col-md-6">
-          <label for="firstname" class="form-label">Prenoms</label>
-          <input type="text" class="form-control" name="" id="">
-        </div>
         <div class="col-6">
           <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="" name="" placeholder="artisan@gmail.com">
+          <input type="email" class="form-control" id="" name="" placeholder="artisan@gmail.com" required>
         </div>
         <div class="col-6">
           <label for="address" class="form-label">Categories</label>
@@ -55,55 +52,53 @@
             <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Ajouter</button>
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
             </div>
-          </form>
-      
+          </form>      
           </div>
         </div>
-      </div>
+      </div> 
       
-  
-    <table class="table table-bordered border-black border-solid-2px" >
-      <thead >
-        <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-          <th class="px-4 py-3">#</th>
-          <th class="px-4 py-3">Nom et Prénom</th>
-          <th class="px-4 py-3">Téléphone</th>
-          <th class="px-4 py-3">Categories</th>
-          <th class="px-4 py-3">Villes</th>
-          <th class="px-4 py-3">Address</th>
-          <th class="px-4 py-3">Statut</th>
-          <th class="px-4 py-3">Resultat</th>
-          <th class="px-4 py-3">Actions</th>
-
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($artisans as $artisan)
-        <tr>
-          <td> {{$loop->index +1}} </td>
-          <td> {{$artisan->name}} </td>
-          <td> {{$artisan->phone}} </td>
-          <td> {{$artisan->categorie->name}} </td>
-          <td> {{$artisan->ville->name}} </td>
-          <td> {{$artisan->adresse}} </td>
-          <td>
+      <table class="table table-bordered border-black border-solid-2px" >
+        <thead >
+          <tr>
+            <th class="px-4 py-3">#</th>
+            <th class="px-4 py-3">Nom et Prénom</th>
+            <th class="px-4 py-3">Téléphone</th>
+            <th class="px-4 py-3">Categories</th>
+            <th class="px-4 py-3">Villes</th>
+            <th class="px-4 py-3">Address</th>
+            <th class="px-4 py-3">Statut</th>
+            <th class="px-4 py-3">Etat du compte</th>
+            <th class="px-4 py-3">Actions</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($artisans as $artisan)
+          <tr>
+            <td> {{$loop->index +1}} </td>
+            <td> {{$artisan->name}} </td>
+            <td> {{$artisan->phone}} </td>
+            <td> {{$artisan->categorie->name}} </td>
+            <td> {{$artisan->ville->name}} </td>
+            <td> {{$artisan->adresse}} </td>
+            <td>
               <?php
                 if ($artisan->statuts == true) {?>
 
-                  <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-success">Actif</a>
+<a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-success">Actif</a>
 
-              <?php }
+<?php }
               else {?>
 
-                <a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-danger">Inactif</a>
-                
-              <?php }          
-              ?>
+<a href="/statuts-update-artisan/{{$artisan->id}}" class="btn btn-danger">Inactif</a>
 
+<?php }          
+              ?>
           </td>
           <td>       
-              <?php 
+            <?php 
               if ($artisan->verified == true) { ?>
+                {{-- @dd('ici')      --}}
 
               <a href="#" class="btn btn-success">Approuver</a>
 
@@ -152,9 +147,16 @@
                        <input type="text" class="form-control" id="adresse" name="adresse" value="{{$artisan->adresse}}">
                      </div>                                  
                     
-                     
-                    <a href="{{ route('artisans.verify',['artisanId' => $artisan->id ,'decision' => 'approuver']) }}" type="submit" class="btn btn-success btn-lg">Accepter</a>
-                    <a href="{{ route('artisans.verify',['artisanId' => $artisan->id ,'decision' => 'rejeter']) }}" type="submit" class="btn btn-danger btn-lg" style="margin-left: 5%">Rejetter</a>
+                     <div class="d-flex">
+                       <a href="{{ route('artisans.verify',['artisanId' => $artisan->id ,'decision' => 'approuver']) }}" type="submit" class="btn btn-success btn-lg">Accepter</a>
+                       <form action="{{ route('artisans.destroy',$artisan->id ) }}" method="POST">
+                         @csrf
+                         @method('DELETE')
+                         {{-- <button class="btn btn-danger fa fa-trash"></button>    --}}
+                         <button class="btn btn-danger btn-lg" style="margin-left: 5%">Rejetter</button>
+                       </form>  
+
+                     </div>
                    </div>
              
                    <!-- Modal footer -->

@@ -27,19 +27,23 @@ class ArtisanController extends Controller
         $categorieId = '';
         $villeId = '';
         $artisans = Artisan::where('statuts', '=', true);
-        if ($request->filled('drone') && $request->filled('ville_id')) {
+        if ($request->filled('categorie') && $request->filled('ville_id')) {
             
-            $categorieId  = (int)$request->drone;
+            $categorieId  = (int)$request->categorie;
 
             $villeId = (int)$request->ville_id;
             
             $artisans = $artisans->where('ville_id', $villeId)->where('categorie_id', $categorieId);
-        }elseif ($request->filled('drone')){
+        }elseif ($request->filled('categorie')){
 
-            $categorieId  = (int)$request->drone ;
+            $categorieId  = (int)$request->categorie ;
             $artisans = $artisans->where('categorie_id', $categorieId);
+        }elseif ($request->filled('ville_id')){
+
+            $villeId = (int)$request->ville_id;
+            $artisans = $artisans->where('ville_id', $villeId);
         }
-        // elseif ($request->filled('ville_id') && $request->filled('drone','=', 'all')){
+        // elseif ($request->filled('ville_id') && $request->filled('categorie','=', 'all')){
 
         //     $villeId = (int)$request->ville_id;
         //     $artisans = Artisan::where('ville_id', $villeId)->where('statuts', '=', true)->get();
@@ -54,7 +58,7 @@ class ArtisanController extends Controller
             ->orderByDesc('ratings_avg_score');
             // return view('artisan/artisans', compact("artisans"));
         }
-        $artisans->paginate(8);
+        $artisans = $artisans->paginate(8);
         // return view('artisan/artisans', compact("artisans"));
         $villes = Ville::all();
         $categories = Categorie::all();
@@ -197,7 +201,7 @@ class ArtisanController extends Controller
                 return back()->with('success',"Le compte artisan à été validé");
 
             } else{
-                dd('ici');
+                // dd('ici');
                 $artisan->delete();
                 return back()->with('success',"La demande à été supprimé");
             }

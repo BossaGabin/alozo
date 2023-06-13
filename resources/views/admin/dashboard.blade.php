@@ -7,7 +7,7 @@
 				<div class="card">
 					<div class="card-content">
 						<div class="number">{{$users}}</div>
-						<div class="card-name">Clients</div>
+						<div class="card-name">Utilisateurs</div>
 					</div>
 					<div class="icon-box">
 						<i class="fa-regular fa-registered"></i>

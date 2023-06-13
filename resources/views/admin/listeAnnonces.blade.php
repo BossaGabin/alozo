@@ -22,10 +22,10 @@
                   @csrf                
                   <div class="form-group mt-3">
                     <label for="title">Titre:</label>
-                    <input type="text" class="form-control" name="title" placeholder="Exemple:">
+                    <input type="text" class="form-control" name="title" placeholder="Exemple:" required>
                   </div>
                   <div class="form-group mt-3">
-                    <select name="categorie_id"  class="form-control" id="">
+                    <select name="categorie_id"  class="form-control" id="" required>
                       <option value="categorie">Choisissez une catégorie</option>
                       @foreach ($categories as $categorie)
                       <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
@@ -34,15 +34,15 @@
                   </div>
                   <div class="form-group mt-3">
                     <label for="budget">Budget:</label>
-                    <input type="text" class="form-control" name="budget" placeholder="Exemple:">
+                    <input type="text" class="form-control" name="budget" placeholder="Exemple:" required>
                   </div>
                   <div class="form-group mt-3">
                     <label for="deadline">Délai:</label>
-                    <input type="date" class="form-control" name="deadline" placeholder="Exemple:">
+                    <input type="date" class="form-control" name="deadline" placeholder="Exemple:" required>
                   </div>
                   <div class="form-group mt-3">
                     <label for="content">Description:</label>
-                   <textarea name="content" id="" class="form-control" cols="50" rows="3"></textarea>
+                   <textarea name="content" id="" class="form-control" cols="50" rows="3" required></textarea>
                   </div>                  
                   <div class="form-group mt-3">
                     <label for="content">Images:</label>
@@ -84,12 +84,12 @@
            <?php
             if ($annonce->statuts == '1') {?>
 
-              <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-success">Actif</a>
+              <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-success">Validé</a>
 
            <?php }
            else {?>
 
-            <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-danger">inactif</a>
+            <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-danger">En attente</a>
             
           <?php }          
            ?>
@@ -116,7 +116,7 @@
                         @method('patch')
                         <div class="mb-3 mt-3">
                           <label for="nom" class="form-label">Titre:</label>
-                          <input type="text" class="form-control" id="title" placeholder="" name="title" value="{{$annonce->title}}">
+                          <input type="text" class="form-control" id="title" placeholder="" name="title" value="{{$annonce->title}}" >
                         </div>
                         <div class="mb-3">
                           <label for="content">Description:</label>
@@ -133,7 +133,7 @@
                         </div>                                                      
                         <div class="mb-3">
                           <label for="pwd" class="form-label">Délai:</label>
-                          <input type="text" class="form-control" id="deadline" name="deadline" value="{{$annonce->deadline}}">
+                          <input type="date" class="form-control" id="deadline" name="deadline" value="{{$annonce->deadline}}">
                         </div>                                  
                         <div class="mb-3">
                           <label for="pwd" class="form-label">Budget:</label>

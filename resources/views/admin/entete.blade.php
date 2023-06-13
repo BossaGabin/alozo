@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	
 	<title>Alozo</title>
     <link href="{{ asset('assets/css/dashboard2.css') }}" rel="stylesheet">
 	{{-- <script src="{{asset('assets/js/main.js')}}"></script> --}}
@@ -54,7 +55,7 @@
 				<li>
 					<a href="users">
 						<i class="fas fa-user"></i>
-						<div>Clients</div>
+						<div>Utilisateurs</div>
 					</a>
 				</li>
 				{{-- <li>

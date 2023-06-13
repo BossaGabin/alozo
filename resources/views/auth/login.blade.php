@@ -6,6 +6,8 @@
   <title>Alôzô - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <link href="../assets/img/LOGO_Officiel2.jpg" rel="icon">
+  <link href="../assets/img/LOGO_Officiel2.jpg" rel="apple-touch-icon">
   <!-- Favicons -->
   {{-- <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> --}}
@@ -54,14 +56,14 @@
                       <label for="email" class="form-label fs-5">Email:</label>
                       <div class="input-group has-validation">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                        <div class="invalid-feedback">votre mail.</div>
+                        <div class="invalid-feedback fs-5">votre mail ou mot de passe incorrect.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="password" class="form-label fs-5 ">Mot de passe:</label>
                       <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                      <div class="invalid-feedback">Votre mot de passe</div>
+                      {{-- <div class="invalid-feedback">Votre mot de passe </div> --}}
                     </div>
 
                     <div class="col-12">

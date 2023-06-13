@@ -3,24 +3,6 @@
 @section('content')
     <!-- Section  artisan  list -->
     <section style="background: rgb(231, 231, 229)">
-        <style>
-            .btn-order {
-                width: 70%;
-            }
-
-            .btn-order:hover {
-                width: 70%;
-            }
-
-            .catego {
-                font-size: 20px !important;
-            }
-
-            .check {
-                color: orange;
-
-            }
-        </style>
         <div style="margin-top: 15%;">
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -45,32 +27,28 @@
                             <div class="row">
                                 <div class="form-group col mt-3">
                                     <label for="name">Nom et Prénoms:</label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder=""
-                                        value="{{ Auth::user()->name }}">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder=""value="{{ Auth::user()->name }}" required>
                                 </div>
                                 <div class="form-group col mt-3">
                                     <label for="phone">Téléphone:</label>
-                                    <input type="text" class="form-control" name="phone" id="phone" placeholder=""
-                                        value="{{ Auth::user()->phone }}" required>
+                                    <input type="text" class="form-control" name="phone" id="phone" placeholder=""value="{{ Auth::user()->phone }}" required>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col mt-3">
                                     <label for="email">Adresse mail:</label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder=""
-                                        value="{{ Auth::user()->email }}">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="" value="{{ Auth::user()->email }}" required>
                                 </div>
                                 <div class="form-group col mt-3">
                                     <label for="ID_number">Numéro pièce:</label>
-                                    <input type="text" class="form-control" name="ID_number" id="ID_number"
-                                        placeholder="Exemple:12345678">
+                                    <input type="text" class="form-control" name="ID_number" id="ID_number"placeholder="Exemple:12345678" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col mt-3">
                                     <label for="ville_id">Ville:</label>
-                                    <select name="ville_id" class="form-control" id="">
+                                    <select name="ville_id" class="form-control" id="" required>
                                         <option value="ville">Choisissez une ville</option>
                                         @foreach ($villes as $ville)
                                             <option {{Auth::user()->ville_id == $ville->id ? 'selected' : ''}} value="{{ $ville->id }}">{{ $ville->name }}</option>
@@ -79,14 +57,13 @@
                                 </div>
                                 <div class="form-group col mt-3">
                                     <label for="adresse">Adresse:</label>
-                                    <input type="text" class="form-control" name="adresse"
-                                        placeholder="Exemple:IITA,Vedoko,Menontin,Zogbo">
+                                    <input type="text" class="form-control" name="adresse" placeholder="Exemple:IITA,Vedoko,Menontin,Zogbo" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col mt-3">
                                     <label for="categorie_id">Catégories:</label>
-                                    <select name="categorie_id" class="form-control" id="">
+                                    <select name="categorie_id" class="form-control" id="" required>
                                         <option value="categorie">Choisissez une catégorie</option>
                                         @foreach ($categories as $categorie)
                                             <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
@@ -125,12 +102,12 @@
                         <form action="artisans" method="get">
                             <div style="margin-left:20px">
                                 <div>
-                                    <input type="radio" id="drone" name="drone" value="all" checked>
+                                    <input type="radio" id="categorie" name="categorie" value="all" checked>
                                     <label for="">Toutes</label>
                                 </div>
                                 @foreach ($categories as $categorie)
                                     <div>
-                                        <input type="radio" id="drone" name="drone" value="{{ $categorie->id }}"
+                                        <input type="radio" id="categorie" name="categorie" value="{{ $categorie->id }}"
                                             {{ $categorieId == $categorie->id ? 'checked' : '' }}>
                                         <label for="">{{ $categorie->name }}</label>
                                     </div>
@@ -184,7 +161,6 @@
                                                                 </div>
                                                                 <div>
                                                                     <i class="bi bi-star-fill fs-3 check"></i>
-                                                                    {{-- <img src="assets/img/Star 4.png" alt="" class="fs-3" style="margin-bottom: -10px"> --}}
                                                                 </div>
                                                         </div><br>
                                                     @else
@@ -194,13 +170,12 @@
                                                             </div>
                                                             <div>
                                                                 <i class="bi bi-star-fill fs-3 check"></i>
-                                                                {{-- <img src="assets/img/Star 4.png" alt="" class="fs-3" style="margin-bottom: -10px"> --}}
                                                             </div>
                                                             </div>
                                                         </div><br>
                                                      @endif
                                 <a href="/artisans/{{ $artisan->id }}" class="btn btn-order"
-                                    role="button"><span>Consulter</span></a><br><br>
+                                    role="button" style="width:70%"><span>Consulter</span></a><br><br>
                             </div>
                         </div>
                     </div>
@@ -208,6 +183,7 @@
             </div>
             @endforeach
         </div><br>
+        
         {{ $artisans->count() >0 ? $artisans->links('pagination::bootstrap-4') : ''}}
         </div>
         </div>

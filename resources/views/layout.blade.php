@@ -32,31 +32,7 @@
 </head>
 
 <body style="background: rgb(231, 231, 229)">
-    <style>
-        .btn-nav {
-            /* width: 100% */
-            padding: 8px !important;
-            /* font-size:20px !important; */
-            color: black !important;
-            background-color: #ddc72e !important;
-            text-decoration: none !important;
-            /* text-shadow: 2px 2px black !important; */
-            border-style: none !important;
-            border-radius: 5px 5px 5px 5px !important;
-        }
-
-        .btn-nav:hover {
-            /* width: 100% */
-            padding: 8px !important;
-            /* font-size:20px !important; */
-            color: #ddc72e !important;
-            text-decoration: none !important;
-            background: none !important;
-            /* text-shadow: 2px 2px black !important; */
-            border-style: none !important;
-            border-radius: 5px 5px 5px 5px !important;
-        }
-    </style>
+    
     {{-- (Auth::user()->id = $artisan->user_id) --}}
     {{-- @dd($artisan->user_id) --}}
     <!-- ======= Header ======= -->
@@ -82,13 +58,6 @@
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
             <ul class="navbar-nav ms-5">
-                <!-- Authentication Links -->
-                {{-- <div class="text-center" style="margin-bottom:-25px; margin-right:20px">
-                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
-                </div>                   --}}
-                {{-- <div class="text-center" style="margin-bottom:-25px; margin-right:20px">
-                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access"> Devenir un artisan</button><br><br>
-                </div>     --}}
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
@@ -97,13 +66,8 @@
                     @endif
                 @else
                     <li class="nav-item dropdown fs-5">
-                        {{-- @can('create', 'App\User')
-          <a href="/dashboard" type="button" class="btn-nav">Dashboard</a>                  
-          @endcan  --}}
-
-
                         @if (Auth::user()->role_id == 2)
-                            <a href="#" type="button" class="btn-nav fs-4">Abonnement</a>
+                            {{-- <a href="#" type="button" class="btn-nav fs-4">Abonnement</a> --}}
                         @elseif (Auth::user()->role_id == 3)
                             <a href="#" type="button" class="btn-nav fs-4" data-bs-toggle="modal"
                                 data-bs-target="#devenirArtisan-modal" data-ticket-type="premium-access">Devenir un
@@ -157,20 +121,10 @@
                             <li><i class="bi bi-chevron-right"></i> <a href="/artisans">Annonces</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a href="/annonces">Artisans</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a href="/contact">Contact</a></li>
-                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li> --}}
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-                        {{-- <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul> --}}
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-contact">

@@ -18,7 +18,7 @@ class CreateAnnoncesTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->integer('budget');
-            $table->date('deadline');
+            $table->date('deadline')->nullable();
             $table->foreignId("categorie_id")->constrained("categories");
             $table->boolean('statuts')->default(false);
             $table->timestamps();

@@ -129,16 +129,24 @@
           <td> {{$user->email}} </td>        
           <td>
            <?php
-            if ($user->admin == '1') {?>
+            if ($user->role_id == '1') {?>
 
-              <a href="/admin-update-user/{{$user->id}}" class="btn btn-success">Admin</a>
+              <a href="" class="btn btn-success">Admin</a>
 
            <?php }
-           else {?>
+           elseif ($user->role_id == '3')            
+           {?>
 
-            <a href="/admin-update-user/{{$user->id}}" class="btn btn-primary">Client</a>
+            <a href="" class="btn btn-primary">Client</a>
             
-          <?php }          
+          <?php }   
+          else {
+            ?>
+
+            <a href="" class="btn btn-secondary">Artisan</a>
+            
+          <?php
+          }       
            ?>
           </td>
           

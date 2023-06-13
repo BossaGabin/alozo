@@ -67,10 +67,10 @@
                                             <div class="invalid-feedback">Le nom est obligatoire</div>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <label id="ville" type="text"
-                                                class="form-label fs-6">Ville:</label>
-                                            <select name="ville" id="" class="form-control">
+                                            <label id="ville" type="text" class="form-label fs-6">Ville:</label>
+                                            <select name="ville" id="" class="form-control" required>
                                                 @foreach ($villes as $ville)
+                                                {{-- <option value="Ville">Choisir une ville</option> --}}
                                                     <option value="{{$ville->id}}">{{$ville->name}}</option>
                                                 @endforeach
                                             </select>
@@ -86,8 +86,7 @@
                                                 class="form-label fs-6">Telephone:</label>
                                             <input id="phone" type="text"
                                                 class="form-control @error('phone') is-invalid @enderror"
-                                                name="phone" value="{{ old('phone') }}" required
-                                                autocomplete="phone" autofocus>
+                                                name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
                                             <div class="invalid-feedback">Votre telephone.</div>
                                         </div>
 
@@ -96,8 +95,7 @@
                                             <div class="input-group has-validation">
                                                 <input id="email" type="email"
                                                     class="form-control @error('email') is-invalid @enderror"
-                                                    name="email" value="{{ old('email') }}" required
-                                                    autocomplete="email">
+                                                    name="email" value="{{ old('email') }}" required autocomplete="email">
                                                 <div class="invalid-feedback">votre mail.</div>
                                             </div>
                                         </div>

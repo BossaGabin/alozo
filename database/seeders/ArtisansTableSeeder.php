@@ -211,11 +211,11 @@ class ArtisansTableSeeder extends Seeder
         $artisan8->save();   
          
         $user9 = new User();
-        $user9->name = 'TOSSA Justine';
+        $user9->name = 'TOSSA florida';
         $user9->phone = '61488094';
-        $user9->email = 'justine@gmail.com';
+        $user9->email = 'florida@gmail.com';
         $user9->role_id = '2';
-        $user9->password = bcrypt('justine@gmail.com');
+        $user9->password = bcrypt('florida@gmail.com');
         $user9->profil = 'user.jpg';
         $user9->sexe = 'Feminin';
         $user9->ville_id = '3';
@@ -224,7 +224,7 @@ class ArtisansTableSeeder extends Seeder
 
         $artisan9 = new Artisan();
         $artisan9->user_id = $user9->id;
-        $artisan9->name = 'TOSSA Justine';
+        $artisan9->name = 'TOSSA florida';
         $artisan9->phone = '61488094';
         $artisan9->ville_id = '2';
         $artisan9->adresse = 'Ouando';
