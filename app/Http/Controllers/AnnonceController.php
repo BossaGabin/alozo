@@ -218,6 +218,6 @@ class AnnonceController extends Controller
         }
         $values = array('statuts' =>$statuts);
         DB::table('annonces')->where('id',$id)->update($values);
-        return back();
+        return back()->with('message',"L'annonce a été prouvée avec succès.");
     }
 }

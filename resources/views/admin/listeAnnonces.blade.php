@@ -56,7 +56,15 @@
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-   
+   @if (session::has('message'))
+   <script>
+    swal("Message","{{ Session::get('message') }}",'success',{
+      button:true,
+      button:"Ok",
+    })
+   </script>
+       
+   @endif
   
     <table class="table table-bordered border-black" >
       <thead >
