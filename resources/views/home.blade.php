@@ -3,7 +3,7 @@
 @section('content')
     <main id="main">
         <!-- ======= Hero Section ======= -->
-        @include('annonces.modal')<!-- /.modal -->
+        @include('annonce.modal')<!-- /.modal -->
         <section id="hero">
             <div style="margin-top: 15%;">
                 @if ($errors->any())
