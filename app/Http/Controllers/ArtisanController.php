@@ -243,6 +243,7 @@ class ArtisanController extends Controller
         $villes = Ville::all();
         $categories = Categorie::all();
         $artisans = Artisan::orderBy("created_at", "desc")->get();
+        // dd($artisans);
         return view('admin/listeArtisan', compact("villes", "categories", "artisans"));
     }
 
@@ -296,7 +297,7 @@ class ArtisanController extends Controller
             });
         }
         $artisans = $artisans->get();
-        dd($artisans);
+        // dd($artisans);
         return view('artisan.recherche', ['artisans' => $artisans]);
     }
     public function uploadImage(Request $request)
