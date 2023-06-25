@@ -37,7 +37,7 @@
     {{-- @dd($artisan->user_id) --}}
     <!-- ======= Header ======= -->
     <header id="header" class="d-flex align-items-center bg-dark">
-        <div class="container-fluid container-xxl d-flex align-items-center">
+        <div class="container-fluid container-xxl d-flex align-items-center" style="width: 90%">
 
             <div id="logo" class="me-auto">
                 <a href="/" class="scrollto"><img src="{{ asset('assets/img/LOGO_Officiel2.jpg') }}"
