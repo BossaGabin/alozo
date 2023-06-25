@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ArtisanController extends Controller
 {
@@ -110,6 +111,8 @@ class ArtisanController extends Controller
             // $validateData['role_id'] = 2;
             $validateData['user_id'] = Auth::user()->id;
             $artisan = Artisan::create($validateData);
+
+            Alert::success('Succès!', "Opération réussie");
             return back()->with('success', "Votre demande a été envoyé");
         } catch (\Throwable $th) {
             return back()->withErrors($th->getMessage());

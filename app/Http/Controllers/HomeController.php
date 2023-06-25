@@ -9,6 +9,7 @@ use App\Models\Artisan;
 use App\Models\Ratings;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {

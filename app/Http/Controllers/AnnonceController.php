@@ -129,6 +129,7 @@ class AnnonceController extends Controller
             }
         }
 
+        Alert::success('Succès!', "Opération réussie");
         // $picture = new AnnonceHasFile();
         // $picture->path = $path;
         // $annonce->picture()->save($picture);
@@ -179,6 +180,8 @@ class AnnonceController extends Controller
         $annonce->categorie_id = $request->input('categorie_id');
         $annonce->deadline = $request->input('deadline');
         $annonce->save();
+
+        Alert::success('Succès!', "Opération réussie");
         return back();
     }
 
@@ -192,7 +195,7 @@ class AnnonceController extends Controller
     {
         //
         Annonce::find($id)->delete();
-        Alert::success('Annonce supprimée!');
+        Alert::success('Succès!', "Opération réussie");
         return  back();
     }
     public function byCategorie($categorie_id){

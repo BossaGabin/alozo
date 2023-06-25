@@ -64,6 +64,6 @@
               </tbody>
         </table>
       </div>
-@endif
+{{-- @endif --}}
     @endsection
           

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategorieController extends Controller
 {
