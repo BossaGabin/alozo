@@ -14,7 +14,7 @@
                 </div>
             @endif
         </div>
-        @include('artisans.modal')<!-- /.modal -->
+        @include('artisan.modal')<!-- /.modal -->
 
         <div class="section-header" style="margin-top: 8%;">
             <h2>Les Artisans</h2>
