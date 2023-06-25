@@ -192,6 +192,7 @@ class AnnonceController extends Controller
     {
         //
         Annonce::find($id)->delete();
+        Alert::success('Annonce supprimée!');
         return  back();
     }
     public function byCategorie($categorie_id){
