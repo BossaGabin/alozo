@@ -3,60 +3,7 @@
 @section('content')
     <main id="main">
         <!-- ======= Hero Section ======= -->
-        <div id="buy-annonce-modal" class="modal modal-lg">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title"> Déposer une annonce</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>              
-                <div class="modal-body">
-                  <form  action="{{route('annonces.store')}}" method="POST" enctype="multipart/form-data"> 
-                    @csrf                
-                    <div class="form-group mt-3">
-                      <label for="title">Titre:</label>
-                      <input type="text" class="form-control" name="title" placeholder="Exemple:" required>
-                    </div>
-                    <div class="form-group mt-3">
-                      <select name="categorie_id"  class="form-control" id="" required>
-                        <option value="categorie">Choisissez une catégorie</option>
-                        @foreach ($categories as $categorie)
-                        <option value="{{$categorie->id}}">{{$categorie->name}}</option>                              
-                        @endforeach
-                      </select>
-                    </div>
-                    <div class="form-group mt-3">
-                      <select name="ville_id"  class="form-control" id="" style="height: 50px;" required>
-                        <option value="ville">Choisir une ville</option>
-                        @foreach ($villes as $ville)
-                        <option value="{{$ville->id}}">{{$ville->name}}</option>                              
-                        @endforeach
-                      </select>          
-                    </div>
-                    <div class="form-group mt-3">
-                      <label for="budget">Budget:</label>
-                      <input type="text" class="form-control" name="budget" placeholder="Exemple:" required>
-                    </div>
-                    <div class="form-group mt-3">
-                      <label for="deadline">Délai:</label>
-                      <input type="date" class="form-control" name="deadline" placeholder="Exemple:" required>
-                    </div>
-                    <div class="form-group mt-3">
-                      <label for="content">Description:</label>
-                    <textarea name="content" id="" class="form-control" cols="50" rows="3"></textarea>
-                    </div>                  
-                    <div class="form-group mt-3">
-                      <label for="content">Images:</label>
-                      <input type="file" class="form-control" name="images[]" placeholder="Images illustrative" multiple>
-                    </div>                  
-                    <div class="text-center mt-3">
-                      <button type="submit" class="btn-order">Envoyer le dépôt</button>
-                    </div>
-                  </form>
-                </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
+        @include('annonces.modal')<!-- /.modal -->
         <section id="hero">
             <div style="margin-top: 15%;">
                 @if ($errors->any())
@@ -69,107 +16,39 @@
                     </div>
                 @endif
             </div>
-            <div id="devenirArtisan-modal" class="modal modal-lg">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Devenir un artisan</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{ route('artisans.store') }}" method="POST">
-                                @csrf
-                                <div class="row">
-                                    <div class="form-group col mt-3">
-                                        <label for="name">Nom et Prénoms:</label>
-                                        <input type="text" class="form-control" name="name" id="name"placeholder="" value="{{ Auth::user()->name }}" required>
-                                    </div>
-                                    <div class="form-group col mt-3">
-                                        <label for="phone">Téléphone:</label>
-                                        <input type="text" class="form-control" name="phone" id="phone"  placeholder="" value="{{ Auth::user()->phone }}" required>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="form-group col mt-3">
-                                        <label for="email">Adresse mail:</label>
-                                        <input type="email" class="form-control" name="email" id="email"placeholder="" value="{{ Auth::user()->email }}" required>
-                                    </div>
-                                    <div class="form-group col mt-3">
-                                        <label for="ID_number">Numéro pièce:</label>
-                                        <input type="text" class="form-control" name="ID_number" id="ID_number"placeholder="Exemple:12345678" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col mt-3">
-                                        <label for="ville_id">Ville:</label>
-                                            <select name="ville_id"  class="form-control" id="" required>
-                                                {{-- <option value="{{$ville->id}}">{{ Auth::user()->ville->name }}</option> --}}
-                                                @foreach ($villes as $ville)
-                                                    <option {{Auth::user()->ville_id == $ville->id ? 'selected' : ''}} value="{{$ville->id}}">{{$ville->name}}</option>                              
-                                                @endforeach
-                                            </select>
-                                    </div>
-                                    <div class="form-group col mt-3">
-                                        <label for="adresse">Adresse:</label>
-                                        <input type="text" class="form-control" name="adresse" placeholder="Exemple:IITA,Vedoko,Menontin,Zogbo" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col mt-3">
-                                        <label for="categorie_id">Catégories:</label>
-                                        <select name="categorie_id" class="form-control" id="" required>
-                                            <option value="categorie">Choisissez une catégorie</option>
-                                            @foreach ($categories as $categorie)
-                                                <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group col mt-3">
-                                        <label for="certifacate">Diplôme:</label>
-                                        <input type="file" name="certificate" id="certifacate" class="form-control"
-                                            cols="50" rows="3">
-                                    </div>
-                                </div>
-                                <div class="text-center mt-3">
-                                    <button type="submit" class="btn-order" style="width: 30%"> Soumettre </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+            @include('artisan.modal')<!-- /.modal -->
 
             <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
                 <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme facilitant la mise en relation entre <br> les
                     clients potentiels et les artisans qualifiés.</h1>
             </div>
-            <div class="container search-container">
-                <div class="row">
-                    <div class="col-md-2">
-                        <form action="{{ route('recherche') }}">
+            <div class="container search-container" style="margin-bottom:-20% !important">
+                <form action="{{ route('recherche') }}">
+                    <div class="row">
+                        <div class="col-md-2">
                             <select name="villes" class="form-control" id="" style="height: 50px;">
                                 <option value="ville">Choisir une ville</option>
                                 @foreach ($villes as $ville)
                                     <option value="{{ $ville->id }}">{{ $ville->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="col-md-2 d-flex">
+                            <select name="categories" class="form-control" id="">
+                                <option value="categorie">Choisir une catégorie</option>
+                                @foreach ($categories as $categorie)
+                                    <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 d-flex">
+                            <input type="text" name="name" class="form-control"
+                                placeholder="Rechercher un artisan" style="border-radius:5px 0px 0px 5px;">
+                            <button type="submit" class="btn-search"><i class="bi bi-search"></i></button>
+
+                        </div>
                     </div>
-                    <div class="col-md-2 d-flex">
-                        <select name="categories" class="form-control" id="">
-                            <option value="categorie">Choisir une catégorie</option>
-                            @foreach ($categories as $categorie)
-                                <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-6 d-flex">
-                        <input type="text" name="name" class="form-control" placeholder="Rechercher un artisan"
-                            style="border-radius:5px 0px 0px 5px;margin-left:5%">
-                        <button type="submit" class="btn-search"><i class="bi bi-search"></i></button>
-                        </form>
-                    </div>
-                </div>
+                </form>
             </div>
 
             {{-- <div class="col-md-4">
@@ -305,7 +184,8 @@
                                                             </div>
                                                         </div><br>
                                     @endif
-                                    <a href="/artisans/{{ $artisan->id }}" class="btn btn-order"role="button" style="width: 70%"><span>Consulter</span></a><br><br>
+                                    <a href="/artisans/{{ $artisan->id }}" class="btn btn-order"role="button"
+                                        style="width: 70%"><span>Consulter</span></a><br><br>
                                 </div>
                             </div>
                         </div>
@@ -332,9 +212,13 @@
         </svg> Deposer une annonce</a><br><br><br>
       </center> --}}
                 <div class="text-center">
-                    <button type="button" class="btn btn-annonce fs-5" data-bs-toggle="modal" data-bs-target="#buy-annonce-modal" data-ticket-type="premium-access"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16" style="width:">
-                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
-                      </svg> Deposer une annonce</button><br><br>
+                    <button type="button" class="btn btn-annonce fs-5" data-bs-toggle="modal"
+                        data-bs-target="#buy-annonce-modal" data-ticket-type="premium-access"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                            class="bi bi-plus-square-fill" viewBox="0 0 16 16" style="width:">
+                            <path
+                                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+                        </svg> Deposer une annonce</button><br><br>
                 </div>
                 <!-- Modal Order Form -->
 
