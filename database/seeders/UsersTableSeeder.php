@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
             'name'=>'Junior',
             'phone'=>'97856234',
             'email'=>'junior@gmail.com',
-            'password'=>bcrypt('John12'),
+            'password'=>bcrypt('Junior12'),
             'role_id'=>'3',
             'profil'=>'user.jpg',
             'sexe'=>'Masculin',

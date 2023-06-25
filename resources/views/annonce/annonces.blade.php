@@ -199,7 +199,7 @@
                       @endforeach
                     </select>
                   </div><br><br>
-                  <button type="submit" class="btn btn-order">Filtrer</button>
+                  <button type="submit" class="btn btn-order" style="width: 70%">Filtrer</button>
                 </form><br><br>                      
             </div> <!-- ======= End col-md-3 border======= -->
                  <!-- ======= Liste annonces ======= -->
@@ -335,5 +335,4 @@
 </div><!-- /.modal -->      
   @endif --}}
 </main>
-
 @endsection

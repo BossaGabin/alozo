@@ -56,15 +56,17 @@
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-   @if (session::has('message'))
+   {{-- @if (Session::has('message'))
    <script>
-    swal("Message","{{ Session::get('message') }}",'success',{
+    swal("Message","{{!! Session::get('message')!! }}",'success',{
       button:true,
       button:"Ok",
     })
    </script>
        
-   @endif
+   @endif --}}
+
+
   
     <table class="table table-bordered border-black" >
       <thead >
@@ -92,12 +94,12 @@
            <?php
             if ($annonce->statuts == '1') {?>
 
-              <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-success">Validé</a>
+              <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-success" onclick="event.preventDefault(); valideFunctin();">Validé</a>
 
            <?php }
            else {?>
 
-            <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-danger">En attente</a>
+            <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-danger">Inactif</a>
             
           <?php }          
            ?>
@@ -173,5 +175,15 @@
     </table>
   </div>
   
+  @if (session('success'))
+  <script>
+      Swal.fire({
+          title: 'Succès!',
+          text: '{{ session('success') }}',
+          icon: 'success',
+          confirmButtonText: 'OK'
+      });
+  </script>
+@endif
     @endsection
           

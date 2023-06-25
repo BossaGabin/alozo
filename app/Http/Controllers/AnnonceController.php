@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AnnonceController extends Controller
 {
@@ -218,6 +219,7 @@ class AnnonceController extends Controller
         }
         $values = array('statuts' =>$statuts);
         DB::table('annonces')->where('id',$id)->update($values);
-        return back()->with('message',"L'annonce a été prouvée avec succès.");
+        session()->flash("success', 'L'annonce a été  approuvéé avec succès");
+        return back();
     }
 }
