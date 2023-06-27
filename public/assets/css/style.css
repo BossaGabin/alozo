@@ -7,11 +7,50 @@
    
   }
   .search-container{
-    background-color: red;
     width: 80%;
-    margin: 50vh auto !important;
+    margin: 200px 10% !important;
     
   }
+
+  ul.navbar-nav.ms-5 > *{
+    font-size: 14px !important;
+  }
+
+  ul.navbar-nav.ms-5{
+    margin-left: 0px !important;
+    margin-right: 70px;
+  }
+  
+  li.nav-item.dropdown.fs-5 > *{
+    font-size: 14px !important;
+  }
+
+
+  i.bi.bi-list.mobile-nav-toggle{
+    margin-right: -10px !important;
+    margin-left: -20px;
+  }
+  .container.search-container .row > * {
+    margin-bottom: 5px;
+  }
+  .container.search-container .row{
+    display: inline !important;
+  }
+  .btn-search{
+    margin: 0px !important;
+  }
+
+  /* .container.search-container .row input.form-control{
+      
+  }
+ */
+}
+
+@media screen and (max-width:900px) {
+  *{
+    font-size: 16px !important;
+  }
+
 }
 /**
 * Template Name: TheEvent

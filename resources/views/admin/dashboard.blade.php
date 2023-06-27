@@ -71,6 +71,10 @@
 		<script src="{{asset('assets/js/dashboard2.js')}}"></script>
 
 
+
+
+
+		
 </body>
 </html>
 @endsection

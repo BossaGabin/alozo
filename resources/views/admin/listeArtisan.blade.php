@@ -25,7 +25,8 @@
                     <th class="px-4 py-3">Villes</th>
                     <th class="px-4 py-3">Address</th>
                     <th class="px-4 py-3">N° pièce</th>
-                    <th class="px-4 py-3">Statut</th>
+                    <th class="px-4 py-3">N° pièce</th>
+                    <th class="px-4 py-3">Diplôme</th>
                     <th class="px-4 py-3">Etat du compte</th>
                     <th class="px-4 py-3">Actions</th>
                 </tr>
@@ -40,6 +41,7 @@
                         <td> {{ $artisan->ville->name }} </td>
                         <td> {{ $artisan->adresse }} </td>
                         <td> {{ $artisan->ID_number }} </td>
+                        <td><a class="btn btn-secondary" href="{{ asset("pdfs/$artisan->certificate")}}" >Afficher</a></td>
                         <td>
                             <a href="/statuts-update-artisan/{{ $artisan->id }}"
                                 class="btn btn-{{ $artisan->statuts ? 'success' : 'danger' }}">{{ $artisan->statuts ? 'Actif' : 'Inactif' }}</a>

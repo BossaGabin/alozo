@@ -26,7 +26,7 @@
                 <form action="artisans" method="get">
                     <div class="row">
                         <div class="col-md-2">
-                            <select name="ville_id" class="form-control" id="" style="height: 50px;">
+                            <select name="ville_id" class="form-select" id="" style="height: 50px;">
                                 <option value="">Choisir une ville</option>
                                 @foreach ($villes as $ville)
                                     <option value="{{ $ville->id }}">{{ $ville->name }}</option>
@@ -34,7 +34,7 @@
                             </select>
                         </div>
                         <div class="col-md-2 d-flex">
-                            <select name="categorie" class="form-control" id="">
+                            <select name="categorie" class="form-select" id="">
                                 <option value="">Choisir une catégorie</option>
                                 @foreach ($categories as $categorie)
                                     <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>

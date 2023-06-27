@@ -89,11 +89,11 @@
         <div class="slideshow-container col d-lg-block">     
           <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
-              @foreach ($annonce->annonceHasFile as $file)
-              <div class="carousel-item active">
-              <img src="{{ Storage::url($file->path)}}" style="max-heigth:100%; max-width:100%;min-heigth:100%; min-width:100%">                
-             </div>
-            @endforeach              
+                @foreach ($annonce->annonceHasFile as $file)
+                  <div class="carousel-item active">
+                    <img src="{{ Storage::url($file->path)}}" style="max-heigth:100%; max-width:100%;min-heigth:100%; min-width:100%">                
+                </div>
+                @endforeach              
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>

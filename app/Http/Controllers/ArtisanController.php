@@ -104,8 +104,13 @@ class ArtisanController extends Controller
             'categorie_id' => 'required',
             'ville_id' => 'required',
             'ID_number' => 'required',
+            'certificate' => 'required|max:2048', // Valider que le fichier est un PDF et a une taille maximale de 2 Mo
 
         ]);
+        if ($request->hasFile('certificate')) {
+            $pdf = $request->file('certificate');
+            $pdf->store('pdfs'); // Enregistre le PDF dans le dossier 'pdfs' (vous pouvez modifier le dossier selon vos besoins)
+        }
 
         try {
             // $validateData['role_id'] = 2;
