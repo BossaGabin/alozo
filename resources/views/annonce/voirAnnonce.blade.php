@@ -62,7 +62,10 @@
             $dateFormatee = $date->isoFormat('dddd D MMMM YYYY');
           ?>
           <div>
-            <strong class="card-text fs-5">Délai:</strong><span style="color: black" class="fs-5">  {{$dateFormatee}}</span><br><br>
+            <strong class="card-text fs-5">Délai:</strong><span style="color: black" class="fs-5">  {{$dateFormatee}}</span><br>
+          </div>
+          <div>
+            <strong class="card-text fs-5">Ville:</strong><span style="color: black" class="fs-5">  {{$annonce->ville->name}}</span><br><br>
           </div>
             <p class="card-text mb-auto fs-5"> {{ $annonce->content}}</p>
             <?php   

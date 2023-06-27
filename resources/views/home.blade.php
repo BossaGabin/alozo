@@ -19,23 +19,23 @@
             @include('artisan.modal')<!-- /.modal -->
 
             <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
-                <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme facilitant la mise en relation entre  les
+                <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme facilitant la mise en relation entre <br>  les
                     clients potentiels et les artisans qualifiés.</h1>
             </div>
             <div class="container search-container" style="margin-bottom:-20% !important">
-                <form action="{{ route('recherche') }}">
+                <form action="artisans" method="get">
                     <div class="row">
                         <div class="col-md-2">
-                            <select name="villes" class="form-control" id="" style="height: 50px;">
-                                <option value="ville">Choisir une ville</option>
+                            <select name="ville_id" class="form-control" id="" style="height: 50px;">
+                                <option value="">Choisir une ville</option>
                                 @foreach ($villes as $ville)
                                     <option value="{{ $ville->id }}">{{ $ville->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-2 d-flex">
-                            <select name="categories" class="form-control" id="">
-                                <option value="categorie">Choisir une catégorie</option>
+                            <select name="categorie" class="form-control" id="">
+                                <option value="">Choisir une catégorie</option>
                                 @foreach ($categories as $categorie)
                                     <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
                                 @endforeach

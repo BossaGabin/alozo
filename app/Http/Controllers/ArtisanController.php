@@ -111,9 +111,8 @@ class ArtisanController extends Controller
             // $validateData['role_id'] = 2;
             $validateData['user_id'] = Auth::user()->id;
             $artisan = Artisan::create($validateData);
-
             Alert::success('Succès!', "Opération réussie");
-            return back()->with('success', "Votre demande a été envoyé");
+            return back();
         } catch (\Throwable $th) {
             return back()->withErrors($th->getMessage());
         }
@@ -165,6 +164,7 @@ class ArtisanController extends Controller
         $artisans->categorie_id = $request->input('categorie_id');
         $artisans->ville_id = $request->input('ville_id');
         $artisans->save();
+        Alert::success('Succès!', "Opération réussie");
         return back();
     }
 
@@ -178,6 +178,7 @@ class ArtisanController extends Controller
     {
         //
         Artisan::find($id)->delete();
+        Alert::success('Succès!', "Opération réussie");
         return  back();
     }
 
@@ -202,20 +203,20 @@ class ArtisanController extends Controller
                 $users = User::find($artisan->user_id);
                 $users->role_id = 2;
                 $users->save();
-                return back()->with('success', "Le compte artisan à été validé");
+               Alert::success('Succès!', "Le compte artisan approuvé");
+                return back();
             } else {
                 // dd('ici');
                 $artisan->delete();
-                return back()->with('success', "La demande à été supprimé");
+               Alert::success('Succès!', "Le compte artisan rejeté");
+                return back();
             }
 
-            return back()->with('success');
+            return back();
         } else abort(404);
 
         return  back();
     }
-
-
 
     public function welcome()
     {
@@ -240,9 +241,6 @@ class ArtisanController extends Controller
     public function listArtisanByAdmin()
     {
 
-        // if (!Gate::allows('access-admin')) {
-        //     abort('403');
-        //  }
         $villes = Ville::all();
         $categories = Categorie::all();
         $artisans = Artisan::orderBy("created_at", "desc")->get();
@@ -267,11 +265,6 @@ class ArtisanController extends Controller
 
     public function count()
     {
-
-        // if (!Gate::allows('access-admin')) {
-        //    abort('403');
-        // }
-        // $artisans = Artisan::orderBy("created_at", "desc")->take(8)->get();
         $artisans = Artisan::count();
         $annonces = Annonce::count();
         $users = User::count();
@@ -286,22 +279,42 @@ class ArtisanController extends Controller
 
         $artisans = Artisan::where('statuts', true);
 
-        if ($villes) {
-            $artisans->whereIn('ville_id', (array) $villes);
+        if (!empty($villes)) {
+            $artisans->where('ville_id','=',$villes);
         }
-        if ($categories) {
-            $artisans->whereIn('categorie_id', (array) $categories);
+        if (!empty($categories)) {
+            $artisans->where('categorie_id','=',$categories);
         }
-        if ($name) {
+        if (!empty($name)) {
             $artisans->where(function ($req) use ($name) {
                 $req->where('name', 'LIKE', '%' . $name . '%')
                     ->orWhere('phone', 'LIKE', '%' . $name . '%')
                     ->orWhere('adresse', 'LIKE', '%' . $name . '%');
             });
         }
-        $artisans = $artisans->get();
-        // dd($artisans);
-        return view('artisan.recherche', ['artisans' => $artisans]);
+        if (empty($villes) && empty($categories) && empty($name)) {
+            // Afficher tous les artisans
+            // $artisans = Artisan::all();
+              // $artisans = Artisan::withAvg('ratings', 'score')->where('statuts', '=', true)->orderBy("created_at", "desc")->paginate(8);
+              $artisans = $artisans->with('ratings')
+              ->select('artisans.*')
+              ->withAvg('ratings', 'score')
+              ->orderByDesc('ratings_avg_score');
+          // return view('artisan/artisans', compact("artisans"));
+          $artisans = $artisans->paginate(8);
+          // return view('artisan/artisans', compact("artisans"));
+          $villes = Ville::all();
+          $categories = Categorie::all();
+          foreach ($artisans as $artisan) {
+              $moyenne = Ratings::where('artisan_id', $artisan->id)->avg('score');
+              $artisan->moyenne = $moyenne;
+          }
+        }
+        else
+          {  $artisans = $artisans->get();
+                // dd($artisans);
+         }
+         return view('artisan.recherche', ['artisans' => $artisans]);
     }
     public function uploadImage(Request $request)
     {
@@ -325,7 +338,6 @@ class ArtisanController extends Controller
                 'path' => $path,
             ]);
         }
-
         // Rediriger ou afficher un message de confirmation
         return redirect()->back()->with('success', 'Images téléchargées avec succès.');
     }

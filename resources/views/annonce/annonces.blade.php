@@ -176,12 +176,12 @@
                 <form action="annonces" method="get">                  
                     <div style="margin-left:20px">                 
                       <div>
-                        <input type="radio" id="drone" name="drone" value="all" checked >
+                        <input type="radio" id="categorie" name="categorie" value="" checked >
                         <label for="">Toutes</label>
                       </div>
                       @foreach ($categories as $categorie)              
                         <div>
-                          <input type="radio" id="drone" name="drone" value="{{$categorie->id}}" {{  $categorieId == $categorie->id ? 'checked' : ''  }} >
+                          <input type="radio" id="categorie" name="categorie" value="{{$categorie->id}}" {{  $categorieId == $categorie->id ? 'checked' : ''  }} >
                           <label for="">{{$categorie->name}}</label>
                         </div>
                       @endforeach
@@ -202,62 +202,72 @@
                   <button type="submit" class="btn btn-order" style="width: 70%">Filtrer</button>
                 </form><br><br>                      
             </div> <!-- ======= End col-md-3 border======= -->
-                 <!-- ======= Liste annonces ======= -->
-                   <div class="col-md-10 " id="artisanByCategorie" style="">
-                      <div class="tab-pane active">
-                        <div class="bloc1">
-                          <div class="row ">
-                            @foreach ($annonces as $annonce) 
-                            <div class="col-lg-4 mt-3">
-                              <div class="col">
-                                  <div class="card" style="background-color: rgb(243, 243, 243); border-radius: 24px;">
-                                    <h5 class="card-title annonceCardTitle fs-5" style="margin-top: -2% !important">{{$annonce->title}}</h5>
-                                    <div class="text-center">
-                                      <?php   
-                                      // $dateSql = $annonce->deadline;
-                                      // $dateReelle = \Carbon\Carbon::parse($dateSql)->formatLocalized('%A %d %B %Y');
-                                      $dateAnglaise =  $annonce->created_at;
-                                      $date =\Carbon\Carbon::parse($dateAnglaise)->locale('fr');
-                                      $dateCreation = $date->isoFormat('dddd D MMMM YYYY à HH:mm:ss');
-                                    ?>                                      
-                                      <p> <em> Publié le {{ $dateCreation }} par </em><br> <strong>{{$annonce->user->name}}</strong></p>
-                                    </div>
-                                    <div class="card" style="margin-bottom:-1.2%;">
-                                      <div class="card-body mt-3 fs-5" style=""><br>
-                                        <strong >Budget: {{$annonce->budget}} F CFA </strong><br>
-                                        <?php   
-                                        // $dateSql = $annonce->deadline;
-                                        // $dateReelle = \Carbon\Carbon::parse($dateSql)->formatLocalized('%A %d %B %Y');
-                                        $dateAnglaise = $annonce->deadline;
-                                        $date =\Carbon\Carbon::parse($dateAnglaise)->locale('fr');
-                                        $dateFormatee = $date->isoFormat('dddd D MMMM YYYY');
-                                      ?>
-                                        <strong class="card-text fs-5">Délai: {{$dateFormatee}} </strong><br><br>
-                                        <strong class="fs-5"> {{\Illuminate\Support\Str::words($annonce->content, 7, '...') }} </strong><br><br>
-                                        <div class="d-flex justify-content-center" >
-                                          <a href="/annonces/{{ $annonce->id }}" class="btn btn-order fs-4" style="width: 40%">Détails</a>                                      
-                                                       
-                                          {{-- <a  href="#" class="btn btn-order my-1" data-bs-toggle="modal" data-bs-target="#buy-annonce-devis" data-ticket-type="premium-access" style=" width: auto;">
-                                              Proposer un devis
-                                          </a> --}}
-                                         
-                                        </div>
-                                      </div>
-                                      </div>
-                                      <div class="card-footer" style="position: relative;background-color:#ddcc72">
-                                        <center>
-                                          <strong style="color:black" class="fs-5 text-center">{{ $annonce->categorie->name }}</strong>
-                                        </center>
-                                      </div>
-                                    </div>                                   
-                                  </div>
-                              </div>    
-                              @endforeach                          
-                            </div>                 
-                          </div><br>
-                          {{ $annonces->links('pagination::bootstrap-4') }}
-                        </div>
-                      </div>            
+                
+                <!-- ======= Liste annonces ======= -->
+                <div class="col-md-10 " id="artisanByCategorie" style="">
+                  <div class="tab-pane active">
+                    <div class="bloc1">
+                      <div class="row ">
+                        @if ($annonces->isEmpty())
+                        <div class="container" style="margin-bottom: 15%;margin-top:10%">
+                            <p class="fw-bold fs-3 text-center justify-content-center">
+                              Aucune annonce trouvée...
+                            </p>
+                        </div>                         
+                       @else
+                       @foreach ($annonces as $annonce) 
+                       <div class="col-lg-4 mt-3">
+                         <div class="col">
+                             <div class="card" style="background-color: rgb(243, 243, 243); border-radius: 24px;">
+                               <h5 class="card-title annonceCardTitle fs-5" style="margin-top: -2% !important">{{$annonce->title}}</h5>
+                               <div class="text-center">
+                                 <?php   
+                                 // $dateSql = $annonce->deadline;
+                                 // $dateReelle = \Carbon\Carbon::parse($dateSql)->formatLocalized('%A %d %B %Y');
+                                 $dateAnglaise =  $annonce->created_at;
+                                 $date =\Carbon\Carbon::parse($dateAnglaise)->locale('fr');
+                                 $dateCreation = $date->isoFormat('dddd D MMMM YYYY à HH:mm:ss');
+                               ?>                                      
+                                 <p> <em> Publié le {{ $dateCreation }} par </em><br> <strong>{{$annonce->user->name}}</strong></p>
+                               </div>
+                               <div class="card" style="margin-bottom:-1.2%;">
+                                 <div class="card-body mt-3 fs-5" style=""><br>
+                                   <strong >Budget: {{$annonce->budget}} F CFA </strong><br>
+                                   <?php   
+                                   // $dateSql = $annonce->deadline;
+                                   // $dateReelle = \Carbon\Carbon::parse($dateSql)->formatLocalized('%A %d %B %Y');
+                                   $dateAnglaise = $annonce->deadline;
+                                   $date =\Carbon\Carbon::parse($dateAnglaise)->locale('fr');
+                                   $dateFormatee = $date->isoFormat('dddd D MMMM YYYY');
+                                 ?>
+                                   <strong class="card-text fs-5">Délai: {{$dateFormatee}} </strong><br><br>
+                                   <strong class="fs-5"> {{\Illuminate\Support\Str::words($annonce->content, 7, '...') }} </strong><br><br>
+                                   <div class="d-flex justify-content-center" >
+                                     <a href="/annonces/{{ $annonce->id }}" class="btn btn-order fs-4" style="width: 40%">Détails</a>                                      
+                                                  
+                                     {{-- <a  href="#" class="btn btn-order my-1" data-bs-toggle="modal" data-bs-target="#buy-annonce-devis" data-ticket-type="premium-access" style=" width: auto;">
+                                         Proposer un devis
+                                     </a> --}}
+                                    
+                                   </div>
+                                 </div>
+                                 </div>
+                                 <div class="card-footer" style="position: relative;background-color:#ddcc72">
+                                   <center>
+                                     <strong style="color:black" class="fs-5 text-center">{{ $annonce->categorie->name }}</strong>
+                                   </center>
+                                 </div>
+                               </div>                                   
+                             </div>
+                         </div>    
+                         @endforeach  
+                       @endif                        
+                        </div>                 
+                      </div><br>
+                      {{ $annonces->links('pagination::bootstrap-4') }}
+                    </div>
+                  </div>    
+                  {{-- @endif        --}}
                    </div>
           </div>  <!-- ======= End Row ======= -->   
 

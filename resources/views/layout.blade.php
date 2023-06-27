@@ -101,8 +101,8 @@
 
         </div>
     </header><!-- End Header -->
-
-    @yield('content')
+		@include('sweetalert::alert')
+        @yield('content')
 
     <!-- ======= Footer ======= -->
     <footer id="footer">

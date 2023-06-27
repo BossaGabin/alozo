@@ -5,7 +5,7 @@
     <div class="section-header" style="margin-top:10%">
       <h2>Les resultats de la recherche</h2>    
     </div>
-    @if ($artisans->count()<=0)
+    @if ($artisans->isEmpty())
     <div class="container" style="margin-bottom: 15%;margin-top:10%">
         <p class="fw-bold fs-3 text-center">
           Aucun artisan trouvé...
@@ -58,7 +58,8 @@
                         </div>                            
                      </div>                             
                      @endforeach                                     
-                  </div><br>           
+                  </div><br>  
+        {{ $artisans->count() >0 ? $artisans->links('pagination::bootstrap-4') : ''}}
          </div>
 
     </section><br><br>

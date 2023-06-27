@@ -27,23 +27,23 @@ class AnnonceController extends Controller
     {   
         $categorieId = '';
         $villeId = '';
-        if ($request->filled('drone') && $request->filled('ville_id')) {
+        if ($request->filled('categorie') && $request->filled('ville_id')) {
             
-            $categorieId  = (int)$request->drone;
+            $categorieId  = (int)$request->categorie;
 
             $villeId = (int)$request->ville_id;
             
             $annonces = Annonce::where('ville_id', $villeId)->where('categorie_id', $categorieId)->where('statuts', '=', true)->paginate(6);
-        }elseif ($request->filled('drone')){
+        }elseif ($request->filled('categorie')){
 
-            $categorieId  = (int)$request->drone ;
+            $categorieId  = (int)$request->categorie ;
             $annonces = Annonce::where('categorie_id', $categorieId)->where('statuts', '=', true)->paginate(6);
         }
-        // elseif ($request->filled('ville_id') && $request->filled('drone','=', 'all')){
+        elseif ($request->filled('ville_id')){
 
-        //     $villeId = (int)$request->ville_id;
-        //     $artisans = Artisan::where('ville_id', $villeId)->where('statuts', '=', true)->get();
-        // }
+            $villeId = (int)$request->ville_id;
+            $annonces = Annonce::where('ville_id', $villeId)->where('statuts', '=', true)->paginate(6);
+        }
         
         else{
 
@@ -54,28 +54,7 @@ class AnnonceController extends Controller
         // return view('artisan/artisans', compact("artisans"));
         $villes = Ville::all();
         $categories = Categorie::all();
-        return view('annonce/annonces', compact("categories","villes",  "annonces","categorieId","villeId" ));
-
-    
-
-        // $categorieId = '';
-        // $villeId = '';
-        // if ($request->filled('drone') && $request->filled('ville_id')) { 
-
-        //     $categorieId  = (int)$request->drone;
-        //     $villeId = (int)$request->ville_id;  
-        //     $categories = Categorie::all();
-        //     $villes = Ville::all();
-        //     $annonces = Annonce::where('categorie_id', $categorieId)->where('ville_id', $villeId)->where('statuts', '=', true)->get();
-        // } else{
-        //     $villes = Ville::all();
-        //     $categories = Categorie::all();
-        //     $annonces = Annonce::where('statuts', '=', true)->orderBy("created_at", "desc")->get();
-        // }
-        // return view("annonce/annonces", compact("categories","annonces", "categorieId","villes"));
-
-
-        
+        return view('annonce/annonces', compact("categories","villes",  "annonces","categorieId","villeId" ));        
     }
 
     /**
@@ -130,9 +109,6 @@ class AnnonceController extends Controller
         }
 
         Alert::success('Succès!', "Opération réussie");
-        // $picture = new AnnonceHasFile();
-        // $picture->path = $path;
-        // $annonce->picture()->save($picture);
         return back();
     }
 
@@ -223,7 +199,7 @@ class AnnonceController extends Controller
         }
         $values = array('statuts' =>$statuts);
         DB::table('annonces')->where('id',$id)->update($values);
-        session()->flash("success', 'L'annonce a été  approuvéé avec succès");
+        Alert::success('Succès!', "Opération réussie");
         return back();
     }
 }

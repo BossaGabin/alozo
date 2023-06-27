@@ -33,7 +33,7 @@
                         <form action="artisans" method="get">
                             <div style="margin-left:20px">
                                 <div>
-                                    <input type="radio" id="categorie" name="categorie" value="all" checked>
+                                    <input type="radio" id="categorie" name="categorie" value="" checked>
                                     <label for="">Toutes</label>
                                 </div>
                                 @foreach ($categories as $categorie)
@@ -59,7 +59,7 @@
                             @endforeach
                         </select>
                     </div><br><br>
-                    <button type="submit" class="btn btn-order">Filtrer</button>
+                    <button type="submit" class="btn btn-order"  style="width: 70%">Filtrer</button>
                     </form><br><br>
 
                 </div> <!-- ======= End col-md-3 border======= -->
@@ -68,57 +68,65 @@
                     <div class="tab-pane active">
                         <div class="bloc1">
                             <div class="row">
-                                @foreach ($artisans as $artisan)
-                                    {{-- @dd($artisan);  --}}
-                                    <div class="col-lg-3 mt-3" data-aos="fade-up" data-aos-delay="100">
-                                        <div class="card mb-5 mb-lg-0">
-                                            <div class="card-body text-center">
-                                                <div class="thumbmail">
-                                                    <img src="../assets/img/images.png" class="img-fluid col-8"
-                                                        alt=""
-                                                        style="min-width:90px; max-width:90px; min-heigth:90px; max-heigth:90px; margin-top:15px">
-                                                    <div class="caption">
-                                                        <h6 class="card-title text-muted text-uppercase catego">
-                                                            {{ $artisan->categorie->name }}</h6>
-                                                        <h6 class="fs-5"><span
-                                                                class="bi bi-user"></span>{{ $artisan->name }}</h6>
-                                                        <p class="fs-5"><span
-                                                                class="bi bi-geo-alt-fill"></span>{{ $artisan->ville->name }},
-                                                            <br> {{ $artisan->adresse }} </p>
-                                                        <div class="justify-content-center d-flex ">
-                                                            @if ($artisan->moyenne <= 0)
-                                                                <div class="fs-2">
-                                                                    0
-                                                                </div>
-                                                                <div>
-                                                                    <i class="bi bi-star-fill fs-3 check"></i>
-                                                                </div>
-                                                        </div><br>
-                                                    @else
-                                                        <div class="d-flex">
-                                                            <div class="fs-2">
-                                                                {{ $artisan->moyenne }}
-                                                            </div>
-                                                            <div>
-                                                                <i class="bi bi-star-fill fs-3 check"></i>
-                                                            </div>
-                                                            </div>
-                                                        </div><br>
-                                                     @endif
-                                <a href="/artisans/{{ $artisan->id }}" class="btn btn-order"
-                                    role="button" style="width:70%"><span>Consulter</span></a><br><br>
-                            </div>
+                               @if ($artisans->isEmpty())
+                               <div class="container" style="margin-bottom: 15%;margin-top:10%">
+                                    <p class="fw-bold fs-3 text-center justify-content-center">
+                                      Aucun artisan trouvé...
+                                    </p>
+                                 </div>
+                               @else
+                               @foreach ($artisans as $artisan)
+                               {{-- @dd($artisan);  --}}
+                               <div class="col-lg-3 mt-3" data-aos="fade-up" data-aos-delay="100">
+                                   <div class="card mb-5 mb-lg-0">
+                                       <div class="card-body text-center">
+                                           <div class="thumbmail">
+                                               <img src="../assets/img/images.png" class="img-fluid col-8"
+                                                   alt=""
+                                                   style="min-width:90px; max-width:90px; min-heigth:90px; max-heigth:90px; margin-top:15px">
+                                               <div class="caption">
+                                                   <h6 class="card-title text-muted text-uppercase catego">
+                                                       {{ $artisan->categorie->name }}</h6>
+                                                   <h6 class="fs-5"><span
+                                                           class="bi bi-user"></span>{{ $artisan->name }}</h6>
+                                                   <p class="fs-5"><span
+                                                           class="bi bi-geo-alt-fill"></span>{{ $artisan->ville->name }},
+                                                       <br> {{ $artisan->adresse }} </p>
+                                                   <div class="justify-content-center d-flex ">
+                                                       @if ($artisan->moyenne <= 0)
+                                                           <div class="fs-2">
+                                                               0
+                                                           </div>
+                                                           <div>
+                                                               <i class="bi bi-star-fill fs-3 check"></i>
+                                                           </div>
+                                                   </div><br>
+                                               @else
+                                                   <div class="d-flex">
+                                                       <div class="fs-2">
+                                                           {{ $artisan->moyenne }}
+                                                       </div>
+                                                       <div>
+                                                           <i class="bi bi-star-fill fs-3 check"></i>
+                                                       </div>
+                                                       </div>
+                                                   </div><br>
+                                                @endif
+                           <a href="/artisans/{{ $artisan->id }}" class="btn btn-order"
+                               role="button" style="width:70%"><span>Consulter</span></a><br><br>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       @endforeach
+                               @endif
+                        </div><br>
+                        
+                        {{ $artisans->count() >0 ? $artisans->links('pagination::bootstrap-4') : ''}}
                         </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
-        </div><br>
-        
-        {{ $artisans->count() >0 ? $artisans->links('pagination::bootstrap-4') : ''}}
-        </div>
-        </div>
-        </div>
         </div> <!-- ======= End Row ======= -->
         </div> <!-- ======= End container ======= -->
     </section><br><br><br>
