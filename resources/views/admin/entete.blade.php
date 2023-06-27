@@ -79,5 +79,5 @@
 			</ul>
 		</div>
 		<div class="main">
-        
+		@include('sweetalert::alert')
         @yield('content')
