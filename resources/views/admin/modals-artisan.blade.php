@@ -49,6 +49,11 @@
                         <input type="text" class="form-control" id="adresse" name="adresse"
                             value="{{ $artisan->adresse }}">
                     </div>
+                    <div class="mb-3">
+                        <label for="pwd" class="form-label" >N° pièce:</label>
+                        <input type="text" class="form-control" id="adresse" name="adresse"
+                            value="{{ $artisan->ID_number }}" disabled>
+                    </div>
                     <button type="submit" class="btn btn-success">Valider</button>
                 </form>
             </div>

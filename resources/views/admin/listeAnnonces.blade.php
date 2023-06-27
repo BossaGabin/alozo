@@ -14,6 +14,7 @@
               <thead >
                 <tr>
                   <th class="px-4 py-3">#</th>
+                  <th class="px-4 py-3">Auteurs</th>
                   <th class="px-4 py-3">Tiltle</th>
                   <th class="px-4 py-3">Budget</th>
                   <th class="px-4 py-3">Description</th>
@@ -27,24 +28,14 @@
                 @foreach ($annonces as $annonce)
                   <tr>
                       <td> {{$loop->index +1}} </td>
+                      <td> {{$annonce->user->name}} </td>
                       <td> {{$annonce->title}} </td>
                       <td> {{$annonce->budget}}F CFA </td>
                       <td> {{$annonce->content}} </td>
                       <td> {{$annonce->categorie->name}} </td>
                       <td> {{$annonce->deadline}} </td>
                       <td>
-                        <?php
-                          if ($annonce->statuts == '1') {?>
-
-                            <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-success" onclick="event.preventDefault(); valideFunctin();">Validé</a>
-
-                                          <?php }
-                          else {?>
-
-                            <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-danger">Inactif</a>
-                            
-                          <?php }          
-                        ?>
+                        <a href="/statuts-update-annonce/{{$annonce->id}}" class="btn btn-{{ $annonce->statuts ? 'success' : 'danger' }}">{{ $annonce->statuts ? 'Actif' : 'Inactif' }}</a>
                       </td>
                       <td>
                         <div style="display:flex;">
@@ -64,6 +55,5 @@
               </tbody>
         </table>
       </div>
-@endif
     @endsection
           

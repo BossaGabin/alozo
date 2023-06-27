@@ -1,3 +1,18 @@
+@media screen and (max-width:768px) {
+  *{
+    font-size: 16px !important;
+  }
+  .hero-container{
+   text-align: justify;
+   
+  }
+  .search-container{
+    background-color: red;
+    width: 80%;
+    margin: 50vh auto !important;
+    
+  }
+}
 /**
 * Template Name: TheEvent
 * Updated: Mar 10 2023 with Bootstrap v5.2.3
@@ -2046,4 +2061,9 @@ h6 {
   /* background-color: black!important; */
   /* border-radius: 50px !important; */
   border: 2px solid #dcc72e !important;
+}
+@media (max-width: 992px) {
+  .search-container {
+    margin-top: 20%;
+  }
 }

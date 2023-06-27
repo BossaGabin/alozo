@@ -19,7 +19,7 @@
             @include('artisan.modal')<!-- /.modal -->
 
             <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
-                <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme facilitant la mise en relation entre <br> les
+                <h1 class="mb-4 pb-0" style="font-size: 30px">Plateforme facilitant la mise en relation entre  les
                     clients potentiels et les artisans qualifiés.</h1>
             </div>
             <div class="container search-container" style="margin-bottom:-20% !important">

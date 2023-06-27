@@ -24,8 +24,8 @@
 				<img src="{{asset('assets/img/LOGO_Officiel2.jpg')}}">
 			</div>
 			<div class="search">
-				<input type="text" name="search" placeholder="search here">
-				<label for="search"> <i class="fas fa-search"></i></label>
+				{{-- <input type="text" name="search" placeholder="search here">
+				<label for="search"> <i class="fas fa-search"></i></label> --}}
 			</div>
 			<i class="fa-sharp fa-regular fa-bell"></i>
 			<div class="user">
